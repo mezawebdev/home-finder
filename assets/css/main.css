@@ -59,7 +59,7 @@ body {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border: 1px solid #D3D3D3;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   transition: height 0.25s linear;
   position: fixed;
   transform: translate(-50%, 0);
@@ -139,7 +139,7 @@ body {
           pointer-events: none; }
       #side-bar .body .content .settings-wrapper {
         padding: 20px 20px 20px 20px;
-        height: 300px;
+        height: 280px;
         overflow-y: scroll; }
         #side-bar .body .content .settings-wrapper .budget, #side-bar .body .content .settings-wrapper .square-feet, #side-bar .body .content .settings-wrapper .rooms {
           color: rgba(0, 0, 0, 0.7);
@@ -188,7 +188,7 @@ body {
   z-index: 900;
   bottom: 15px;
   right: 15px;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px; }
   #views button {
     background: rgba(0, 0, 0, 0.1);
@@ -222,19 +222,21 @@ body {
     background: #fafafa;
     border-radius: 5px;
     border: 1px solid #D3D3D3;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
     margin-top: 15px;
     padding: 10px;
     text-align: left;
     color: rgba(0, 0, 0, 0.7);
     font-size: 0.9em;
-    position: relative; }
+    position: relative;
+    -webkit-transition: transform 0.15s ease-in-out;
+    -moz-transition: transform 0.15s ease-in-out; }
     #list .listing .listing-date {
       position: absolute;
       width: 40px;
       height: 50px;
       background: #fafafa;
-      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
       right: -5px;
       top: -5px;
       border-radius: 5px; }
@@ -264,6 +266,12 @@ body {
       right: 10px;
       bottom: 10px;
       position: absolute; }
+  #list .listing:hover {
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.05); }
+  #list .listing:active {
+    -webkit-transform: scale(0.98);
+    -moz-transform: scale(0.98); }
 
 #side-bar.active {
   height: 98%; }

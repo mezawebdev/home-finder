@@ -2,6 +2,12 @@
 
 	'use strict';
 
+	class Listing {
+		constructor() {
+			
+		}
+	}
+
 	var toolBar = {
 		opened: false,
 		tab: "buy",
@@ -186,7 +192,17 @@
 	}
 
 	var list = {
-		listings: [],
+		listings: [{
+			date: "10/20/2017",
+			price: 1000,
+			squareFeet: 1240,
+			pictureSrc: null,
+		}, {
+			date: "09/12/2017",
+			price: 1200,
+			squareFeet: 970,
+			pictureSrc: null,
+		}],
 		init: function() {
 			this.cacheDOM();
 			this.fetchList();
@@ -197,13 +213,12 @@
 			this.template = document.getElementById("listing-template").innerHTML;
 		},
 		fetchList: function(list) {
-			listingCount = 5;
-			for (var i = 0; i < listingCount; i++) {
+			for (var i = 0; i < this.listings.length; i++) {
 				this.listings.push({
-					date: "",
-					price: "",
-					squareFeet: "",
-					pictureSrc: "",
+					date: this.listings[i].date,
+					price: this.listings[i].price,
+					squareFeet: this.listings[i].squareFeet,
+					pictureSrc: this.listings[i].pictureSrc,
 					element: null
 				});
 			}

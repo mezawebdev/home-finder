@@ -19,7 +19,7 @@ $border-grey: #D3D3D3;
 $box-padding: 20px 20px 20px 20px;
 $main-font: rgba(0, 0, 0, 0.7);
 $inset-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
-$outset-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+$outset-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 $input-bg-grey: #ECECEC;
 $unfocused-button-text: rgba(0, 0, 0, 0.4);
 $unfocused-button-background: rgba(0, 0, 0, 0.1);
@@ -135,7 +135,7 @@ body {
 
 			.settings-wrapper {
 				padding: $box-padding;
-				height: 300px;
+				height: 280px;
 				overflow-y: scroll;
 
 				.budget, .square-feet, .rooms {
@@ -247,6 +247,8 @@ body {
 		color: $main-font;
 		font-size: 0.9em;
 		position: relative;
+		-webkit-transition: transform 0.15s ease-in-out;
+		-moz-transition: transform 0.15s ease-in-out;
 		.listing-date {
 			position: absolute;
 			width: 40px;
@@ -290,6 +292,14 @@ body {
 			bottom: 10px;
 			position: absolute;
 		}
+	}
+	.listing:hover {
+		-webkit-transform: scale(1.02);
+		-moz-transform: scale(1.05);
+	}
+	.listing:active {
+		-webkit-transform: scale(0.98);
+		-moz-transform: scale(0.98);
 	}
 }
 
