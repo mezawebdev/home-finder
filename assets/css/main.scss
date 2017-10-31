@@ -1,0 +1,299 @@
+// Frameworks
+
+// Definings
+@import "_reset.scss";
+@import "_variables.scss";
+
+// Global Styles
+@import "_globals.scss";
+
+// Page Specifics
+
+// Mixins
+@import "_mixins.scss";
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700');
+
+$transparent-white: rgba(250, 250, 250, 1);
+$border-grey: #D3D3D3;
+$box-padding: 20px 20px 20px 20px;
+$main-font: rgba(0, 0, 0, 0.7);
+$inset-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+$outset-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+$input-bg-grey: #ECECEC;
+$unfocused-button-text: rgba(0, 0, 0, 0.4);
+$unfocused-button-background: rgba(0, 0, 0, 0.1);
+$green: #71C654;
+$cherryred: #F04838;
+//$unfocused-button-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+
+body {
+	background: #E7E7EA;
+	font-family: "PT Sans Narrow", sans-serif;
+}
+
+#side-bar {
+	width: 97%;
+	height: 50px;
+	background: $transparent-white;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border: 1px solid $border-grey;
+	box-shadow: $outset-box-shadow;
+	transition: height 0.25s linear;
+	position: fixed;
+	transform: translate(-50%, 0);
+	left: 50%;
+	overflow: hidden;
+	z-index: 1000;
+	.header {
+		width: 100%;
+		height: 120px;
+		position: relative;
+		top: 0;
+		display: none;
+		//background: red;
+		padding: 20px;
+		text-align: center;
+		img {
+			height: 70px;
+			display: inline-block;
+		}
+	}
+	.body {
+		display: none;
+		overflow: scroll;
+		.body-top-buttons {
+			width: 100%;
+			//background: blue;
+			height: 30px;
+			text-align: center;
+			button {
+				border-top: 1px solid $border-grey;
+				border-right: 1px solid $border-grey;
+				border-left: 1px solid $border-grey;
+				border-bottom: none;
+				border-top-left-radius: 5px;
+				border-top-right-radius: 5px;
+				width: 45%;
+				height: 100%;
+				background: $unfocused-button-background;
+				display: inline-block;
+				z-index: 25;
+				position: relative;
+				box-shadow: $inset-box-shadow;
+				color: $unfocused-button-text;
+			}
+			button.active {
+				background: $transparent-white;
+				//z-index: 100 !important;
+				border-bottom: 1px solid white;
+				box-shadow: none;
+				color: $main-font;
+				font-weight: 700;
+			}
+
+		}
+		.content {
+			border-top: 1px solid $border-grey;
+			//margin-top: ;
+			width: 100%;
+			position: relative;
+			overflow-y: scroll;
+			.location-wrapper {
+				width: 100%;
+				padding: $box-padding;
+				//background: red;
+				border-bottom: 1px solid $border-grey;
+				text-align: center;
+				height: 75px;
+				select {
+					border: 1px solid $border-grey;
+					height: 30px;
+					width: 100%;
+					float: left;
+					display: inline-block;
+					background: #ECECEC;
+					box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+				}
+				div {
+					width: 30px;
+					height: 30px;
+					float: left;
+					display: inline-block;
+					//border: 1px solid black;
+					border-left: 1px solid $border-grey;
+					border-top-right-radius: 5px;
+					border-bottom-right-radius: 5px;
+					margin-left: -30px;
+					padding-top: 6px;
+					padding-right: 2px;
+					background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
+					pointer-events: none;
+				}
+			}
+
+			.settings-wrapper {
+				padding: $box-padding;
+				height: 300px;
+				overflow-y: scroll;
+
+				.budget, .square-feet, .rooms {
+					color: $main-font;
+					margin-bottom: 65px;
+					.min, .max {
+						width: 60px;
+						height: 25px;
+						margin-top: 17px;
+						background: $input-bg-grey;
+						box-shadow: $inset-box-shadow;
+						border-radius: 5px;
+						text-align: center;
+						padding-top: 7px;
+						color: rgba(0, 0, 0, 0.6);
+						font-size: 0.8em;
+					}
+					.min {
+						float: left;
+					}
+					.max {
+						float: right;
+					}
+				}
+			}
+		}
+	}
+	.footer {
+		position: absolute;
+		width: 100%;
+		height: 50px;
+		bottom: 0;
+		z-index: 200;
+		background: white;
+		border-top: 1px solid $border-grey;
+		button {
+			display: block;
+			margin: 0 auto;
+			position: relative;
+			top: 20%;
+			width: 30px;
+			height: 30px;
+			border-radius: 15px;
+			border: none;
+			padding: 2px 0px 0px 1px;
+			color: white;
+			background: #F04838;
+			transition: background 0.25s ease-in-out;
+		}
+		button:hover {
+			background: #FF4938;
+		}
+	}
+}
+
+#views {
+	position: fixed;
+	z-index: 900;
+	bottom: 15px;
+	right: 15px;
+	//width: 100%;
+	//background: red;
+	box-shadow: $outset-box-shadow;
+	border-radius: 5px;
+	//border: 1px solid $border-grey;
+	button {
+		background: $unfocused-button-background;
+		//border: 1px solid $border-grey;
+		padding: 7px;
+		color: $unfocused-button-text;
+		box-shadow: $inset-box-shadow;
+		border: none;
+	}
+	button:nth-child(1) {
+		margin-right: -4px;
+		position: relative;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		//display: none;
+	}
+	button:nth-child(2) {
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+	button.active {
+		background: $transparent-white;
+		box-shadow: none;
+		color: $main-font;
+	}
+}
+
+#list {
+	width: 100%;
+	top: 50px;
+	text-align: center;
+	position: relative;
+	.listing {
+		display: inline-block;
+		width: 90%;
+		background: red;
+		height: 250px;
+		background: $transparent-white;
+		border-radius: 5px;
+		border: 1px solid $border-grey;
+		box-shadow: $outset-box-shadow;
+		margin-top: 15px;
+		padding: 10px;
+		text-align: left;
+		color: $main-font;
+		font-size: 0.9em;
+		position: relative;
+		.listing-date {
+			position: absolute;
+			width: 40px;
+			height: 50px;
+			background: $transparent-white;
+			box-shadow: $outset-box-shadow;
+			right: -5px;
+			top: -5px;
+			border-radius: 5px;
+			.listing-month {
+				width: 100%;
+				height: 20px;
+				text-align: center;
+				padding-top: 5px;
+				background: rgba(0, 0, 0, 0.1);
+				font-weight: 700;
+				//box-shadow: $outset-box-shadow, $inset-box-shadow;
+			}
+			.listing-day {
+				text-align: center;
+				margin-top: 7px;
+				font-size: 1.3em;
+				color: $green;
+				font-weight: 700;
+			}
+			.listing-day.old-month {
+				color: $cherryred;
+			}
+		}
+		.listing-picture {
+			width: 100%;
+			height: 55%;
+			background: rgba(0, 0, 0, 0.1);
+			margin: 0 auto;
+		}
+		li:nth-child(2), li:nth-child(3) {
+			margin-top: 8px;
+		}
+		.like-button {
+			right: 10px;
+			bottom: 10px;
+			position: absolute;
+		}
+	}
+}
+
+#side-bar.active {
+	height: 98%;
+}
+

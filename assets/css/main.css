@@ -1,0 +1,271 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+@import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0; }
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  background: #E7E7EA;
+  font-family: "PT Sans Narrow", sans-serif; }
+
+#side-bar {
+  width: 97%;
+  height: 50px;
+  background: #fafafa;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #D3D3D3;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  transition: height 0.25s linear;
+  position: fixed;
+  transform: translate(-50%, 0);
+  left: 50%;
+  overflow: hidden;
+  z-index: 1000; }
+  #side-bar .header {
+    width: 100%;
+    height: 120px;
+    position: relative;
+    top: 0;
+    display: none;
+    padding: 20px;
+    text-align: center; }
+    #side-bar .header img {
+      height: 70px;
+      display: inline-block; }
+  #side-bar .body {
+    display: none;
+    overflow: scroll; }
+    #side-bar .body .body-top-buttons {
+      width: 100%;
+      height: 30px;
+      text-align: center; }
+      #side-bar .body .body-top-buttons button {
+        border-top: 1px solid #D3D3D3;
+        border-right: 1px solid #D3D3D3;
+        border-left: 1px solid #D3D3D3;
+        border-bottom: none;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        width: 45%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        z-index: 25;
+        position: relative;
+        box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.4); }
+      #side-bar .body .body-top-buttons button.active {
+        background: #fafafa;
+        border-bottom: 1px solid white;
+        box-shadow: none;
+        color: rgba(0, 0, 0, 0.7);
+        font-weight: 700; }
+    #side-bar .body .content {
+      border-top: 1px solid #D3D3D3;
+      width: 100%;
+      position: relative;
+      overflow-y: scroll; }
+      #side-bar .body .content .location-wrapper {
+        width: 100%;
+        padding: 20px 20px 20px 20px;
+        border-bottom: 1px solid #D3D3D3;
+        text-align: center;
+        height: 75px; }
+        #side-bar .body .content .location-wrapper select {
+          border: 1px solid #D3D3D3;
+          height: 30px;
+          width: 100%;
+          float: left;
+          display: inline-block;
+          background: #ECECEC;
+          box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1); }
+        #side-bar .body .content .location-wrapper div {
+          width: 30px;
+          height: 30px;
+          float: left;
+          display: inline-block;
+          border-left: 1px solid #D3D3D3;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          margin-left: -30px;
+          padding-top: 6px;
+          padding-right: 2px;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
+          pointer-events: none; }
+      #side-bar .body .content .settings-wrapper {
+        padding: 20px 20px 20px 20px;
+        height: 300px;
+        overflow-y: scroll; }
+        #side-bar .body .content .settings-wrapper .budget, #side-bar .body .content .settings-wrapper .square-feet, #side-bar .body .content .settings-wrapper .rooms {
+          color: rgba(0, 0, 0, 0.7);
+          margin-bottom: 65px; }
+          #side-bar .body .content .settings-wrapper .budget .min, #side-bar .body .content .settings-wrapper .budget .max, #side-bar .body .content .settings-wrapper .square-feet .min, #side-bar .body .content .settings-wrapper .square-feet .max, #side-bar .body .content .settings-wrapper .rooms .min, #side-bar .body .content .settings-wrapper .rooms .max {
+            width: 60px;
+            height: 25px;
+            margin-top: 17px;
+            background: #ECECEC;
+            box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 7px;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 0.8em; }
+          #side-bar .body .content .settings-wrapper .budget .min, #side-bar .body .content .settings-wrapper .square-feet .min, #side-bar .body .content .settings-wrapper .rooms .min {
+            float: left; }
+          #side-bar .body .content .settings-wrapper .budget .max, #side-bar .body .content .settings-wrapper .square-feet .max, #side-bar .body .content .settings-wrapper .rooms .max {
+            float: right; }
+  #side-bar .footer {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    z-index: 200;
+    background: white;
+    border-top: 1px solid #D3D3D3; }
+    #side-bar .footer button {
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      top: 20%;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      border: none;
+      padding: 2px 0px 0px 1px;
+      color: white;
+      background: #F04838;
+      transition: background 0.25s ease-in-out; }
+    #side-bar .footer button:hover {
+      background: #FF4938; }
+
+#views {
+  position: fixed;
+  z-index: 900;
+  bottom: 15px;
+  right: 15px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px; }
+  #views button {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 7px;
+    color: rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+    border: none; }
+  #views button:nth-child(1) {
+    margin-right: -4px;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px; }
+  #views button:nth-child(2) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; }
+  #views button.active {
+    background: #fafafa;
+    box-shadow: none;
+    color: rgba(0, 0, 0, 0.7); }
+
+#list {
+  width: 100%;
+  top: 50px;
+  text-align: center;
+  position: relative; }
+  #list .listing {
+    display: inline-block;
+    width: 90%;
+    background: red;
+    height: 250px;
+    background: #fafafa;
+    border-radius: 5px;
+    border: 1px solid #D3D3D3;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+    padding: 10px;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.9em;
+    position: relative; }
+    #list .listing .listing-date {
+      position: absolute;
+      width: 40px;
+      height: 50px;
+      background: #fafafa;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+      right: -5px;
+      top: -5px;
+      border-radius: 5px; }
+      #list .listing .listing-date .listing-month {
+        width: 100%;
+        height: 20px;
+        text-align: center;
+        padding-top: 5px;
+        background: rgba(0, 0, 0, 0.1);
+        font-weight: 700; }
+      #list .listing .listing-date .listing-day {
+        text-align: center;
+        margin-top: 7px;
+        font-size: 1.3em;
+        color: #71C654;
+        font-weight: 700; }
+      #list .listing .listing-date .listing-day.old-month {
+        color: #F04838; }
+    #list .listing .listing-picture {
+      width: 100%;
+      height: 55%;
+      background: rgba(0, 0, 0, 0.1);
+      margin: 0 auto; }
+    #list .listing li:nth-child(2), #list .listing li:nth-child(3) {
+      margin-top: 8px; }
+    #list .listing .like-button {
+      right: 10px;
+      bottom: 10px;
+      position: absolute; }
+
+#side-bar.active {
+  height: 98%; }
+
+/*# sourceMappingURL=main.css.map */
