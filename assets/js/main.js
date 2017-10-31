@@ -4,7 +4,7 @@
 
 	class Listing {
 		constructor() {
-			
+
 		}
 	}
 
@@ -212,8 +212,9 @@
 			this.list = $("#list");
 			this.template = document.getElementById("listing-template").innerHTML;
 		},
-		fetchList: function(list) {
+		fetchList: function(list) {/*
 			for (var i = 0; i < this.listings.length; i++) {
+				console.log("hi");
 				this.listings.push({
 					date: this.listings[i].date,
 					price: this.listings[i].price,
@@ -221,7 +222,7 @@
 					pictureSrc: this.listings[i].pictureSrc,
 					element: null
 				});
-			}
+			}*/
 		},
 		render: function() {
 
