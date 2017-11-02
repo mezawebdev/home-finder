@@ -139,7 +139,7 @@ body {
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
           pointer-events: none; }
       #side-bar .body .content .settings-wrapper {
-        padding: 20px 20px 20px 20px;
+        padding: 25px 35px 70px 35px;
         height: 280px;
         overflow-y: scroll; }
         #side-bar .body .content .settings-wrapper .budget, #side-bar .body .content .settings-wrapper .square-feet, #side-bar .body .content .settings-wrapper .rooms {
@@ -247,7 +247,9 @@ body {
         text-align: center;
         padding-top: 5px;
         background: rgba(0, 0, 0, 0.1);
-        font-weight: 700; }
+        font-weight: 700;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px; }
       #list .listing .listing-date .listing-day {
         text-align: center;
         margin-top: 7px;

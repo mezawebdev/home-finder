@@ -135,10 +135,9 @@ body {
 			}
 
 			.settings-wrapper {
-				padding: $box-padding;
+				padding: 25px 35px 70px 35px;
 				height: 280px;
 				overflow-y: scroll;
-
 				.budget, .square-feet, .rooms {
 					color: $main-font;
 					margin-bottom: 65px;
@@ -266,6 +265,8 @@ body {
 				padding-top: 5px;
 				background: rgba(0, 0, 0, 0.1);
 				font-weight: 700;
+				border-top-right-radius: 5px;
+				border-top-left-radius: 5px;
 				//box-shadow: $outset-box-shadow, $inset-box-shadow;
 			}
 			.listing-day {

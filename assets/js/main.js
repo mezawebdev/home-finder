@@ -2,12 +2,28 @@
 
 	'use strict';
 
+	//------------------
+	//	   Classes
+	//------------------
 	class Listing {
-		constructor() {
-
+		constructor(type, price, location, squareFeet, pictureSrc) {
+			this.type = type;
+			this.price = price;
+			this.location = location;
+			this.squareFeet = squareFeet;
+			this.pictureSrc = pictureSrc;
+		}
+		init() {
+			this.render();
+		}
+		render() {
+			list.listDOM.append(list.template);
 		}
 	}
 
+	//------------------
+	//	   Modules
+	//------------------
 	var toolBar = {
 		opened: false,
 		tab: "buy",
@@ -17,6 +33,7 @@
 		rooms: [1, 4],
 		init: function() {
 			this.cacheDOM();
+			this.fixSettingsHeight();
 			this.render();
 		},
 		cacheDOM: function() {
@@ -36,6 +53,7 @@
 			this.roomsMax = $(".rooms div.max");
 			this.squareFeetSlider = document.getElementById("square-slider");
 			this.roomsSlider = document.getElementById("rooms-slider");
+			this.settingsWrapper = $(".settings-wrapper");
 		}, 
 		render: function() {
 			var that = this;
@@ -109,6 +127,7 @@
 		expand: function() {
 			if (! this.opened) {
 				this.toolBarDOM.toggleClass("active");
+				this.fixSettingsHeight();
 				this.openButtonText.removeClass();
 				this.openButtonText.attr("class", "glyphicon glyphicon-remove");
 				this.header.css("display", "block");
@@ -150,6 +169,10 @@
 		toggleRooms: function(values) {
 			this.roomsMin.html(Math.round(values[0]));
 			this.roomsMax.html(Math.round(values[1]));
+		},
+		fixSettingsHeight: function() {
+			var newHeight = window.innerHeight * 0.50;
+			this.settingsWrapper.css("height", newHeight + "px");
 		}
 	}
 
@@ -180,6 +203,7 @@
 				this.mapButton.removeClass();
 				this.listButton.toggleClass("active");
 				this.tab = "list";
+				list.show();
 			}
 		},
 		toggleMap: function() {
@@ -187,32 +211,35 @@
 				this.listButton.removeClass();
 				this.mapButton.toggleClass("active");
 				this.tab = "map";
+				list.hide();
 			}
 		}
 	}
 
 	var list = {
-		listings: [{
-			date: "10/20/2017",
-			price: 1000,
-			squareFeet: 1240,
-			pictureSrc: null,
-		}, {
-			date: "09/12/2017",
-			price: 1200,
-			squareFeet: 970,
-			pictureSrc: null,
-		}],
+		listings: [],
 		init: function() {
 			this.cacheDOM();
-			this.fetchList();
 			this.render();
 		},
 		cacheDOM: function() {
-			this.list = $("#list");
+			this.listDOM = $("#list");
 			this.template = document.getElementById("listing-template").innerHTML;
 		},
-		fetchList: function(list) {/*
+		render: function() {
+			this.fetchList();
+		},
+		fetchList: function() {
+			var tempLists = 1;
+			for (var i = 0; i < tempLists; i++) {
+				var listing = new Listing;
+				this.listings.push(listing);
+				this.listings[i].init();
+			}
+
+			// List Padding Fix (Mobile) 
+			this.listDOM.css("padding-bottom", "20px");
+			/*
 			for (var i = 0; i < this.listings.length; i++) {
 				console.log("hi");
 				this.listings.push({
@@ -224,11 +251,25 @@
 				});
 			}*/
 		},
-		render: function() {
-
+		hide: function() {
+			this.listDOM.css("display", "none");
+		},
+		show: function() {
+			this.listDOM.css("display", "block");
 		}
 	}
 
+
+	//------------------
+	//	   Hacks
+	//------------------
+	window.onresize = function() {
+		toolBar.fixSettingsHeight();
+	}
+
+	//------------------
+	//	   Drivers
+	//------------------
 	toolBar.init();
 	views.init();
 	list.init();
