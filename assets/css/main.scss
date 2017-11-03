@@ -16,6 +16,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 
 $transparent-white: rgba(250, 250, 250, 1);
+$background-white: rgb(250, 250, 250);
 $border-grey: #D3D3D3;
 $box-padding: 20px 20px 20px 20px;
 $main-font: rgba(0, 0, 0, 0.7);
@@ -183,10 +184,15 @@ body {
 			padding: 2px 0px 0px 1px;
 			color: white;
 			background: #F04838;
-			transition: background 0.25s ease-in-out;
+			transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+			box-shadow: 0px 2px 7px rgba(100, 100, 100, 0.4);
 		}
 		button:hover {
 			background: #FF4938;
+		}
+		button:active {
+			box-shadow: inset 0px 0px 7px rgba(100, 100, 100, 0.5);
+			transform: scale(0.9);
 		}
 	}
 }
@@ -302,6 +308,36 @@ body {
 	.listing:active {
 		-webkit-transform: scale(0.98);
 		-moz-transform: scale(0.98);
+	}
+}
+
+#window {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background: $background-white;
+	top: 0;
+	display: none;
+	.close-button {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		width: 50px;
+		height: 50px;
+		border-radius: 25px;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		background: rgba(0, 0, 0, 0.2);
+		color: rgb(250, 250, 250);
+		transition: background 0.15s ease-in-out;
+	}
+	.close-button:hover {
+		background: rgba(0, 0, 0, 0.5);
+	}
+	.picture-wrapper {
+		width: 100%;
+		height: 50%;
+		background: rgb(200, 200, 200);
 	}
 }
 

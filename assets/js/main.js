@@ -1,23 +1,41 @@
-//(function() {
+(function(document, window) {
 
 	'use strict';
+
+	//------------------
+	//	   Global 
+	//------------------
+	var fadeSpeed = 250;
 
 	//------------------
 	//	   Classes
 	//------------------
 	class Listing {
-		constructor(type, price, location, squareFeet, pictureSrc) {
+		constructor(id, type, price, location, squareFeet, pictureSrc, element) {
+			this.id = id;
 			this.type = type;
 			this.price = price;
 			this.location = location;
 			this.squareFeet = squareFeet;
 			this.pictureSrc = pictureSrc;
+			this.element = element;
 		}
 		init() {
 			this.render();
+			this.cacheDOM();
+			this.setEvents();
 		}
 		render() {
 			list.listDOM.append(list.template);
+		}
+		cacheDOM() {
+			this.element = $("#list .listing:last-child");
+		}
+		setEvents() {
+			var that = this;
+			this.element.on("click", function() {
+				iWindow.show(that);
+			});
 		}
 	}
 
@@ -239,17 +257,6 @@
 
 			// List Padding Fix (Mobile) 
 			this.listDOM.css("padding-bottom", "20px");
-			/*
-			for (var i = 0; i < this.listings.length; i++) {
-				console.log("hi");
-				this.listings.push({
-					date: this.listings[i].date,
-					price: this.listings[i].price,
-					squareFeet: this.listings[i].squareFeet,
-					pictureSrc: this.listings[i].pictureSrc,
-					element: null
-				});
-			}*/
 		},
 		hide: function() {
 			this.listDOM.css("display", "none");
@@ -259,6 +266,34 @@
 		}
 	}
 
+	var iWindow = {
+		init: function() {
+			this.cacheDOM();
+			this.setEvents();
+			this.render();
+		},
+		cacheDOM: function() {
+			this.element = $("#window");
+			this.closeButton = $("#window .close-button");
+		},
+		setEvents: function() {
+			var that = this;
+			this.closeButton.on("click", function() {
+				that.hide();
+			});
+		},
+		render: function(data) {
+
+		},
+		hide: function() {
+			this.element.fadeOut(fadeSpeed);
+		},
+		show: function(data) {
+			console.log(data);
+			this.render(data);
+			this.element.fadeIn(fadeSpeed);
+		}
+	}
 
 	//------------------
 	//	   Hacks
@@ -273,5 +308,6 @@
 	toolBar.init();
 	views.init();
 	list.init();
+	iWindow.init();
 
-//}());
+}(document, window));
