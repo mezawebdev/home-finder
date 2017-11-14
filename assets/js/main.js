@@ -11,14 +11,14 @@
 	//	   Classes
 	//------------------
 	class Listing {
-		constructor(id, type, price, location, squareFeet, pictureSrc, element) {
+		constructor(id, type, price, location, squareFeet, pictureSrc) {
 			this.id = id;
 			this.type = type;
 			this.price = price;
 			this.location = location;
 			this.squareFeet = squareFeet;
 			this.pictureSrc = pictureSrc;
-			this.element = element;
+			//this.element = element;
 		}
 		init() {
 			this.render();
@@ -29,13 +29,23 @@
 			list.listDOM.append(list.template);
 		}
 		cacheDOM() {
-			this.element = $("#list .listing:last-child");
+			this.mainElement = $("#list .listing:last-child");
+			this.monthElement = $("#list .listing:last-child .listing-date .listing-month");
+			this.dayElement = $("#list .listing:last-child .listing-date .listing-day");
+			this.pictureElement = $("#list .listing:last-child .listing-picture");
+			this.priceElement = $("#list .listing:last-child ul li.listing-price");
+			this.locationElement = $("#list .listing:last-child ul li.listing-location");
+			this.squareFeetElement = $("#list .listing:last-child ul li.listing-square-feet");
+			this.likeButtonElement = $("#list .listing:last-child button.like-button");
 		}
 		setEvents() {
 			var that = this;
-			this.element.on("click", function() {
+			this.mainElement.on("click", function() {
 				iWindow.show(that);
 			});
+		}
+		updateData() {
+
 		}
 	}
 
@@ -189,7 +199,7 @@
 			this.roomsMax.html(Math.round(values[1]));
 		},
 		fixSettingsHeight: function() {
-			var newHeight = window.innerHeight * 0.50;
+			var newHeight = window.innerHeight * 1.5;
 			this.settingsWrapper.css("height", newHeight + "px");
 		}
 	}
@@ -243,12 +253,13 @@
 		cacheDOM: function() {
 			this.listDOM = $("#list");
 			this.template = document.getElementById("listing-template").innerHTML;
+			this.loadingScreen = $(".loading-screen");
 		},
 		render: function() {
 			this.fetchList();
 		},
 		fetchList: function() {
-			var tempLists = 1;
+			var tempLists = 4;
 			for (var i = 0; i < tempLists; i++) {
 				var listing = new Listing;
 				this.listings.push(listing);
@@ -263,6 +274,9 @@
 		},
 		show: function() {
 			this.listDOM.css("display", "block");
+		},
+		showLoadingScreen: function() {
+			this.loadingScreen.css("display", "block");
 		}
 	}
 

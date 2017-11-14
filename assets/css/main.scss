@@ -32,6 +32,7 @@ $cherryred: #F04838;
 body {
 	background: #E7E7EA;
 	font-family: "Lato", sans-serif;
+	background-image: url(../images/background-2.png);
 }
 
 #side-bar {
@@ -238,6 +239,44 @@ body {
 	top: 50px;
 	text-align: center;
 	position: relative;
+	.loading-screen {
+		width: 100vw;
+		height: 100vh;
+		background: rgba(150, 150, 150, 0.5);
+		position: fixed;
+		z-index: 901;
+		margin-top: -50px;
+		display: none;
+		.spinner {
+			position: fixed;
+			-webkit-transform: translate(-50%, -50%);
+			-o-transform: translate(-50%, 50%);
+			-moz-transform: translate(-50%, 50%);
+			top: 50%;
+			left: 50%;
+			margin-left: -26px;
+			i {
+				color: rgb(160, 160, 160);
+				font-size: 3.5em;
+				position: absolute;
+				z-index: 902;
+				margin-top: -2px;
+				margin-left: -2px;
+				animation-name: spinner;
+				animation-duration: 0.8s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
+			div {
+				width: 52px;
+				height: 52px;
+				border-radius: 26px;
+				border: 6px solid rgb(230, 230, 230);
+				position: absolute;
+				z-index: 901
+			}
+		}
+	}
 	.listing {
 		display: inline-block;
 		width: 90%;
@@ -344,4 +383,20 @@ body {
 #side-bar.active {
 	height: 98%;
 }
+
+//--------------
+//	Animations
+//--------------
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+
+
 
