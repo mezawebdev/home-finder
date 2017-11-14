@@ -289,7 +289,8 @@ body {
 		margin-top: 15px;
 		padding: 10px;
 		text-align: left;
-		color: $main-font;
+		color: rgb(160, 160, 160);
+		font-weight: 300;
 		font-size: 0.9em;
 		position: relative;
 		-webkit-transition: transform 0.15s ease-in-out;
@@ -307,11 +308,12 @@ body {
 				width: 100%;
 				height: 20px;
 				text-align: center;
-				padding-top: 5px;
+				padding-top: 3px;
 				background: rgba(0, 0, 0, 0.1);
 				font-weight: 700;
 				border-top-right-radius: 5px;
 				border-top-left-radius: 5px;
+				font-weight: 300;
 				//box-shadow: $outset-box-shadow, $inset-box-shadow;
 			}
 			.listing-day {

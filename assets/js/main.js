@@ -11,18 +11,29 @@
 	//	   Classes
 	//------------------
 	class Listing {
-		constructor(id, type, price, location, squareFeet, pictureSrc) {
+		constructor(id, type, seller, price, beds, baths, squareft, lotsize, hometype, month, day, tags, zip, city, address, picturesrc) {
 			this.id = id;
 			this.type = type;
+			this.seller = seller;
 			this.price = price;
-			this.location = location;
-			this.squareFeet = squareFeet;
-			this.pictureSrc = pictureSrc;
+			this.beds = beds;
+			this.baths = baths;
+			this.squareft = squareft;
+			this.lotsize = lotsize;
+			this.hometype = hometype;
+			this.month = month;
+			this.day = day;
+			this.tags = tags;
+			this.zip = zip;
+			this.city = city;
+			this.address = address;
+			this.picturesrc = picturesrc;
 			//this.element = element;
 		}
 		init() {
 			this.render();
 			this.cacheDOM();
+			this.updateData();
 			this.setEvents();
 		}
 		render() {
@@ -34,7 +45,7 @@
 			this.dayElement = $("#list .listing:last-child .listing-date .listing-day");
 			this.pictureElement = $("#list .listing:last-child .listing-picture");
 			this.priceElement = $("#list .listing:last-child ul li.listing-price");
-			this.locationElement = $("#list .listing:last-child ul li.listing-location");
+			this.addressElement = $("#list .listing:last-child ul li.listing-address");
 			this.squareFeetElement = $("#list .listing:last-child ul li.listing-square-feet");
 			this.likeButtonElement = $("#list .listing:last-child button.like-button");
 		}
@@ -45,7 +56,11 @@
 			});
 		}
 		updateData() {
-
+			this.monthElement.html(this.month.toUpperCase());
+			this.dayElement.html(this.day);
+			this.priceElement.html("$" + this.price);
+			this.addressElement.html(this.address);
+			this.squareFeetElement.html(this.squareft + "sqft");
 		}
 	}
 
@@ -256,12 +271,14 @@
 			this.loadingScreen = $(".loading-screen");
 		},
 		render: function() {
+			this.toggleLoadingScreen();
 			this.fetchList();
+			this.toggleLoadingScreen();
 		},
 		fetchList: function() {
 			var tempLists = 4;
 			for (var i = 0; i < tempLists; i++) {
-				var listing = new Listing;
+				var listing = new Listing(1, "sale", "owner", "100,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", null);
 				this.listings.push(listing);
 				this.listings[i].init();
 			}
@@ -275,8 +292,12 @@
 		show: function() {
 			this.listDOM.css("display", "block");
 		},
-		showLoadingScreen: function() {
-			this.loadingScreen.css("display", "block");
+		toggleLoadingScreen: function() {
+			if (this.loadingScreen.css("display") === "none") {
+				this.loadingScreen.css("display", "block");
+			} else if (this.loadingScreen.css("display") === "block") {
+				this.loadingScreen.css("display", "none");
+			}
 		}
 	}
 
