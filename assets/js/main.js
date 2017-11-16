@@ -51,8 +51,11 @@
 		}
 		setEvents() {
 			var that = this;
+
+			// On Click
 			this.mainElement.on("click", function() {
-				iWindow.show(that);
+				iWindow.render(that);
+				iWindow.show();
 			});
 		}
 		updateData() {
@@ -278,7 +281,7 @@
 		fetchList: function() {
 			var tempLists = 4;
 			for (var i = 0; i < tempLists; i++) {
-				var listing = new Listing(1, "sale", "owner", "100,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", null);
+				var listing = new Listing(0, "sale", "owner", "200,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", "assets/images/listings/0");
 				this.listings.push(listing);
 				this.listings[i].init();
 			}
@@ -302,6 +305,7 @@
 	}
 
 	var iWindow = {
+		pictureCount: 0,
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
@@ -309,6 +313,7 @@
 		},
 		cacheDOM: function() {
 			this.element = $("#window");
+			this.pictureWrapperElement = $("#window .picture-wrapper");
 			this.closeButton = $("#window .close-button");
 		},
 		setEvents: function() {
@@ -318,17 +323,75 @@
 			});
 		},
 		render: function(data) {
-
+			console.log(data);
+			console.log(data.picturesrc);
+			this.getPictureCount(data.picturesrc);
 		},
 		hide: function() {
 			this.element.fadeOut(fadeSpeed);
+			this.pictureWrapperElement.empty();
 		},
 		show: function(data) {
-			console.log(data);
-			this.render(data);
+			//console.log(data);
+			//this.render(data);
 			this.element.fadeIn(fadeSpeed);
+		},
+		getPictureCount: function(src) {
+			console.log("[" + src + "] Fetching pictures..");
+			var dataString = "src=" + src;
+			var that = this;
+			$.ajax({
+				type: "POST",
+				url: "php/fetch_picture_count.php",
+				data: dataString,
+				dataType: "json",
+				success: function(count) {
+					console.log("Picture count fetched.");
+					console.log(count);
+					that.pictureCount = count;
+					that.displayPictures(src, count);
+				},
+				error: function() {
+					console.log("Connection failed.");
+				}
+			});
+		},
+		displayPictures: function(src, count) {
+			// Create a picture element div for every picture in folder
+			this.pictureWrapperElement.empty();
+			for (var i = 0; i < count; i++) {
+				list.toggleLoadingScreen();
+				this.pictureWrapperElement.append("<div class='picture'></div>");
+				$(".picture-wrapper .picture:last-child").css("background-image", "url('" + src + "/" + i + ".jpg')");
+				list.toggleLoadingScreen();
+			}
 		}
 	}
+
+
+	//------------------
+	//	    Misc
+	//------------------
+	// Background
+	/*
+	var granimInstance = new Granim({
+	    element: '#granim',
+	    name: 'radial-gradient',
+	    direction: 'radial',
+	    opacity: [1, 1],
+	    isPausedWhenNotInView: true,
+	    states : {
+	        "default-state": {
+	            gradients: [
+	                ['#D4D5FF', '#E2DEFF'],
+	                ['#FFDFC0', '#FFECDF'],
+	                ['#B9F0AC', '#D3FFCD']
+	            ],
+	            transitionSpeed: 30000
+	        }
+	    }
+	});
+	*/
 
 	//------------------
 	//	   Hacks

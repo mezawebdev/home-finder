@@ -16,7 +16,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
 
 $transparent-white: rgba(250, 250, 250, 1);
-$background-white: rgb(250, 250, 250);
+$background-white: rgb(245, 245, 245);
 $border-grey: #D3D3D3;
 $box-padding: 20px 20px 20px 20px;
 $main-font: rgba(0, 0, 0, 0.7);
@@ -27,12 +27,30 @@ $unfocused-button-text: rgba(0, 0, 0, 0.4);
 $unfocused-button-background: rgba(0, 0, 0, 0.1);
 $green: #71C654;
 $cherryred: #F04838;
+$orange: #F38D31;
 //$unfocused-button-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
 
 body {
 	background: #E7E7EA;
 	font-family: "Lato", sans-serif;
 	background-image: url(../images/background-2.png);
+}
+
+p {
+	line-height: 20px !important;
+	letter-spacing: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: rgb(65, 65, 65) !important;
+}
+
+canvas#granim {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	//background: red;
+	opacity: 0.7;
 }
 
 #side-bar {
@@ -289,7 +307,7 @@ body {
 		margin-top: 15px;
 		padding: 10px;
 		text-align: left;
-		color: rgb(160, 160, 160);
+		color: rgb(140, 140, 140);
 		font-weight: 300;
 		font-size: 0.9em;
 		position: relative;
@@ -360,6 +378,14 @@ body {
 	background: $background-white;
 	top: 0;
 	display: none;
+	overflow-y: scroll;
+	.window-top-bar {
+		width: 100%;
+		position: fixed;
+		height: 40px;
+		background: $orange;
+		z-index: 1000;
+	}
 	.close-button {
 		position: fixed;
 		top: 20px;
@@ -371,6 +397,7 @@ body {
 		background: rgba(0, 0, 0, 0.2);
 		color: rgb(250, 250, 250);
 		transition: background 0.15s ease-in-out;
+		display: none;
 	}
 	.close-button:hover {
 		background: rgba(0, 0, 0, 0.5);
@@ -379,11 +406,125 @@ body {
 		width: 100%;
 		height: 50%;
 		background: rgb(200, 200, 200);
+		overflow-x: hidden;
+		white-space: nowrap;
+		margin: 0;
+		padding: 0;
+		//box-shadow: 0px 6px 15px rgba(100, 100, 100, 0.2);
+		cursor: pointer;
+		margin-top: 40px;
+		.picture {
+			width: 100%;
+			height: 100%;
+			//text-align: left;
+			display: inline-block;
+			white-space: normal;
+			background-size: cover;
+			background-position: 50% 50%;
+		}
+	}
+	.info-wrapper {
+		padding: 20px 20px 50px 20px;
+		.general-info-1 li {
+			list-style: none;
+			float: left;
+		}
+		.general-info-2 {
+			white-space: nowrap;
+			.price-row {
+				.expiration {
+					width: 10px;
+					height: 10px;
+					border-radius: 5px;
+					background: #F33D3C;
+					display: inline-block;
+					margin-right: 5px;
+				}
+				//text-align: center;
+			}
+			.features {
+				text-align: center;
+				span {
+					font-weight: bold;
+				}
+				h6 {
+					margin-top: 10px;
+				}
+			}
+		}
+		.listed-features {
+			span.soft {
+				color: rgb(150, 150, 150) !important;
+
+			}
+			.contact {
+				.contact-form {
+					width: 100%;
+					height: 100%;
+					background: rgb(250, 250, 250);
+					padding-bottom: 25px;
+					margin-top: -5px;
+					border-radius: 5px;
+					box-shadow: 0px 5px 10px rgba(150, 150, 150, 0.6);
+					.top-bar {
+						border-top-right-radius: 5px;
+						border-top-left-radius: 5px;
+						width: 100%;
+						background: #F38D31;
+						//margin-top: 15px;
+						margin-bottom: 20px;
+						text-align: center;
+						h3 {
+							color: rgb(250, 250, 250) !important;
+							padding: 5px 0px 5px 0px;
+						}
+					}
+					label {
+						text-align: center;
+						display: block;
+					}
+					input, textarea  {
+						display: block;
+						margin: 0 auto;
+						margin-top: 10px;
+						background: rgb(245, 245, 245);
+						border: 1px solid rgb(230, 230, 230);
+					}
+					input:focus, textarea:focus {
+						box-shadow: 0px 5px 10px rgba(150, 150, 150, 0.3);
+					}
+				}
+			}
+		}
+		.similar-listing {
+			.col-sm-3 {
+				height: 150px;
+				margin-top: 10px;
+			}
+			.listing-sim {
+				background: rgb(200, 200, 200);
+				border: none;
+				width: 100%;
+				height: 100%;
+			}
+		}
 	}
 }
 
 #side-bar.active {
 	height: 98%;
+}
+
+.clear {
+	clear: both;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 //--------------
