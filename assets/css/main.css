@@ -50,7 +50,7 @@ table {
   border-spacing: 0; }
 
 body {
-  background: #E7E7EA;
+  background: #F38D31;
   font-family: "Lato", sans-serif;
   background-image: url(../images/background-2.png); }
 
@@ -316,13 +316,23 @@ canvas#granim {
       width: 100%;
       height: 55%;
       background: rgba(0, 0, 0, 0.1);
-      margin: 0 auto; }
+      margin: 0 auto;
+      background-size: cover; }
     #list .listing li:nth-child(2), #list .listing li:nth-child(3) {
       margin-top: 8px; }
     #list .listing .like-button {
       right: 10px;
-      bottom: 10px;
-      position: absolute; }
+      bottom: 20px;
+      position: absolute;
+      width: 40px;
+      height: 50px;
+      border: 1px solid #b4b4b4;
+      border-radius: 5px;
+      background: #f0f0f0;
+      font-size: 1.5em;
+      box-shadow: 0px 3px 5px rgba(200, 200, 200, 0.5); }
+      #list .listing .like-button i {
+        color: #c8c8c8; }
   #list .listing:hover {
     -webkit-transform: scale(1.02);
     -moz-transform: scale(1.05); }
@@ -344,7 +354,25 @@ canvas#granim {
     position: fixed;
     height: 40px;
     background: #F38D31;
-    z-index: 1000; }
+    z-index: 1000;
+    padding: 0px 20px 0px 20px; }
+    #window .window-top-bar button {
+      background: none;
+      border: none;
+      display: inline-block;
+      padding-top: 0px;
+      height: 100%;
+      white-space: nowrap;
+      color: #fafafa; }
+    #window .window-top-bar button:hover {
+      background: #FF7B0B; }
+    #window .window-top-bar .window-share-button {
+      border-left: 1px solid #EC8A30; }
+    #window .window-top-bar .window-share-button, #window .window-top-bar .window-save-button {
+      float: left;
+      border-right: 1px solid #EC8A30; }
+    #window .window-top-bar .window-close-button {
+      float: right; }
   #window .close-button {
     position: fixed;
     top: 20px;

@@ -64,6 +64,7 @@
 			this.priceElement.html("$" + this.price);
 			this.addressElement.html(this.address);
 			this.squareFeetElement.html(this.squareft + "sqft");
+			this.pictureElement.css("background-image", "url(" + this.picturesrc + "/0.jpg)");
 		}
 	}
 
@@ -314,7 +315,7 @@
 		cacheDOM: function() {
 			this.element = $("#window");
 			this.pictureWrapperElement = $("#window .picture-wrapper");
-			this.closeButton = $("#window .close-button");
+			this.closeButton = $("#window .window-top-bar button.window-close-button");
 		},
 		setEvents: function() {
 			var that = this;
