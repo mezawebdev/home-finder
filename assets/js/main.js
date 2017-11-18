@@ -57,6 +57,11 @@
 				iWindow.render(that);
 				iWindow.show();
 			});
+
+			this.likeButtonElement.on("click", function(e) {
+				e.stopPropagation();
+				that.like();
+			});
 		}
 		updateData() {
 			this.monthElement.html(this.month.toUpperCase());
@@ -65,6 +70,9 @@
 			this.addressElement.html(this.address);
 			this.squareFeetElement.html(this.squareft + "sqft");
 			this.pictureElement.css("background-image", "url(" + this.picturesrc + "/0.jpg)");
+		}
+		like() {
+			this.likeButtonElement.css("color", "#FFDC3B");
 		}
 	}
 
