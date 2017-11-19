@@ -1,4 +1,4 @@
-(function(document, window) {
+//(function(document, window) {
 
 	'use strict';
 
@@ -28,6 +28,7 @@
 			this.city = city;
 			this.address = address;
 			this.picturesrc = picturesrc;
+			this.liked = false;
 			//this.element = element;
 		}
 		init() {
@@ -73,6 +74,7 @@
 		}
 		like() {
 			this.likeButtonElement.css("color", "#FFDC3B");
+			this.liked = true;
 		}
 	}
 
@@ -315,6 +317,8 @@
 
 	var iWindow = {
 		pictureCount: 0,
+		activePicture: 1,
+		sliderControllers: [],
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
@@ -366,6 +370,8 @@
 			});
 		},
 		displayPictures: function(src, count) {
+			var that = this;
+
 			// Create a picture element div for every picture in folder
 			this.pictureWrapperElement.empty();
 			for (var i = 0; i < count; i++) {
@@ -373,6 +379,39 @@
 				this.pictureWrapperElement.append("<div class='picture'></div>");
 				$(".picture-wrapper .picture:last-child").css("background-image", "url('" + src + "/" + i + ".jpg')");
 				list.toggleLoadingScreen();
+			}
+
+			// Append and store controller wrapper
+			this.pictureWrapperElement.append("<div class='controller-wrapper'></div>");
+			this.sliderControlWrapper = $(".picture-wrapper .controller-wrapper");
+
+			// Append and store new controller per every picture (count)
+			for (var i = 0; i < count; i++) {
+				this.sliderControlWrapper.append("<div class='controller'></div>");
+				this.sliderControllers.push($(".picture-wrapper .controller-wrapper .controller:last-child"));
+				this.sliderControllers[i].attr("value", i + 1);
+			}
+
+			this.setActivePicture(1);
+			this.setControllerEvents();
+		},
+		setActivePicture: function(value) {
+			$(".picture-wrapper .picture").removeClass("active");
+			$(".picture-wrapper .controller-wrapper .controller").removeClass("active");
+			$(".picture-wrapper .controller-wrapper .controller:nth-child(" + value + ")").addClass("active");
+			$(".picture-wrapper .picture:nth-child(" + value + ")").addClass("active");
+		},
+		setControllerEvents: function() {
+			var that = this;
+
+			for (var i = 0; i < this.sliderControllers.length; i++) {
+				var value = i;
+				this.sliderControllers[i].on("click", function(e) {
+					e.stopPropagation();
+					console.log(that);
+					//that.activePicture = that.sliderControllers[i].attr("value");
+					that.setActivePicture(value);
+				});
 			}
 		}
 	}
@@ -417,4 +456,4 @@
 	list.init();
 	iWindow.init();
 
-}(document, window));
+//}(document, window));

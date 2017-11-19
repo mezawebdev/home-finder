@@ -397,6 +397,7 @@ canvas#granim {
 		background: $orange;
 		z-index: 1000;
 		padding: 0px 20px 0px 20px;
+		box-shadow: 0px 4px 10px rgba(100, 100, 100, 0.2);
 		button {
 			background: none;
 			border: none;
@@ -455,6 +456,25 @@ canvas#granim {
 			white-space: normal;
 			background-size: cover;
 			background-position: 50% 50%;
+		}
+		.controller-wrapper {
+			text-align: center;
+			width: 100%;
+			position: absolute;
+			top: 50%;
+			//z-index: 1000;
+			.controller {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border-radius: 10px;
+				border: 1px solid rgb(120, 120, 120);
+				margin: 0px 5px 0px 5px;
+				cursor: pointer;
+			}
+			.controller.active {
+				background: $orange;
+			}
 		}
 	}
 	.info-wrapper {
@@ -561,6 +581,9 @@ canvas#granim {
 	font-weight: bold;
 }
 
+.nowrap {
+	white-space: nowrap;
+}
 //--------------
 //	Animations
 //--------------
