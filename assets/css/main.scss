@@ -352,7 +352,7 @@ canvas#granim {
 			background: rgba(0, 0, 0, 0.1);
 			margin: 0 auto;
 			background-size: cover;
-
+			background-position: 50% 50%;
 		}
 		li:nth-child(2), li:nth-child(3) {
 			margin-top: 8px;
@@ -390,6 +390,7 @@ canvas#granim {
 	top: 0;
 	display: none;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	.window-top-bar {
 		width: 100%;
 		position: fixed;
@@ -448,6 +449,7 @@ canvas#granim {
 		//box-shadow: 0px 6px 15px rgba(100, 100, 100, 0.2);
 		cursor: pointer;
 		margin-top: 40px;
+		//position: relative;
 		.picture {
 			width: 100%;
 			height: 100%;
@@ -457,26 +459,27 @@ canvas#granim {
 			background-size: cover;
 			background-position: 50% 50%;
 		}
-		.controller-wrapper {
-			text-align: center;
-			width: 100%;
-			position: absolute;
-			top: 50%;
-			//z-index: 1000;
-			.controller {
-				display: inline-block;
-				width: 20px;
-				height: 20px;
-				border-radius: 10px;
-				border: 1px solid rgb(120, 120, 120);
-				margin: 0px 5px 0px 5px;
-				cursor: pointer;
-			}
-			.controller.active {
-				background: $orange;
-			}
+	}
+	.slider-controller-wrapper {
+		text-align: center;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		//z-index: 1000;
+		.controller {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 10px;
+			border: 1px solid rgb(120, 120, 120);
+			margin: 0px 5px 0px 5px;
+			cursor: pointer;
+		}
+		.controller.active {
+			background: $orange;
 		}
 	}
+
 	.info-wrapper {
 		padding: 20px 20px 50px 20px;
 		.general-info-1 li {

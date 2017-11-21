@@ -1,4 +1,4 @@
-//(function(document, window) {
+(function(document, window) {
 
 	'use strict';
 
@@ -317,8 +317,9 @@
 
 	var iWindow = {
 		pictureCount: 0,
-		activePicture: 1,
+		activePicture: 0,
 		sliderControllers: [],
+		slideSpeed: 250,
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
@@ -327,6 +328,7 @@
 		cacheDOM: function() {
 			this.element = $("#window");
 			this.pictureWrapperElement = $("#window .picture-wrapper");
+			this.sliderControllerWrapper = $("#window .slider-controller-wrapper");
 			this.closeButton = $("#window .window-top-bar button.window-close-button");
 		},
 		setEvents: function() {
@@ -343,6 +345,13 @@
 		hide: function() {
 			this.element.fadeOut(fadeSpeed);
 			this.pictureWrapperElement.empty();
+			this.sliderControllerWrapper.empty();
+			for (var i = 0; i < this.sliderControllers.length; i++) {
+				this.sliderControllers.pop(i);
+			}
+			this.pictureWrapperElement.animate({
+				marginLeft: "0%"
+			}, 100);
 		},
 		show: function(data) {
 			//console.log(data);
@@ -381,26 +390,48 @@
 				list.toggleLoadingScreen();
 			}
 
-			// Append and store controller wrapper
-			this.pictureWrapperElement.append("<div class='controller-wrapper'></div>");
-			this.sliderControlWrapper = $(".picture-wrapper .controller-wrapper");
+			// Store controller wrapper
+			//this.sliderControlWrapper = $("#window .slider-controller-wrapper");
 
 			// Append and store new controller per every picture (count)
 			for (var i = 0; i < count; i++) {
-				this.sliderControlWrapper.append("<div class='controller'></div>");
-				this.sliderControllers.push($(".picture-wrapper .controller-wrapper .controller:last-child"));
-				this.sliderControllers[i].attr("value", i + 1);
+				this.sliderControllerWrapper.append("<div class='controller' onclick='goToPic(this);'></div>");
+				this.sliderControllers.push($("#window .slider-controller-wrapper .controller:last-child"));
+				this.sliderControllers[i].attr("value", i);
 			}
 
-			this.setActivePicture(1);
-			this.setControllerEvents();
+			// Set initial active slide to first one (0)
+			this.setActivePicture($("#window .slider-controller-wrapper .controller:first-child"));
 		},
-		setActivePicture: function(value) {
-			$(".picture-wrapper .picture").removeClass("active");
-			$(".picture-wrapper .controller-wrapper .controller").removeClass("active");
-			$(".picture-wrapper .controller-wrapper .controller:nth-child(" + value + ")").addClass("active");
-			$(".picture-wrapper .picture:nth-child(" + value + ")").addClass("active");
+		setActivePicture: function(element) {
+			var that = iWindow;
+			var newSlide = $(element).attr("value");
+			$("#window .picture").removeClass("active");
+			$("#window .slider-controller-wrapper .controller").removeClass("active");
+			$(element).addClass("active");
+			that.switchToPicture(that.activePicture, newSlide);
 		},
+		switchToPicture: function(currentSlide, newSlide) {
+			if (newSlide > currentSlide) {
+				var steps = newSlide - currentSlide;
+				for (var i = 0; i < steps; i++) {
+					this.pictureWrapperElement.animate({
+						marginLeft: "-=100%"
+					}, this.slideSpeed);
+				}
+			} else if (newSlide < currentSlide) {
+				var steps = currentSlide - newSlide;
+				for (var i = 0; i < steps; i++) {
+					this.pictureWrapperElement.animate({
+						marginLeft: "+=100%"
+					}, this.slideSpeed);
+				}
+			} else if (newSlide === currentSlide) {
+				console.log("Lol.");
+			}
+			this.activePicture = newSlide;
+		}	
+		/*
 		setControllerEvents: function() {
 			var that = this;
 
@@ -413,7 +444,10 @@
 					that.setActivePicture(value);
 				});
 			}
-		}
+		},
+		alert: function() {
+			alert("yo!");
+		}*/
 	}
 
 
@@ -448,6 +482,8 @@
 		toolBar.fixSettingsHeight();
 	}
 
+	window.goToPic = iWindow.setActivePicture;
+
 	//------------------
 	//	   Drivers
 	//------------------
@@ -456,4 +492,4 @@
 	list.init();
 	iWindow.init();
 
-//}(document, window));
+}(document, window));

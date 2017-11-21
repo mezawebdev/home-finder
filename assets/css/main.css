@@ -317,7 +317,8 @@ canvas#granim {
       height: 55%;
       background: rgba(0, 0, 0, 0.1);
       margin: 0 auto;
-      background-size: cover; }
+      background-size: cover;
+      background-position: 50% 50%; }
     #list .listing li:nth-child(2), #list .listing li:nth-child(3) {
       margin-top: 8px; }
     #list .listing .like-button {
@@ -347,7 +348,8 @@ canvas#granim {
   background: whitesmoke;
   top: 0;
   display: none;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  overflow-x: hidden; }
   #window .window-top-bar {
     width: 100%;
     position: fixed;
@@ -404,21 +406,21 @@ canvas#granim {
       white-space: normal;
       background-size: cover;
       background-position: 50% 50%; }
-    #window .picture-wrapper .controller-wrapper {
-      text-align: center;
-      width: 100%;
-      position: absolute;
-      top: 50%; }
-      #window .picture-wrapper .controller-wrapper .controller {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border-radius: 10px;
-        border: 1px solid #787878;
-        margin: 0px 5px 0px 5px;
-        cursor: pointer; }
-      #window .picture-wrapper .controller-wrapper .controller.active {
-        background: #F38D31; }
+  #window .slider-controller-wrapper {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%; }
+    #window .slider-controller-wrapper .controller {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      border: 1px solid #787878;
+      margin: 0px 5px 0px 5px;
+      cursor: pointer; }
+    #window .slider-controller-wrapper .controller.active {
+      background: #F38D31; }
   #window .info-wrapper {
     padding: 20px 20px 50px 20px; }
     #window .info-wrapper .general-info-1 li {
