@@ -1,4 +1,4 @@
-(function(document, window) {
+//(function(document, window) {
 
 	'use strict';
 
@@ -346,12 +346,15 @@
 			this.element.fadeOut(fadeSpeed);
 			this.pictureWrapperElement.empty();
 			this.sliderControllerWrapper.empty();
+			/*
 			for (var i = 0; i < this.sliderControllers.length; i++) {
 				this.sliderControllers.pop(i);
-			}
+			}*/
+			this.sliderControllers = [];
 			this.pictureWrapperElement.animate({
 				marginLeft: "0%"
 			}, 100);
+			this.activePicture = 0;
 		},
 		show: function(data) {
 			//console.log(data);
@@ -380,14 +383,12 @@
 		},
 		displayPictures: function(src, count) {
 			var that = this;
-
+			list.toggleLoadingScreen();
 			// Create a picture element div for every picture in folder
-			this.pictureWrapperElement.empty();
+			//this.pictureWrapperElement.empty();
 			for (var i = 0; i < count; i++) {
-				list.toggleLoadingScreen();
 				this.pictureWrapperElement.append("<div class='picture'></div>");
 				$(".picture-wrapper .picture:last-child").css("background-image", "url('" + src + "/" + i + ".jpg')");
-				list.toggleLoadingScreen();
 			}
 
 			// Store controller wrapper
@@ -398,10 +399,13 @@
 				this.sliderControllerWrapper.append("<div class='controller' onclick='goToPic(this);'></div>");
 				this.sliderControllers.push($("#window .slider-controller-wrapper .controller:last-child"));
 				this.sliderControllers[i].attr("value", i);
+				console.log("New Value: " + this.sliderControllers[i].attr("value"));
 			}
 
 			// Set initial active slide to first one (0)
-			this.setActivePicture($("#window .slider-controller-wrapper .controller:first-child"));
+			//this.setActivePicture($("#window .slider-controller-wrapper .controller:first-child"));
+			this.setActivePicture(this.sliderControllers[0]);
+			list.toggleLoadingScreen();
 		},
 		setActivePicture: function(element) {
 			var that = iWindow;
@@ -412,24 +416,23 @@
 			that.switchToPicture(that.activePicture, newSlide);
 		},
 		switchToPicture: function(currentSlide, newSlide) {
+			console.log("Current Slide: " + currentSlide);
+			console.log("New Slide: " + newSlide);
 			if (newSlide > currentSlide) {
-				var steps = newSlide - currentSlide;
-				for (var i = 0; i < steps; i++) {
-					this.pictureWrapperElement.animate({
-						marginLeft: "-=100%"
-					}, this.slideSpeed);
-				}
+				var steps = (newSlide - currentSlide) * 100;
+				this.pictureWrapperElement.animate({
+					marginLeft: "-=" + steps + "%"
+				}, this.slideSpeed);
+				this.activePicture = newSlide;
 			} else if (newSlide < currentSlide) {
-				var steps = currentSlide - newSlide;
-				for (var i = 0; i < steps; i++) {
-					this.pictureWrapperElement.animate({
-						marginLeft: "+=100%"
-					}, this.slideSpeed);
-				}
+				var steps = (currentSlide - newSlide) * 100;
+				this.pictureWrapperElement.animate({
+					marginLeft: "+=" + steps + "%"
+				}, this.slideSpeed);
+				this.activePicture = newSlide;
 			} else if (newSlide === currentSlide) {
 				console.log("Lol.");
 			}
-			this.activePicture = newSlide;
 		}	
 		/*
 		setControllerEvents: function() {
@@ -492,4 +495,4 @@
 	list.init();
 	iWindow.init();
 
-}(document, window));
+//}(document, window));
