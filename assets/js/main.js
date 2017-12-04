@@ -55,8 +55,10 @@
 
 			// On Click
 			this.mainElement.on("click", function() {
+				list.toggleLoadingScreen();
 				iWindow.render(that);
 				iWindow.show();
+				list.toggleLoadingScreen();
 			});
 
 			this.likeButtonElement.on("click", function(e) {
@@ -320,6 +322,7 @@
 		activePicture: 0,
 		sliderControllers: [],
 		slideSpeed: 250,
+		lightbox: false,
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
@@ -335,6 +338,10 @@
 			var that = this;
 			this.closeButton.on("click", function() {
 				that.hide();
+				that.emptyWindow();
+			});
+			this.pictureWrapperElement.on("click", function() {
+				that.expandSlider();
 			});
 		},
 		render: function(data) {
@@ -344,22 +351,18 @@
 		},
 		hide: function() {
 			this.element.fadeOut(fadeSpeed);
+		},
+		show: function(data) {
+			this.element.fadeIn(fadeSpeed);
+		},
+		emptyWindow: function() {
 			this.pictureWrapperElement.empty();
 			this.sliderControllerWrapper.empty();
-			/*
-			for (var i = 0; i < this.sliderControllers.length; i++) {
-				this.sliderControllers.pop(i);
-			}*/
 			this.sliderControllers = [];
 			this.pictureWrapperElement.animate({
 				marginLeft: "0%"
 			}, 100);
 			this.activePicture = 0;
-		},
-		show: function(data) {
-			//console.log(data);
-			//this.render(data);
-			this.element.fadeIn(fadeSpeed);
 		},
 		getPictureCount: function(src) {
 			console.log("[" + src + "] Fetching pictures..");
@@ -384,15 +387,13 @@
 		displayPictures: function(src, count) {
 			var that = this;
 			list.toggleLoadingScreen();
+
 			// Create a picture element div for every picture in folder
-			//this.pictureWrapperElement.empty();
+			this.pictureWrapperElement.empty();
 			for (var i = 0; i < count; i++) {
 				this.pictureWrapperElement.append("<div class='picture'></div>");
 				$(".picture-wrapper .picture:last-child").css("background-image", "url('" + src + "/" + i + ".jpg')");
 			}
-
-			// Store controller wrapper
-			//this.sliderControlWrapper = $("#window .slider-controller-wrapper");
 
 			// Append and store new controller per every picture (count)
 			for (var i = 0; i < count; i++) {
@@ -403,7 +404,6 @@
 			}
 
 			// Set initial active slide to first one (0)
-			//this.setActivePicture($("#window .slider-controller-wrapper .controller:first-child"));
 			this.setActivePicture(this.sliderControllers[0]);
 			list.toggleLoadingScreen();
 		},
@@ -433,24 +433,17 @@
 			} else if (newSlide === currentSlide) {
 				console.log("Lol.");
 			}
-		}	
-		/*
-		setControllerEvents: function() {
-			var that = this;
-
-			for (var i = 0; i < this.sliderControllers.length; i++) {
-				var value = i;
-				this.sliderControllers[i].on("click", function(e) {
-					e.stopPropagation();
-					console.log(that);
-					//that.activePicture = that.sliderControllers[i].attr("value");
-					that.setActivePicture(value);
-				});
-			}
 		},
-		alert: function() {
-			alert("yo!");
-		}*/
+		expandSlider: function() {
+			this.pictureWrapperElement.css({
+				"z-index": "1001",
+				"margin-top": "0",
+				"position": "fixed"
+			}).animate({
+				height: "100%",
+			}, 250);
+			this.lightbox = true;
+		}	
 	}
 
 
