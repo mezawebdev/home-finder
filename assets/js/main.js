@@ -341,7 +341,7 @@
 				that.emptyWindow();
 			});
 			this.pictureWrapperElement.on("click", function() {
-				that.expandSlider();
+				that.toggleLightbox();
 			});
 		},
 		render: function(data) {
@@ -416,10 +416,11 @@
 			that.switchToPicture(that.activePicture, newSlide);
 		},
 		switchToPicture: function(currentSlide, newSlide) {
-			console.log("Current Slide: " + currentSlide);
-			console.log("New Slide: " + newSlide);
 			if (newSlide > currentSlide) {
+				// Calculate Amount of steps
 				var steps = (newSlide - currentSlide) * 100;
+				
+				// Increase left margin X amount of steps
 				this.pictureWrapperElement.animate({
 					marginLeft: "-=" + steps + "%"
 				}, this.slideSpeed);
@@ -434,16 +435,57 @@
 				console.log("Lol.");
 			}
 		},
-		expandSlider: function() {
-			this.pictureWrapperElement.css({
-				"z-index": "1001",
-				"margin-top": "0",
-				"position": "fixed"
-			}).animate({
-				height: "100%",
-			}, 250);
-			this.lightbox = true;
-		}	
+		toggleLightbox: function() {
+
+			// Animate picture wrapper, transform into lightbox
+			if (this.lightbox) {
+				// Set default CSS and contract wrapper
+				this.pictureWrapperElement.css({
+					"z-index": "0",
+					"margin-top": "40px",
+					"position": "static"
+				}).animate({
+					height: "50%",
+				}, this.slideSpeed);
+
+				// Set default CSS for picture divs
+				$(".picture").css({
+					"background-size": "cover"
+				});
+
+				// Set default CSS for controllers and animate to center
+				this.sliderControllerWrapper.css({
+					"z-index": "auto"
+				}).animate({
+					top: "50%"
+				}, this.slideSpeed);
+
+				this.lightbox = false;
+			} else {
+				// Set new CSS for picture wrapper and expand
+				this.pictureWrapperElement.css({
+					"z-index": "1001",
+					"margin-top": "0",
+					"position": "fixed"
+				}).animate({
+					height: "100%",
+				}, this.slideSpeed);
+
+				// Set new CSS for picture divs
+				$(".picture").css({
+					"background-size": "100%"
+				});
+
+				// Set new CSS for controllers and animate to bottom
+				this.sliderControllerWrapper.css({
+					"z-index": "1002"
+				}).animate({
+					top: "90%"
+				}, this.slideSpeed);
+
+				this.lightbox = true;
+			}
+		}
 	}
 
 

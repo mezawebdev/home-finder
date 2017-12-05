@@ -24,7 +24,7 @@ $inset-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
 $outset-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 $input-bg-grey: #ECECEC;
 $unfocused-button-text: rgba(0, 0, 0, 0.4);
-$unfocused-button-background: rgba(0, 0, 0, 0.1);
+$unfocused-button-background: rgba(200, 200, 200, 0.7);
 $green: #71C654;
 $cherryred: #F04838;
 $orange: #F38D31;
@@ -230,7 +230,7 @@ canvas#granim {
 	button {
 		background: $unfocused-button-background;
 		//border: 1px solid $border-grey;
-		padding: 7px;
+		padding: 12px;
 		color: $unfocused-button-text;
 		box-shadow: $inset-box-shadow;
 		border: none;
@@ -369,6 +369,7 @@ canvas#granim {
 			font-size: 1.5em;
 			box-shadow: 0px 3px 5px rgba(200, 200, 200, 0.5);
 			color: rgb(200, 200, 200);
+			padding: 0 5px 0 5px;
 		}
 	}
 	.listing:hover {
@@ -458,6 +459,8 @@ canvas#granim {
 			white-space: normal;
 			background-size: cover;
 			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			background-color: black;
 		}
 	}
 	.slider-controller-wrapper {
