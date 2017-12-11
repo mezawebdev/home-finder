@@ -189,16 +189,16 @@
 				this.fixSettingsHeight();
 				this.openButtonText.removeClass();
 				this.openButtonText.attr("class", "glyphicon glyphicon-remove");
-				this.header.css("display", "block");
-				this.body.css("display", "block");
+				this.header.addClass("active");
+				this.body.addClass("active");
 				this.opened = true;
 			} else {
 				this.toolBarDOM.removeClass("active");
 				this.openButtonText.removeClass();
-				this.openButtonText.attr("class", "glyphicon glyphicon-chevron-down");
+				this.openButtonText.attr("class", "glyphicon glyphicon-menu-hamburger");
 				setTimeout(function() {
-					this.header.css("display", "none");
-					this.body.css("display", "none");
+					this.header.removeClass("active");
+					this.body.removeClass("active");
 				}, 250);
 				this.opened = false;
 			}
@@ -292,7 +292,7 @@
 			this.toggleLoadingScreen();
 		},
 		fetchList: function() {
-			var tempLists = 4;
+			var tempLists = 10;
 			for (var i = 0; i < tempLists; i++) {
 				var listing = new Listing(0, "sale", "owner", "200,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", "assets/images/listings/0");
 				this.listings.push(listing);
@@ -620,7 +620,7 @@
 	//	    Misc
 	//------------------
 	// Background
-	/*
+
 	var granimInstance = new Granim({
 	    element: '#granim',
 	    name: 'radial-gradient',
@@ -634,11 +634,11 @@
 	                ['#FFDFC0', '#FFECDF'],
 	                ['#B9F0AC', '#D3FFCD']
 	            ],
-	            transitionSpeed: 30000
+	            transitionSpeed: 25000
 	        }
 	    }
 	});
-	*/
+	
 
 	//------------------
 	//	   Hacks

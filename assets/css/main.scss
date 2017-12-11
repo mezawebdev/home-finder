@@ -32,9 +32,10 @@ $orange: #F38D31;
 
 body {
 	//background: #E7E7EA;
-	background: $orange;
-	font-family: "Lato", sans-serif;
-	background-image: url(../images/background-2.png);
+	//background: $orange;
+	background: #FFF4E5;
+	font-family: "Roboto", sans-serif;
+	//background-image: url(../images/background-2.png);
 }
 
 p {
@@ -82,9 +83,12 @@ canvas#granim {
 			display: inline-block;
 		}
 	}
+	.header.active {
+		display: block;
+	}
 	.body {
 		display: none;
-		overflow: scroll;
+		//overflow: scroll;
 		.body-top-buttons {
 			width: 100%;
 			//background: blue;
@@ -140,7 +144,7 @@ canvas#granim {
 			//margin-top: ;
 			width: 100%;
 			position: relative;
-			overflow-y: scroll;
+			//overflow-y: scroll;
 			.location-wrapper {
 				width: 100%;
 				padding: $box-padding;
@@ -156,6 +160,12 @@ canvas#granim {
 					display: inline-block;
 					background: #ECECEC;
 					box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
+					-webkit-appearance: none;
+				    -moz-appearance: none;
+				    text-indent: 1px;
+				    text-overflow: '';
+				    text-align: center;
+				    padding-left: 20px;
 				}
 				div {
 					width: 30px;
@@ -202,6 +212,9 @@ canvas#granim {
 				}
 			}
 		}
+	}
+	.body.active {
+		display: block;
 	}
 	.footer {
 		position: absolute;
@@ -498,6 +511,7 @@ canvas#granim {
 			//background: rgba(50, 50, 50, 0.6);
 			font-size: 3em;
 			padding: 5px;
+			cursor: pointer;
 		}
 		.arrow.disabled {
 			color: rgba(25, 25, 25, 0.5) !important;
@@ -624,6 +638,46 @@ canvas#granim {
 	}
 }
 
+
+//-----------------------------
+//	   Medium Devices 767px
+//-----------------------------
+@media (min-width: 767px) {
+	#side-bar {
+		height: 90vh;
+		width: 300px;
+		margin-top: 40px;
+		left: 40px;
+		transform: none;
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
+
+		.header {
+			display: block;
+		}
+
+		.body {
+			display: block;
+		}
+	}
+
+	#list {
+		top: 25px;
+		text-align: left;
+		padding-left: 350px;
+		width: auto;
+		.listing {
+			width: 22%;
+			min-width: 250px;
+			margin-left: 20px;
+			margin-bottom: 15px;
+		}
+	}
+}
+
+//------------------
+//	    Misc
+//------------------
 #side-bar.active {
 	height: 98%;
 }
