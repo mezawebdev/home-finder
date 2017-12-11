@@ -22,14 +22,21 @@
 	<!-- wrapper start -->
 	<canvas id="granim"></canvas>
 
+	<!-- Tool Bar -->
 	<div id="side-bar">
 		<div class="header">
 			<img src="assets/images/your-logo.png" />
 		</div>
 		<div class="body">
 			<div class="body-top-buttons">
-				<button class="active">Buy</button>
-				<button>Rent</button>
+				<div class="active buy-button option-tab">
+					Buy
+					<div class="active-tab-cover"></div>
+				</div>
+				<div class="rent-button option-tab">
+					Rent
+					<div class="active-tab-cover"></div>
+				</div>
 			</div>
 			<div class="content">
 				<div class="location-wrapper">
@@ -79,11 +86,13 @@
 		</div>
 	</div>	
 
+	<!-- View Controller -->
 	<div id="views">
 		<button class="active"><span class="glyphicon glyphicon-th-list"></span></button>
 		<button><span class="glyphicon glyphicon-map-marker"></span></button>
 	</div>
 
+	<!-- Listings -->
 	<div id="list">
 		<div class="loading-screen">
 			<div class="spinner">
@@ -151,6 +160,8 @@
 		</div>
 		-->
 	</div>
+	
+	<!-- Window -->
 	<div id="window">
 		<div class="window-top-bar">
 			<button class="window-share-button"><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp;Share</button>
@@ -158,11 +169,18 @@
 			<button class="window-close-button"><i class="fa fa-times" aria-hidden="true"></i></button>
 		</div>
 		<button class="close-button"><span class="glyphicon glyphicon-remove"></span></button>
-		<div class="picture-wrapper">
-
-		</div>
-		<div class="slider-controller-wrapper">
-
+		<!-- Picture Slideshow -->
+		<div class="picture-wrapper"></div>
+		<!-- Slideshow Controllers -->
+		<div class="slider-controller-wrapper"></div>
+		<!-- Slideshow Arrow Controllers -->
+		<div class='arrow-controllers'>
+			<div class='arrow arrow-left disabled'>
+				<i class='fa fa-angle-left' aria-hidden='true'></i>
+			</div>
+			<div class='arrow arrow-right'>
+				<i class='fa fa-angle-right' aria-hidden='true'></i>
+			</div>
 		</div>
 		<div class="info-wrapper container">
 			<!-- First Third -->
@@ -335,6 +353,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Templates -->
 	<!-- Listing -->
 	<script type="template/javascript" id="listing-template">

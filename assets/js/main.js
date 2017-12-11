@@ -101,8 +101,8 @@
 			this.openButtonText = $("#side-bar .footer button span");
 			this.header = $("#side-bar .header");
 			this.body = $("#side-bar .body");
-			this.buyTabButton = $(".body-top-buttons button:nth-child(1)");
-			this.rentTabButton = $(".body-top-buttons button:nth-child(2)");
+			this.buyTabButton = $(".body-top-buttons div.buy-button");
+			this.rentTabButton = $(".body-top-buttons div.rent-button");
 			this.budgetSlider = document.getElementById("budget-slider");
 			this.budgetMin = $(".budget div.min");
 			this.budgetMax = $(".budget div.max");
@@ -205,14 +205,14 @@
 		},
 		toggleBuy: function() {
 			if (this.tab !== "buy") {
-				this.rentTabButton.removeClass();
+				this.rentTabButton.removeClass("active");
 				this.buyTabButton.toggleClass("active");
 				this.tab = "buy";
 			}
 		},
 		toggleRent: function() {
 			if (this.tab !== "rent") {
-				this.buyTabButton.removeClass();
+				this.buyTabButton.removeClass("active");
 				this.rentTabButton.toggleClass("active");
 				this.tab = "rent";
 			}
@@ -323,6 +323,10 @@
 		sliderControllers: [],
 		slideSpeed: 250,
 		lightbox: false,
+		touchStartX: 0,
+		touchStartY: 0,
+		touchEndX: 0,
+		touchEndY: 0,
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
@@ -330,18 +334,54 @@
 		},
 		cacheDOM: function() {
 			this.element = $("#window");
+			this.elementVanilla = document.getElementById("window");
 			this.pictureWrapperElement = $("#window .picture-wrapper");
 			this.sliderControllerWrapper = $("#window .slider-controller-wrapper");
+			this.arrowControllerWrapper = $("#window .arrow-controllers");
+			this.arrowLeft = $("#window .arrow-controllers .arrow-left");
+			this.arrowRight = $("#window .arrow-controllers .arrow-right");
 			this.closeButton = $("#window .window-top-bar button.window-close-button");
 		},
 		setEvents: function() {
-			var that = this;
-			this.closeButton.on("click", function() {
-				that.hide();
-				that.emptyWindow();
+			// Close Button
+			this.closeButton.on("click", () => {
+				this.hide();
+				this.emptyWindow();
 			});
-			this.pictureWrapperElement.on("click", function() {
-				that.toggleLightbox();
+
+			// Picture Wrapper (Lightbox toggle)
+			this.pictureWrapperElement.on("click", () => {
+				this.toggleLightbox();
+			});
+
+			// Arrow Controllers
+			this.arrowLeft.on("click", () => {
+				this.slideLeft();
+			});
+
+			this.arrowRight.on("click", () => {
+				this.slideRight();
+			});
+
+			// Sildeshow Mobile Swipe
+			this.pictureWrapperElement.on("touchstart", (e) => {
+				if (e.originalEvent.targetTouches.length == 1) {
+					var touch = e.originalEvent.targetTouches[0];
+					this.touchStartX = touch.pageX;
+					this.touchStartY = touch.pageY;
+					console.log("Touch detected.");
+					console.log(`X: ${this.touchStartX}, Y: ${this.touchStartY}`);
+				}
+			});
+
+			this.pictureWrapperElement.on("touchend", (e) => {
+				var touch = e.originalEvent.changedTouches[0];
+				this.touchEndX = touch.pageX;
+				this.touchEndY = touch.pageY;
+				console.log("Untouch detected.");
+				console.log(`X: ${this.touchEndX}, Y: ${this.touchEndY}`);
+			
+				this.handleSwipe(this.touchStartX, this.touchEndX);
 			});
 		},
 		render: function(data) {
@@ -350,7 +390,11 @@
 			this.getPictureCount(data.picturesrc);
 		},
 		hide: function() {
+			// Fade out window
 			this.element.fadeOut(fadeSpeed);
+
+			// Scroll back to top
+			this.elementVanilla.scrollTop = 0;
 		},
 		show: function(data) {
 			this.element.fadeIn(fadeSpeed);
@@ -363,11 +407,16 @@
 				marginLeft: "0%"
 			}, 100);
 			this.activePicture = 0;
+			this.arrowLeft.addClass("disabled");
+			this.arrowRight.removeClass("disabled");
 		},
+		// AJAX
 		getPictureCount: function(src) {
-			console.log("[" + src + "] Fetching pictures..");
+			//console.log("[" + src + "] Fetching pictures..");
 			var dataString = "src=" + src;
 			var that = this;
+
+			// Fetches picture count from the server
 			$.ajax({
 				type: "POST",
 				url: "php/fetch_picture_count.php",
@@ -403,6 +452,9 @@
 				console.log("New Value: " + this.sliderControllers[i].attr("value"));
 			}
 
+			// Append arrow controllers
+			//this.pictureWrapperElement.append("<div class='arrow-controllers'><div class='arrow arrow-left'><i class='fa fa-angle-left' aria-hidden='true'></i></div><div class='arrow arrow-right'><i class='fa fa-angle-right' aria-hidden='true'></i></div></div>");
+
 			// Set initial active slide to first one (0)
 			this.setActivePicture(this.sliderControllers[0]);
 			list.toggleLoadingScreen();
@@ -424,13 +476,15 @@
 				this.pictureWrapperElement.animate({
 					marginLeft: "-=" + steps + "%"
 				}, this.slideSpeed);
-				this.activePicture = newSlide;
+				this.activePicture = parseInt(newSlide);
+				this.disableArrowController();
 			} else if (newSlide < currentSlide) {
 				var steps = (currentSlide - newSlide) * 100;
 				this.pictureWrapperElement.animate({
 					marginLeft: "+=" + steps + "%"
 				}, this.slideSpeed);
-				this.activePicture = newSlide;
+				this.activePicture = parseInt(newSlide);
+				this.disableArrowController();
 			} else if (newSlide === currentSlide) {
 				console.log("Lol.");
 			}
@@ -439,6 +493,7 @@
 
 			// Animate picture wrapper, transform into lightbox
 			if (this.lightbox) {
+				// If lightbox toggled
 				// Set default CSS and contract wrapper
 				this.pictureWrapperElement.css({
 					"z-index": "0",
@@ -460,8 +515,18 @@
 					top: "50%"
 				}, this.slideSpeed);
 
+				this.arrowControllerWrapper.css({
+					"z-index": "auto"
+				}).animate({
+					top: "30%"
+				}, this.slideSpeed);
+
+				// Make #window element overflow-y: hidden
+				this.element.css("overflow-y", "scroll");
+
 				this.lightbox = false;
 			} else {
+				// If lightbox not toggled
 				// Set new CSS for picture wrapper and expand
 				this.pictureWrapperElement.css({
 					"z-index": "1001",
@@ -483,7 +548,69 @@
 					top: "90%"
 				}, this.slideSpeed);
 
+				this.arrowControllerWrapper.css({
+					"z-index": "1002"
+				}).animate({
+					top: "50%"
+				}, this.slideSpeed);
+
+				// Make #window element overflow-y: hidden
+				this.element.css("overflow-y", "hidden");
+
 				this.lightbox = true;
+			}
+		},
+		handleSwipe: function(startX, endX) {
+			if (endX < startX) {
+				this.slideRight();
+			}
+			if (endX > startX) {
+				this.slideLeft();
+			}
+		},
+		slideRight: function() {
+			if (parseInt(this.activePicture) === this.sliderControllers.length - 1) {
+				// Stillness
+			} else {
+				this.pictureWrapperElement.animate({
+					marginLeft: "-=100%"
+				}, this.slideSpeed);
+				this.activePicture = parseInt(this.activePicture) + 1;
+				this.setActivePicture(this.sliderControllers[this.activePicture]);
+				this.arrowLeft.removeClass("disabled");
+				this.disableArrowController();
+			}
+		},
+		slideLeft: function() {
+			if (parseInt(this.activePicture) === 0) {
+				// Stillness
+			} else {
+				this.pictureWrapperElement.animate({
+					marginLeft: "+=100%"
+				}, this.slideSpeed);
+				this.activePicture = parseInt(this.activePicture) - 1;
+				this.setActivePicture(this.sliderControllers[this.activePicture]);
+				this.arrowRight.removeClass("disabled");
+				this.disableArrowController();
+			}
+		},
+		disableArrowController: function() {
+			// If active picture is 1
+			if (this.activePicture === 0) {
+				this.arrowRight.removeClass("disabled");
+				this.arrowLeft.addClass("disabled");
+			} 
+
+			// If active picture is last
+			if (this.activePicture === this.sliderControllers.length - 1) {
+				this.arrowLeft.removeClass("disabled");
+				this.arrowRight.addClass("disabled");
+			}
+
+			// If active picture between 0 and picture count
+			if (this.activePicture > 0 && this.activePicture < this.sliderControllers.length - 1) {
+				this.arrowLeft.removeClass("disabled");
+				this.arrowRight.removeClass("disabled");
 			}
 		}
 	}
@@ -520,6 +647,9 @@
 		toolBar.fixSettingsHeight();
 	}
 
+	//------------------
+	//	  Bindings
+	//------------------
 	window.goToPic = iWindow.setActivePicture;
 
 	//------------------
