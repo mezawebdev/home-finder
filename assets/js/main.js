@@ -243,6 +243,7 @@
 		},
 		cacheDOM: function() {
 			this.mainElement = $("#views");
+			this.mapElement = $("#gmap");
 			this.listButton = $("#views button:nth-child(1)");
 			this.mapButton = $("#views button:nth-child(2)");
 		},
@@ -262,6 +263,8 @@
 				this.mapButton.removeClass();
 				this.listButton.toggleClass("active");
 				this.tab = "list";
+				this.mapElement.css("display", "none");
+				list.creditLine.removeClass("fixed");
 				list.show();
 			}
 		},
@@ -270,12 +273,16 @@
 				this.listButton.removeClass();
 				this.mapButton.toggleClass("active");
 				this.tab = "map";
+				this.mapElement.css("display", "block");
+				list.creditLine.addClass("fixed");
+				initMap();
 				list.hide();
 			}
 		}
 	}
 
 	var list = {
+		tempLists: 20,
 		listings: [],
 		init: function() {
 			this.cacheDOM();
@@ -285,6 +292,7 @@
 			this.listDOM = $("#list");
 			this.template = document.getElementById("listing-template").innerHTML;
 			this.loadingScreen = $(".loading-screen");
+			this.creditLine = $("#credit-line");
 		},
 		render: function() {
 			this.toggleLoadingScreen();
@@ -292,8 +300,7 @@
 			this.toggleLoadingScreen();
 		},
 		fetchList: function() {
-			var tempLists = 10;
-			for (var i = 0; i < tempLists; i++) {
+			for (var i = 0; i < this.tempLists; i++) {
 				var listing = new Listing(0, "sale", "owner", "200,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", "assets/images/listings/0");
 				this.listings.push(listing);
 				this.listings[i].init();
@@ -335,6 +342,7 @@
 		cacheDOM: function() {
 			this.element = $("#window");
 			this.elementVanilla = document.getElementById("window");
+			this.backgroundOverlayElement = $("#window-background-overlay");
 			this.pictureWrapperElement = $("#window .picture-wrapper");
 			this.sliderControllerWrapper = $("#window .slider-controller-wrapper");
 			this.arrowControllerWrapper = $("#window .arrow-controllers");
@@ -343,8 +351,13 @@
 			this.closeButton = $("#window .window-top-bar button.window-close-button");
 		},
 		setEvents: function() {
-			// Close Button
+			// Close Button and when unfocused clicked
 			this.closeButton.on("click", () => {
+				this.hide();
+				this.emptyWindow();
+			});
+
+			this.backgroundOverlayElement.on("click", () => {
 				this.hide();
 				this.emptyWindow();
 			});
@@ -391,12 +404,14 @@
 		},
 		hide: function() {
 			// Fade out window
+			this.backgroundOverlayElement.fadeOut(fadeSpeed);
 			this.element.fadeOut(fadeSpeed);
 
 			// Scroll back to top
 			this.elementVanilla.scrollTop = 0;
 		},
 		show: function(data) {
+			this.backgroundOverlayElement.fadeIn(fadeSpeed);
 			this.element.fadeIn(fadeSpeed);
 		},
 		emptyWindow: function() {
@@ -620,7 +635,7 @@
 	//	    Misc
 	//------------------
 	// Background
-
+/*
 	var granimInstance = new Granim({
 	    element: '#granim',
 	    name: 'radial-gradient',
@@ -638,13 +653,34 @@
 	        }
 	    }
 	});
-	
+*/
+
+	//------------------
+	//	 Google Maps
+	//------------------
+	// API KEY: AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE
+	var map = null;
+	function initMap() {
+    	var uluru = {lat: -25.363, lng: 131.044};
+        map = new google.maps.Map(document.getElementById('gmap'), {
+        	zoom: 4,
+        	center: uluru
+        });
+        var marker = new google.maps.Marker({
+        	position: uluru,
+        	map: map
+        });
+     }
 
 	//------------------
 	//	   Hacks
 	//------------------
 	window.onresize = function() {
-		toolBar.fixSettingsHeight();
+		//toolBar.fixSettingsHeight();
+		// If Tool Bar is opened
+		if (window.innerWidth > 767 && toolBar.opened) {
+			toolBar.expand();
+		}
 	}
 
 	//------------------

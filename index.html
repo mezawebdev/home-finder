@@ -20,7 +20,8 @@
 </head>
 <body>
 	<!-- wrapper start -->
-	<canvas id="granim"></canvas>
+	<div id="background"></div>
+	<div id="gmap"></div>
 
 	<!-- Tool Bar -->
 	<div id="side-bar" class="desktop">
@@ -354,6 +355,13 @@
 		</div>
 	</div>
 
+	<!-- Misc -->
+	<div id="window-background-overlay"></div>
+
+	<div id="credit-line">
+		<a href="https://instagram.com/mezawebdev">@mezawebdev</a>
+	</div>
+
 	<!-- Templates -->
 	<!-- Listing -->
 	<script type="template/javascript" id="listing-template">
@@ -380,5 +388,8 @@
 	<script src="assets/js/nouislider.min.js"></script>
 	<script src="assets/js/granim.min.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE&callback=initMap">
+    </script>
 </body>
 </html>
