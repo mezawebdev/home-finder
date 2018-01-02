@@ -1,3 +1,6 @@
+/*@import "_variables.scss";
+@import "_globals.scss";
+@import "_mixins.scss";*/
 /* http://meyerweb.com/eric/tools/css/reset/ */
 /* v1.0 | 20080212 */
 @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700");
@@ -77,17 +80,17 @@ h1, h2, h3, h4, h5, h6 {
   display: none; }
 
 #side-bar {
-  width: 97%;
+  width: 100%;
   height: 50px;
   background: #fafafa;
+  /*
   border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px; */
   border: 1px solid #D3D3D3;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
   transition: height 0.25s linear;
   position: fixed;
-  transform: translate(-50%, 0);
-  left: 50%;
+  top: 0;
   overflow: hidden;
   z-index: 1000; }
   #side-bar .header {
@@ -240,7 +243,8 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 15px;
   right: 15px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 5px; }
+  border-radius: 5px;
+  display: none; }
   #views button {
     background: rgba(200, 200, 200, 0.7);
     padding: 12px;
@@ -375,6 +379,52 @@ h1, h2, h3, h4, h5, h6 {
   #list .listing:active {
     -webkit-transform: scale(0.98);
     -moz-transform: scale(0.98); }
+
+#map-wrapper {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  background: #c8c8c8;
+  z-index: 600; }
+  #map-wrapper .draggable-tab {
+    width: 100%;
+    height: 7px;
+    background: #fafafa;
+    box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.5);
+    border-top: 1px solid #c8c8c8;
+    z-index: 600;
+    cursor: pointer; }
+    #map-wrapper .draggable-tab .tab {
+      width: 150px;
+      margin: 0 auto;
+      position: relative;
+      height: 15px;
+      background: #fafafa;
+      top: -15px;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      box-shadow: 0px -5px 10px rgba(100, 100, 100, 0.1);
+      text-align: center;
+      border-top: 1px solid #c8c8c8;
+      border-left: 1px solid #c8c8c8;
+      border-right: 1px solid #c8c8c8;
+      z-index: 999999;
+      cursor: pointer; }
+      #map-wrapper .draggable-tab .tab i {
+        font-size: 0.7em;
+        color: #646464; }
+    #map-wrapper .draggable-tab .middle-line {
+      width: 100%;
+      height: 2px;
+      top: 4px;
+      position: absolute;
+      display: none;
+      border-bottom: 1px dashed gainsboro; }
+  #map-wrapper #map {
+    width: 100vw;
+    height: 100vh; }
 
 #window {
   position: fixed;

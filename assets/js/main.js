@@ -250,12 +250,12 @@
 		render: function() {
 			var that = this;
 
-			this.listButton.on("click", function() {
-				that.toggleList();
+			this.listButton.on("click", () => {
+				this.toggleList();
 			});
 
-			this.mapButton.on("click", function() {
-				that.toggleMap();
+			this.mapButton.on("click", () => {
+				this.toggleMap();
 			});
 		},
 		toggleList: function() {
@@ -321,6 +321,38 @@
 			} else if (this.loadingScreen.css("display") === "block") {
 				this.loadingScreen.css("display", "none");
 			}
+		}
+	}
+
+	var googleMap = {
+		height: null,
+		init: function() {
+			this.cacheDOM();
+			this.render();
+			this.fireEvents();
+		},
+		cacheDOM: function() {
+			this.mapWrapperElement = $("#map-wrapper");
+			this.draggableTab = $("#map-wrapper .draggable-tab .tab");
+		},
+		render: function() {
+
+		},
+		fireEvents: function() {
+			this.mapWrapperElement.on("click", (e) => {
+				alert("hi");
+				//e.preventDefault();
+			});
+
+			// Draggable Tab
+			this.draggableTab.on("click", (e) => {
+				console.log("yo!");
+			});
+
+
+		},
+		resize: function() {
+			alert("hi");
 		}
 	}
 
@@ -659,10 +691,11 @@
 	//	 Google Maps
 	//------------------
 	// API KEY: AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE
+	
 	var map = null;
 	function initMap() {
     	var uluru = {lat: -25.363, lng: 131.044};
-        map = new google.maps.Map(document.getElementById('gmap'), {
+        map = new google.maps.Map(document.getElementById('map'), {
         	zoom: 4,
         	center: uluru
         });
@@ -670,7 +703,7 @@
         	position: uluru,
         	map: map
         });
-     }
+    }
 
 	//------------------
 	//	   Hacks
@@ -695,5 +728,6 @@
 	views.init();
 	list.init();
 	iWindow.init();
+	googleMap.init();
 
 //}(document, window));
