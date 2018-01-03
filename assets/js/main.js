@@ -662,6 +662,20 @@
 		}
 	}
 
+	var test = {
+		init: function() {
+			this.cacheDOM();
+			this.fireEvents();
+		},
+		cacheDOM: function() {
+			this.element = $("#test");
+		},
+		fireEvents: function() {
+			this.element.on("click", (e) => {
+				alert("hi!");
+			});
+		}
+	}
 
 	//------------------
 	//	    Misc
@@ -729,5 +743,6 @@
 	list.init();
 	iWindow.init();
 	googleMap.init();
+	test.init();
 
 //}(document, window));
