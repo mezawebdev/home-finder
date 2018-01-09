@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background: linear-gradient(180deg, #f4e8e9, #e3dcc4);
+  background-image: url(../images/background-2.png);
   z-index: 250; }
 
 #gmap {
@@ -83,11 +83,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 100px;
   height: 100px;
   background: red;
-  z-index: 999;
+  z-index: 9999999;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  position: fixed; }
+  position: fixed;
+  display: none;
+  transition: width 0.25s ease-in-out, height 0.25s ease-in-out; }
+
+#test:active {
+  width: 200px;
+  height: 200px; }
 
 #side-bar {
   width: 100%;
@@ -143,12 +149,11 @@ h1, h2, h3, h4, h5, h6 {
           height: 5px;
           margin-top: 7px; }
       #side-bar .body .body-top-buttons div.option-tab.active {
-        background: #fafafa;
+        background: gainsboro;
         box-shadow: none;
-        color: rgba(0, 0, 0, 0.7);
-        font-weight: 700; }
+        color: #191919; }
         #side-bar .body .body-top-buttons div.option-tab.active .active-tab-cover {
-          background: #fafafa;
+          background: gainsboro;
           box-shadow: none !important; }
       #side-bar .body .body-top-buttons .buy-active {
         position: absolute;
@@ -165,9 +170,13 @@ h1, h2, h3, h4, h5, h6 {
       #side-bar .body .content .location-wrapper {
         width: 100%;
         padding: 20px 20px 20px 20px;
-        border-bottom: 1px solid #D3D3D3;
+        background: gainsboro;
+        border-bottom: 1px solid gainsboro;
         text-align: center;
-        height: 75px; }
+        height: 75px;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        position: relative; }
         #side-bar .body .content .location-wrapper select {
           border: 1px solid #D3D3D3;
           height: 30px;
@@ -198,7 +207,9 @@ h1, h2, h3, h4, h5, h6 {
       #side-bar .body .content .settings-wrapper {
         padding: 25px 35px 70px 35px;
         height: 280px;
-        overflow-y: scroll; }
+        background: #fafafa;
+        position: relative;
+        z-index: 1; }
         #side-bar .body .content .settings-wrapper .budget, #side-bar .body .content .settings-wrapper .square-feet, #side-bar .body .content .settings-wrapper .rooms {
           color: rgba(0, 0, 0, 0.7);
           margin-bottom: 65px; }
@@ -655,6 +666,33 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 15px; }
     #list .loading-screen {
       margin-left: -350px; }
+
+  #map-wrapper {
+    height: 100vh;
+    width: 100px;
+    right: 0;
+    left: auto; }
+    #map-wrapper .draggable-tab {
+      height: 100vh;
+      width: 7px;
+      border-top: 0;
+      border-left: 1px solid #c8c8c8; }
+      #map-wrapper .draggable-tab .tab {
+        height: 150px;
+        width: 15px;
+        margin: auto;
+        transform: translate(0, -50%);
+        top: 50%;
+        left: -15px;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 5px;
+        border-right: 0;
+        border-bottom: 1px solid #c8c8c8;
+        box-shadow: -5px 0px 10px rgba(100, 100, 100, 0.1); }
+        #map-wrapper .draggable-tab .tab i {
+          transform: translate(0, -50%);
+          position: relative;
+          top: 50%; }
 
   #views {
     right: 40px;

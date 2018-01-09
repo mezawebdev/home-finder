@@ -22,6 +22,7 @@ $unfocused-button-background: rgba(200, 200, 200, 0.7);
 $green: #71C654;
 $cherryred: #F04838;
 $orange: #F38D31;
+$ui-black: rgb(220, 220, 220);
 //$unfocused-button-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.1);
 
 @mixin centerVertically {
@@ -59,7 +60,9 @@ h1, h2, h3, h4, h5, h6 {
 	position: fixed;
 	//background: red;
 	//opacity: 0.7;
-	background: linear-gradient(180deg, #f4e8e9, #e3dcc4);
+	//background: linear-gradient(180deg, #f4e8e9, #e3dcc4);
+	//background: linear-gradient(0deg, rgb(200, 200, 200), rgb(220, 220, 220));
+	background-image: url(../images/background-2.png);
 	z-index: 250;
 }
 
@@ -75,11 +78,18 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100px;
 	height: 100px;
 	background: red;
-	z-index: 999;
+	z-index: 9999999;
 	transform: translate(-50%, -50%);
 	top: 50%;
 	left: 50%;
 	position: fixed;
+	display: none;
+	transition: width 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+
+#test:active {
+	width: 200px;
+	height: 200px;
 }
 
 //---------------------------------
@@ -149,13 +159,13 @@ h1, h2, h3, h4, h5, h6 {
 				}
 			}
 			div.option-tab.active {
-				background: $transparent-white;
+				background: $ui-black;
 				//z-index: 100 !important;
 				box-shadow: none;
-				color: $main-font;
-				font-weight: 700;
+				color: rgb(25, 25, 25);
+				
 				.active-tab-cover {
-					background: $transparent-white;
+					background: $ui-black;
 					box-shadow: none !important;
 				}
 			}
@@ -180,9 +190,13 @@ h1, h2, h3, h4, h5, h6 {
 				width: 100%;
 				padding: $box-padding;
 				//background: red;
-				border-bottom: 1px solid $border-grey;
+				background: $ui-black;
+				border-bottom: 1px solid rgb(220, 220, 220);
 				text-align: center;
 				height: 75px;
+				box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+				z-index: 2;
+				position: relative;
 				select {
 					border: 1px solid $border-grey;
 					height: 30px;
@@ -218,7 +232,10 @@ h1, h2, h3, h4, h5, h6 {
 			.settings-wrapper {
 				padding: 25px 35px 70px 35px;
 				height: 280px;
-				overflow-y: scroll;
+				background: rgb(250, 250, 250);
+				position: relative;
+				z-index: 1;
+				//overflow-y: scroll;
 				.budget, .square-feet, .rooms {
 					color: $main-font;
 					margin-bottom: 65px;
@@ -795,6 +812,37 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		.loading-screen {
 			margin-left: -350px;
+		}
+	}
+
+	#map-wrapper {
+		height: 100vh;
+		width: 100px;
+		right: 0;
+		left: auto;
+		.draggable-tab {
+			height: 100vh;
+			width: 7px;
+			border-top: 0;
+			border-left: 1px solid #c8c8c8;
+			.tab {
+				height: 150px;
+			    width: 15px;
+			    margin: auto;
+			    transform: translate(0, -50%);
+			    top: 50%;
+			    left: -15px;
+			    border-top-right-radius: 0;
+			    border-bottom-left-radius: 5px;
+			    border-right: 0;
+			    border-bottom: 1px solid #c8c8c8;
+			    box-shadow: -5px 0px 10px rgba(100, 100, 100, 0.1);
+				i {
+					transform: translate(0, -50%);
+					position: relative;
+					top: 50%;
+				}
+			}
 		}
 	}
 
