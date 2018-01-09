@@ -1,7 +1,9 @@
-(function(document, window) {
+//(function(document, window) {
 
-	$(document).ready(() => {
+	//$(document).ready(() => {
+
 		'use strict';
+
 		//------------------
 		//	   Global 
 		//------------------
@@ -83,6 +85,46 @@
 		//------------------
 		//	   Modules
 		//------------------
+		var googleMap = {
+			height: null,
+			init: function() {
+				this.cacheDOM();
+				this.render();
+				this.fireEvents();
+			},
+			cacheDOM: function() {
+				this.mapWrapperElement = $("#map-wrapper");
+				this.draggableTab = $("#map-wrapper .draggable-tab .tab");
+				this.draggableTabIcon = $("#map-wrapper .draggable-tab .tab i");
+				//console.log(this.draggableTabIcon);
+			},
+			render: function() {
+
+			},
+			fireEvents: function() {
+				this.mapWrapperElement.on("click", (e) => {
+					//alert("hi");
+					//e.preventDefault();
+				});
+
+				// Draggable Tab
+				this.draggableTab.on("click", (e) => {
+					console.log("yo!");
+					onResize();
+				});
+
+
+			},
+			onResize: function() {
+				console.log("Screen resized.");
+			},
+			updateTabIcon: function() {
+				if (window.innerWidth > 767) {
+					this.draggableTabIcon.hide();
+				}
+			}
+		}
+
 		var toolBar = {
 			opened: false,
 			tab: "buy",
@@ -132,11 +174,11 @@
 					that.toggleRent();	
 				});
 
-				//---------
+				//-------------------------------------------------
 				// Sliders
-				//---------
+				//-------------------------------------------------
 				// Budget
-				var budgetHandle = noUiSlider.create(this.budgetSlider, {
+				this.budgetHandle = noUiSlider.create(this.budgetSlider, {
 					start: [this.budget[0], this.budget[1]],
 					connect: true,
 					step: 500,
@@ -147,7 +189,7 @@
 				});
 
 				// Budget - Handler
-				budgetHandle.on("update", function(values) {
+				this.budgetHandle.on("update", function(values) {
 					that.toggleBudget(values);
 				});
 
@@ -235,6 +277,7 @@
 			}
 		}
 
+		/*
 		var views = {
 			tab: "list",
 			init: function() {
@@ -279,7 +322,7 @@
 					list.hide();
 				}
 			}
-		}
+		} */
 
 		var list = {
 			tempLists: 20,
@@ -320,45 +363,6 @@
 					this.loadingScreen.css("display", "block");
 				} else if (this.loadingScreen.css("display") === "block") {
 					this.loadingScreen.css("display", "none");
-				}
-			}
-		}
-
-		var googleMap = {
-			height: null,
-			init: function() {
-				this.cacheDOM();
-				this.render();
-				this.fireEvents();
-			},
-			cacheDOM: function() {
-				this.mapWrapperElement = $("#map-wrapper");
-				this.draggableTab = $("#map-wrapper .draggable-tab .tab");
-				this.draggableTabIcon = $("#map-wrapper .draggable-tab .tab i");
-				console.log(this.draggableTabIcon);
-			},
-			render: function() {
-
-			},
-			fireEvents: function() {
-				this.mapWrapperElement.on("click", (e) => {
-					alert("hi");
-					//e.preventDefault();
-				});
-
-				// Draggable Tab
-				this.draggableTab.on("click", (e) => {
-					console.log("yo!");
-				});
-
-
-			},
-			resize: function() {
-				alert("hi");
-			},
-			updateTabIcon: function() {
-				if (window.innerWidth > 767) {
-					this.draggableTabIcon.hide();
 				}
 			}
 		}
@@ -669,22 +673,6 @@
 			}
 		}
 
-		var test = {
-			init: function() {
-				this.cacheDOM();
-				this.fireEvents();
-			},
-			cacheDOM: function() {
-				this.element = $("#test");
-			},
-			fireEvents: function() {
-				this.element.on("click", (e) => {
-
-					this.element.css("display", "none");
-				});
-			}
-		}
-
 		//------------------
 		//	    Misc
 		//------------------
@@ -708,16 +696,23 @@
 		    }
 		});
 	*/
+		//------------------
+		//	   Drivers
+		//------------------
+		googleMap.init();
+		toolBar.init();
+		//views.init();
+		list.init();
+		iWindow.init();
 
 		//------------------
 		//	 Google Maps
 		//------------------
 		// API KEY: AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE
-		
-		var map = null;
+
 		function initMap() {
 	    	var uluru = {lat: -25.363, lng: 131.044};
-	        map = new google.maps.Map(document.getElementById('map'), {
+	        var map = new google.maps.Map(document.getElementById('map'), {
 	        	zoom: 4,
 	        	center: uluru
 	        });
@@ -728,17 +723,18 @@
 	    }
 
 		//------------------
-		//	   Hacks
+		//	  Responsive
 		//------------------
 		window.onresize = function() {
 			//toolBar.fixSettingsHeight();
+			// Responsiveness
 			// If Tool Bar is opened
 			if (window.innerWidth > 767 && toolBar.opened) {
 				toolBar.expand();
 			}
 
-			
-			googleMap.updateTabIcon();
+			console.log(googleMap.onResize());
+			googleMap.onResize();
 		}
 
 		//------------------
@@ -746,14 +742,5 @@
 		//------------------
 		window.goToPic = iWindow.setActivePicture;
 
-		//------------------
-		//	   Drivers
-		//------------------
-		toolBar.init();
-		views.init();
-		list.init();
-		iWindow.init();
-		googleMap.init();
-		test.init();
-	});
-}(document, window));
+//	});
+//}(document, window));

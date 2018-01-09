@@ -237,10 +237,15 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 0;
     z-index: 200;
     background: white;
-    border-top: 1px solid #D3D3D3; }
+    border-top: 1px solid #D3D3D3;
+    padding-left: 20px;
+    padding-right: 20px; }
+    #side-bar .footer img {
+      height: 32px;
+      margin-top: 8px; }
     #side-bar .footer button {
       display: block;
-      margin: 0 auto;
+      float: right;
       position: relative;
       top: 20%;
       width: 32px;
@@ -249,13 +254,13 @@ h1, h2, h3, h4, h5, h6 {
       border: none;
       padding: 8px 5px 5px 5px;
       color: white;
-      background: #F04838;
+      background: #F38D31;
       transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
       box-shadow: 0px 2px 7px rgba(100, 100, 100, 0.4); }
     #side-bar .footer button:hover {
-      background: #FF4938; }
+      background: #ffba6c; }
     #side-bar .footer button:active {
-      box-shadow: inset 0px 0px 7px rgba(100, 100, 100, 0.5);
+      box-shadow: inset 0px 0px 7px rgba(100, 100, 100, 0.2);
       transform: scale(0.9); }
 
 #views {
@@ -416,7 +421,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.5);
     border-top: 1px solid #c8c8c8;
     z-index: 600;
-    cursor: pointer; }
+    cursor: grab; }
     #map-wrapper .draggable-tab .tab {
       width: 150px;
       margin: 0 auto;
@@ -431,11 +436,13 @@ h1, h2, h3, h4, h5, h6 {
       border-top: 1px solid #c8c8c8;
       border-left: 1px solid #c8c8c8;
       border-right: 1px solid #c8c8c8;
-      z-index: 999999;
-      cursor: pointer; }
+      z-index: 600;
+      cursor: grab; }
       #map-wrapper .draggable-tab .tab i {
         font-size: 0.7em;
         color: #646464; }
+    #map-wrapper .draggable-tab .tab:active {
+      cursor: grabbing; }
     #map-wrapper .draggable-tab .middle-line {
       width: 100%;
       height: 2px;
@@ -443,6 +450,8 @@ h1, h2, h3, h4, h5, h6 {
       position: absolute;
       display: none;
       border-bottom: 1px dashed gainsboro; }
+  #map-wrapper .draggable-tab:active {
+    cursor: grabbing; }
   #map-wrapper #map {
     width: 100vw;
     height: 100vh; }
@@ -652,9 +661,15 @@ h1, h2, h3, h4, h5, h6 {
       display: block; }
     #side-bar .body {
       display: block; }
+    #side-bar .footer button {
+      display: none; }
+    #side-bar .footer img {
+      transform: translate(-50%, 0);
+      left: 50%;
+      position: relative; }
 
   #list {
-    top: 33px;
+    top: 0px;
     text-align: left;
     padding-left: 350px;
     width: auto;

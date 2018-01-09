@@ -272,9 +272,16 @@ h1, h2, h3, h4, h5, h6 {
 		z-index: 200;
 		background: white;
 		border-top: 1px solid $border-grey;
+		padding-left: 20px;
+		padding-right: 20px;
+		img {
+			height: 32px;
+			margin-top: 8px;
+		}
 		button {
 			display: block;
-			margin: 0 auto;
+			
+			float: right;
 			position: relative;
 			top: 20%;
 			width: 32px;
@@ -283,15 +290,15 @@ h1, h2, h3, h4, h5, h6 {
 			border: none;
 			padding: 8px 5px 5px 5px;
 			color: white;
-			background: #F04838;
+			background: $orange;
 			transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 			box-shadow: 0px 2px 7px rgba(100, 100, 100, 0.4);
 		}
 		button:hover {
-			background: #FF4938;
+			background: #ffba6c;
 		}
 		button:active {
-			box-shadow: inset 0px 0px 7px rgba(100, 100, 100, 0.5);
+			box-shadow: inset 0px 0px 7px rgba(100, 100, 100, 0.2);
 			transform: scale(0.9);
 		}
 	}
@@ -483,7 +490,7 @@ h1, h2, h3, h4, h5, h6 {
 		box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.5);
 		border-top: 1px solid rgb(200, 200, 200);
 		z-index: 600;
-		cursor: pointer;
+		cursor: grab;
 		.tab {
 			width: 150px;
 			margin: 0 auto;
@@ -498,12 +505,15 @@ h1, h2, h3, h4, h5, h6 {
 			border-top: 1px solid rgb(200, 200, 200);
 			border-left: 1px solid rgb(200, 200, 200);
 			border-right: 1px solid rgb(200, 200, 200);
-			z-index: 999999;
-			cursor: pointer;
+			z-index: 600;
+			cursor: grab;
 			i {
 				font-size: 0.7em;
 				color: rgb(100, 100, 100);
 			}
+		}
+		.tab:active {
+			cursor: grabbing;
 		}
 		.middle-line {
 			width: 100%;
@@ -514,6 +524,10 @@ h1, h2, h3, h4, h5, h6 {
 			display: none;
 			border-bottom: 1px dashed rgb(220, 220, 220);
 		}
+	}
+
+	.draggable-tab:active {
+		cursor: grabbing;
 	}
 
 	#map {
@@ -796,10 +810,21 @@ h1, h2, h3, h4, h5, h6 {
 		.body {
 			display: block;
 		}
+
+		.footer {
+			button {
+				display: none;
+			}
+			img {
+				transform: translate(-50%, 0);
+				left: 50%;
+				position: relative;
+			}
+		}
 	}
 
 	#list {
-		top: 33px;
+		top: 0px;
 		text-align: left;
 		padding-left: 350px;
 		width: auto;
