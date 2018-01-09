@@ -9,6 +9,10 @@
 		//------------------
 		var fadeSpeed = 250;
 
+		$("body").on("touchmove", function(e) {
+			console.log(e.originalEvent.touches[0].screenY);
+		});
+
 		//------------------
 		//	   Classes
 		//------------------
@@ -109,14 +113,39 @@
 
 				// Draggable Tab
 				this.draggableTab.on("click", (e) => {
-					console.log("yo!");
-					onResize();
+					//var touchx = e.originalEvent.touches[0].pageX;
+					console.log("Tab Clicked");
 				});
 
+				this.draggableTab.on("touchstart", (e) => {
+					e.stopPropagation();
+					var touchY = e.originalEvent.touches[0].screenY;
+					this.resizeMap(null, null, touchY);
+				});
 
+				this.draggableTab.on("touchmove", (e) => {
+					e.stopPropagation();
+					var touchY = e.originalEvent.touches[0].screenY;
+					this.resizeMap(null, null, touchY);
+				});
 			},
-			onResize: function() {
-				console.log("Screen resized.");
+			resizeMap: function(mouseX, mouseY, touchY) {
+				if (mouseX) {
+
+				}
+
+				if (mouseY) {
+
+				}
+
+				if (touchY) {
+					console.log("Window Height: " + $(window).height());
+					console.log("TouchY: " + touchY);
+					var newHeight = $(window).height() - touchY;
+					//newHeight *= -1;
+					console.log("New Height: " + newHeight);
+					this.mapWrapperElement.css("height", newHeight + "px");
+				}
 			},
 			updateTabIcon: function() {
 				if (window.innerWidth > 767) {
@@ -699,8 +728,9 @@
 		//------------------
 		//	   Drivers
 		//------------------
-		googleMap.init();
+		//googleMap.init();
 		toolBar.init();
+		googleMap.init();
 		//views.init();
 		list.init();
 		iWindow.init();
