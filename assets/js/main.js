@@ -1,6 +1,6 @@
 // Initialize Map, then callback main function
 function initMap() {
-	var proto = google;
+	var googleGlobal = google;
 
 	var uluru = {lat: -25.363, lng: 131.044};
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -12,10 +12,11 @@ function initMap() {
     	map: map
     });
 
-    init(document, window, proto);
+    // Initialize Map
+    init(document, window, googleGlobal, map);
 }
 
-var init = function(document, window, google) {
+var init = function(document, window, googleGlobal, map) {
 
 	'use strict';
 
@@ -132,17 +133,19 @@ var init = function(document, window, google) {
 				console.log("Tab Clicked");
 			});
 
-			this.draggableTab.on("touchstart", (e) => {
+			this.draggableTab.on("touchstart touchmove", (e) => {
 				e.stopPropagation();
 				var touchY = e.originalEvent.touches[0].screenY;
 				this.resizeMap(null, null, touchY);
 			});
-
+/*
 			this.draggableTab.on("touchmove", (e) => {
 				e.stopPropagation();
 				var touchY = e.originalEvent.touches[0].screenY;
 				this.resizeMap(null, null, touchY);
 			});
+
+			*/
 		},
 		resizeMap: function(mouseX, mouseY, touchY) {
 			if (mouseX) {
@@ -156,7 +159,7 @@ var init = function(document, window, google) {
 			if (touchY) {
 				console.log("Window Height: " + $(window).height());
 				console.log("TouchY: " + touchY);
-				var newHeight = $(window).height() - touchY;
+				var newHeight = $(window).height() - (touchY - 180);
 				//newHeight *= -1;
 				console.log("New Height: " + newHeight);
 				this.mapWrapperElement.css("height", newHeight + "px");

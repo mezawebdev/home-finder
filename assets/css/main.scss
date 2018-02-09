@@ -122,6 +122,8 @@ h1, h2, h3, h4, h5, h6 {
 		img {
 			height: 70px;
 			display: inline-block;
+			position: relative;
+			left: -10px;
 		}
 	}
 	.header.active {
@@ -304,46 +306,10 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-#views {
-	position: fixed;
-	z-index: 900;
-	bottom: 15px;
-	right: 15px;
-	//width: 100%;
-	//background: red;
-	box-shadow: $outset-box-shadow;
-	border-radius: 5px;
-	display: none;
-	//border: 1px solid $border-grey;
-	button {
-		background: $unfocused-button-background;
-		//border: 1px solid $border-grey;
-		padding: 12px;
-		color: $unfocused-button-text;
-		box-shadow: $inset-box-shadow;
-		border: none;
-	}
-	button:nth-child(1) {
-		margin-right: -4px;
-		position: relative;
-		border-top-left-radius: 5px;
-		border-bottom-left-radius: 5px;
-		//display: none;
-	}
-	button:nth-child(2) {
-		border-top-right-radius: 5px;
-		border-bottom-right-radius: 5px;
-	}
-	button.active {
-		background: $transparent-white;
-		box-shadow: none;
-		color: $main-font;
-	}
-}
 
 #list {
 	width: 100%;
-	top: 50px;
+	top: 30px;
 	text-align: center;
 	position: relative;
 	z-index: 500;
@@ -485,9 +451,9 @@ h1, h2, h3, h4, h5, h6 {
 
 	.draggable-tab {
 		width: 100%;
-		height: 7px;
+		height: 10px;
 		background: rgb(250, 250, 250);
-		box-shadow: 0px 0px 10px rgba(100, 100, 100, 0.5);
+		box-shadow: 0px -2px 6px rgba(100, 100, 100, 0.3);
 		border-top: 1px solid rgb(200, 200, 200);
 		z-index: 600;
 		cursor: grab;
@@ -495,12 +461,12 @@ h1, h2, h3, h4, h5, h6 {
 			width: 150px;
 			margin: 0 auto;
 			position: relative;
-			height: 15px;
+			height: 25px;
 			background: rgb(250, 250, 250);
-			top: -15px;
-			border-top-right-radius: 5px;
-			border-top-left-radius: 5px;
-			box-shadow: 0px -5px 10px rgba(100, 100, 100, 0.1);
+			top: -25px;
+			border-top-right-radius: 100px;
+			border-top-left-radius: 100px;
+			box-shadow: 0px -2px 6px rgba(100, 100, 100, 0.3);
 			text-align: center;
 			border-top: 1px solid rgb(200, 200, 200);
 			border-left: 1px solid rgb(200, 200, 200);
@@ -508,8 +474,10 @@ h1, h2, h3, h4, h5, h6 {
 			z-index: 600;
 			cursor: grab;
 			i {
-				font-size: 0.7em;
-				color: rgb(100, 100, 100);
+				font-size: 1.1em;
+				color: rgb(150, 150, 150);
+				top: 6px;
+				position: relative;
 			}
 		}
 		.tab:active {
