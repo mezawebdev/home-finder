@@ -1,7 +1,7 @@
 //------------------
 //	 Google Maps
 //------------------
-// Initialize Map, then callback main function
+// Initialize Map, then callback main App
 // API KEY: AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE
 function initMap() {
 	var googleGlobal = google;
@@ -16,7 +16,7 @@ function initMap() {
     	map: map
     });
 
-    // Initialize Map
+    // Initialize App
     init(document, window, googleGlobal, map);
 }
 
@@ -30,15 +30,16 @@ var init = function(document, window, googleGlobal, map) {
 	var fadeSpeed = 250;
 
 	$("body").on("touchmove", function(e) {
-		console.log(e.originalEvent.touches[0].screenY);
+		//console.log(e.originalEvent.touches[0].screenY);
 	});
 
 	//------------------
 	//	   Classes
 	//------------------
 	class Listing {
-		constructor(id, type, seller, price, beds, baths, squareft, lotsize, hometype, month, day, tags, zip, city, address, picturesrc) {
+		constructor(id, description, type, seller, price, beds, baths, squareft, lotsize, heating, cooling, appliances, flooring, parking, driveways, backyard, otherInt, otherExt, hometype, month, day, year, tags, zip, city, address, picturesrc) {
 			this.id = id;
+			this.description = description;
 			this.type = type;
 			this.seller = seller;
 			this.price = price;
@@ -46,16 +47,25 @@ var init = function(document, window, googleGlobal, map) {
 			this.baths = baths;
 			this.squareft = squareft;
 			this.lotsize = lotsize;
+			this.heating = heating;
+			this.cooling = cooling;
+			this.appliances = appliances;
+			this.flooring = flooring;
+			this.parking = parking;
+			this.driveways = driveways; 
+			this.backyard = backyard;
+			this.otherInt = otherInt;
+			this.otherExt = otherExt;
 			this.hometype = hometype;
 			this.month = month;
 			this.day = day;
+			this.year = year;
 			this.tags = tags;
 			this.zip = zip;
 			this.city = city;
 			this.address = address;
 			this.picturesrc = picturesrc;
 			this.liked = false;
-			//this.element = element;
 		}
 		init() {
 			this.render();
@@ -120,7 +130,7 @@ var init = function(document, window, googleGlobal, map) {
 			this.mapWrapperElement = $("#map-wrapper");
 			this.draggableTab = $("#map-wrapper .draggable-tab .tab");
 			this.draggableTabIcon = $("#map-wrapper .draggable-tab .tab i");
-			//console.log(this.draggableTabIcon);
+			////console.log(this.draggableTabIcon);
 		},
 		render: function() {
 
@@ -134,7 +144,7 @@ var init = function(document, window, googleGlobal, map) {
 			// Draggable Tab
 			this.draggableTab.on("click", (e) => {
 				//var touchx = e.originalEvent.touches[0].pageX;
-				console.log("Tab Clicked");
+				//console.log("Tab Clicked");
 			});
 
 			this.draggableTab.on("touchstart touchmove", (e) => {
@@ -161,11 +171,11 @@ var init = function(document, window, googleGlobal, map) {
 			}
 
 			if (touchY) {
-				console.log("Window Height: " + $(window).height());
-				console.log("TouchY: " + touchY);
+				//console.log("Window Height: " + $(window).height());
+				//console.log("TouchY: " + touchY);
 				var newHeight = $(window).height() - (touchY - 180);
 				//newHeight *= -1;
-				console.log("New Height: " + newHeight);
+				//console.log("New Height: " + newHeight);
 				this.mapWrapperElement.css("height", newHeight + "px");
 			}
 		},
@@ -347,25 +357,19 @@ var init = function(document, window, googleGlobal, map) {
 			this.toggleLoadingScreen();
 		},
 		fetchList: function() {
-			//this.listings = JSON.parse("listings.json");
+			// Fetch listings JSON
 			$.ajax({
 				dataType: "json",
 				url: "assets/js/listings.json", 
 				success: (listings) => {
-					console.log(listings);
+					//console.log(listings);
 					for (var i = 0; i < listings.length; i++) {
-						var listing = new Listing(listings[i].id, listings[i].type, listings[i].seller, listings[i].price, listings[i].beds, listings[i].baths, listings[i].squareft, listings[i].lotsize, listings[i].hometype, listings[i].month, listings[i].day, listings[i].tags, listings[i].zip, listings[i].city, listings[i].address, listings[i].picturesrc);
+						var listing = new Listing(listings[i].id, listings[i].description, listings[i].type, listings[i].seller, listings[i].price, listings[i].beds, listings[i].baths, listings[i].squareft, listings[i].lotsize, listings[i].heating, listings[i].cooling, listings[i].appliances, listings[i].flooring, listings[i].parking, listings[i].driveways, listings[i].backyard, listings[i].otherInt, listings[i].otherExt, listings[i].hometype, listings[i].month, listings[i].day, listings[i].year, listings[i].tags, listings[i].zip, listings[i].city, listings[i].address, listings[i].picturesrc);
 						this.listings.push(listing);
 						this.listings[i].init();
 					}
 				}
 			});
-			/*
-			for (var i = 0; i < this.tempLists; i++) {
-				var listing = new Listing(0, "sale", "owner", "200,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", "assets/images/listings/0");
-				this.listings.push(listing);
-				this.listings[i].init();
-			}*/
 
 			// List Padding Fix (Mobile) 
 			this.listDOM.css("padding-bottom", "20px");
@@ -395,6 +399,34 @@ var init = function(document, window, googleGlobal, map) {
 		touchStartY: 0,
 		touchEndX: 0,
 		touchEndY: 0,
+		term: 180,
+		id: null,
+		description: null,
+		type: null,
+		seller: null,
+		price: null,
+		beds: null,
+		baths: null,
+		squareft: null,
+		lotsize: null, 
+		heating: null,
+		cooling: null,
+		appliances: null,
+		flooring: null,
+		parking: null,
+		driveways: null,
+		backyard: null,
+		otherInt: null,
+		otherExt: null,
+		hometype: null,
+		month: null,
+		day: null,
+		year: null,
+		tags: null,
+		zip: null,
+		city: null,
+		address: null,
+		picturesrc: null,
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
@@ -410,6 +442,39 @@ var init = function(document, window, googleGlobal, map) {
 			this.arrowLeft = $("#window .arrow-controllers .arrow-left");
 			this.arrowRight = $("#window .arrow-controllers .arrow-right");
 			this.closeButton = $("#window .window-top-bar button.window-close-button");
+
+			// Listing Info DOM Objects
+			// General Info 
+			this.DOMaddress = $("#window .address");
+			this.DOMbedsBig = $("#window .beds");
+			this.DOMbathsBig = $("#window .baths");
+			this.DOMsqftBig = $("#window .sqft");
+			this.DOMdescription = $("#window .description");
+			this.DOMprice = $("#window .price");
+			this.DOMmortgage = $("#window .mortgage");
+
+			// Facts and Features
+			this.DOMtype = $("#window .type");
+			this.DOMhometype = $("#window .hometype");
+			this.DOMyearbuilt = $("#window .year-built");
+			this.DOMheating = $("#window .heating");
+			this.DOMcooling = $("#window .cooling");
+			this.DOMparking = $("#window .parking");
+			this.DOMlotSize = $("#window .lot-size");
+			this.DOMdaysListed = $("#window .days-listed");
+			this.DOMpriceSqft = $("#window .price-sqft")
+			this.DOMseller = $("#window .seller");
+
+			// Interior Features
+			this.DOMappliances = $("#window .appliances");
+			this.DOMflooring = $("#window .flooring");
+			this.DOMotherInt = $("#window .other-interior");
+			
+			// Exterior Features
+			this.DOMotherExt = $("#window .other-exterior");
+			this.DOMdriveways = $("#window .driveways");
+			this.DOMbackyard = $("#window .backyard");
+
 		},
 		setEvents: function() {
 			// Close Button and when unfocused clicked
@@ -443,8 +508,8 @@ var init = function(document, window, googleGlobal, map) {
 					var touch = e.originalEvent.targetTouches[0];
 					this.touchStartX = touch.pageX;
 					this.touchStartY = touch.pageY;
-					console.log("Touch detected.");
-					console.log(`X: ${this.touchStartX}, Y: ${this.touchStartY}`);
+					//console.log("Touch detected.");
+					//console.log(`X: ${this.touchStartX}, Y: ${this.touchStartY}`);
 				}
 			});
 
@@ -452,16 +517,42 @@ var init = function(document, window, googleGlobal, map) {
 				var touch = e.originalEvent.changedTouches[0];
 				this.touchEndX = touch.pageX;
 				this.touchEndY = touch.pageY;
-				console.log("Untouch detected.");
-				console.log(`X: ${this.touchEndX}, Y: ${this.touchEndY}`);
+				//console.log("Untouch detected.");
+				//console.log(`X: ${this.touchEndX}, Y: ${this.touchEndY}`);
 			
 				this.handleSwipe(this.touchStartX, this.touchEndX);
 			});
 		},
 		render: function(data) {
-			console.log(data);
-			console.log(data.picturesrc);
-			this.getPictureCount(data.picturesrc);
+			this.id = data.id;
+			this.description = data.description;
+			this.type = data.type;
+			this.seller = data.seller;
+			this.price = data.price;
+			this.beds = data.beds;
+			this.baths = data.baths;
+			this.squareft = data.squareft;
+			this.lotsize = data.lotsize;
+			this.heating = data.heating;
+			this.cooling = data.cooling;
+			this.appliances = data.appliances;
+			this.flooring = data.flooring;
+			this.parking = data.parking;
+			this.driveways = data.driveways;
+			this.backyard = data.backyard;
+			this.otherInt = data.otherInt;
+			this.otherExt = data.otherExt;
+			this.hometype = data.hometype;
+			this.month = data.month;
+			this.day = data.day;
+			this.year = data.year;
+			this.tags = data.tags;
+			this.zip = data.zip;
+			this.city = data.city;
+			this.address = data.address;
+			this.picturesrc = data.picturesrc;
+			this.getPictureCount(this.picturesrc);
+			this.updateInfo();
 		},
 		hide: function() {
 			// Fade out window
@@ -486,12 +577,91 @@ var init = function(document, window, googleGlobal, map) {
 			this.arrowLeft.addClass("disabled");
 			this.arrowRight.removeClass("disabled");
 		},
-		// AJAX
+		updateInfo: function() {
+			this.DOMaddress.html(this.address + " " + this.city + " " + this.zip);
+			this.DOMbedsBig.html(this.beds);
+			this.DOMbathsBig.html(this.baths);
+			this.DOMsqftBig.html(this.squareft);
+			//console.log(this.description);
+			this.DOMdescription.html(this.description);
+			this.DOMprice.html("$" + this.price);
+
+			// Calculate Mortgage
+			var mortgage = this.price.replace(",", "");
+			this.DOMmortgage.html("$" + Math.round(parseInt(mortgage) / this.term) + "/mo");
+			this.DOMtype.html(this.type.toUpperCase());
+			this.DOMhometype.html(this.hometype);
+			this.DOMyearbuilt.html(this.year);
+			this.DOMheating.html(this.heating);
+			this.DOMcooling.html(this.cooling);
+			this.DOMparking.html(this.parking);
+			this.DOMlotSize.html(this.lotsize);
+
+			// Calculate Date Differences in Days Between Current Date and Listing Date
+			var date1 = new Date(this.month + " " + this.day + ", " + this.year + " 00:00:00");
+			var date2 = new Date();
+			var dateDiff = Math.round((((((date2 - date1) / 1000) / 60) / 60) / 24));
+			this.DOMdaysListed.html(dateDiff);
+
+			// Calculate Price per Square Feet
+			var pricePerSqft = Math.round(this.price.replace(",", "") / this.squareft);
+			this.DOMpriceSqft.html("$" + pricePerSqft);
+			this.DOMseller.html(this.seller);
+
+			// Convert Appliance Array to String
+			var apps = "";
+			for(var i = 0; i < this.appliances.length; i++) {
+				if (i === 0) {
+					apps += this.appliances[i];
+				} else {
+					apps += ", " + this.appliances[i];
+				}
+			}
+			this.DOMappliances.html(apps);
+
+			// Convert Flooring Array to String
+			var floor = "";
+			for(var i = 0; i < this.flooring.length; i++) {
+				if (i === 0) {
+					floor += this.flooring[i];
+				} else {
+					floor += ", " + this.flooring[i];
+				}
+			}
+			this.DOMflooring.html(floor);
+
+			// Convert Other Interior Features Array to String
+			var intFeat = "";
+			for(var i = 0; i < this.otherInt.length; i++) {
+				if (i === 0) {
+					intFeat += this.otherInt[i];
+				} else {
+					intFeat += ", " + this.otherInt[i];
+				}
+			}
+			this.DOMotherInt.html(intFeat);
+
+			this.DOMdriveways.html(this.driveways);
+			this.DOMbackyard.html(this.backyard);
+
+			// Convert Other Exterior Features Array to String
+			var extFeat = "";
+			for(var i = 0; i < this.otherExt.length; i++) {
+				if (i === 0) {
+					extFeat += this.otherExt[i];
+				} else {
+					extFeat += ", " + this.otherExt[i];
+					//console.log(extFeat);
+				}
+			}
+			this.DOMotherExt.html(extFeat);
+		},
 		getPictureCount: function(src) {
-			//console.log("[" + src + "] Fetching pictures..");
+			////console.log("[" + src + "] Fetching pictures..");
 			var dataString = "src=" + src;
 			var that = this;
 
+			// AJAX
 			// Fetches picture count from the server
 			$.ajax({
 				type: "POST",
@@ -499,13 +669,13 @@ var init = function(document, window, googleGlobal, map) {
 				data: dataString,
 				dataType: "json",
 				success: function(count) {
-					console.log("Picture count fetched.");
-					console.log(count);
+					//console.log("Picture count fetched.");
+					//console.log(count);
 					that.pictureCount = count;
 					that.displayPictures(src, count);
 				},
 				error: function() {
-					console.log("Connection failed.");
+					//console.log("Connection failed.");
 				}
 			});
 		},
@@ -525,7 +695,7 @@ var init = function(document, window, googleGlobal, map) {
 				this.sliderControllerWrapper.append("<div class='controller' onclick='goToPic(this);'></div>");
 				this.sliderControllers.push($("#window .slider-controller-wrapper .controller:last-child"));
 				this.sliderControllers[i].attr("value", i);
-				console.log("New Value: " + this.sliderControllers[i].attr("value"));
+				//console.log("New Value: " + this.sliderControllers[i].attr("value"));
 			}
 
 			// Append arrow controllers
@@ -562,7 +732,7 @@ var init = function(document, window, googleGlobal, map) {
 				this.activePicture = parseInt(newSlide);
 				this.disableArrowController();
 			} else if (newSlide === currentSlide) {
-				console.log("Lol.");
+				//console.log("Lol.");
 			}
 		},
 		toggleLightbox: function() {
@@ -692,14 +862,6 @@ var init = function(document, window, googleGlobal, map) {
 	}
 
 	//------------------
-	//	   Drivers
-	//------------------
-	toolBar.init();
-	googleMap.init();
-	list.init();
-	iWindow.init();
-
-	//------------------
 	//	  Responsive
 	//------------------
 	window.onresize = function() {
@@ -708,11 +870,11 @@ var init = function(document, window, googleGlobal, map) {
 		// If Tool Bar is opened
 		if (window.innerWidth > 767 && toolBar.opened) {
 			toolBar.expand();
-			console.log("Tool bar")
+			//console.log("Tool bar")
 		}
 
-		console.log("Window resized.");
-		console.log(googleMap.onResize());
+		//console.log("Window resized.");
+		//console.log(googleMap.onResize());
 		googleMap.onResize();
 	}
 
@@ -720,4 +882,12 @@ var init = function(document, window, googleGlobal, map) {
 	//	  Bindings
 	//------------------
 	window.goToPic = iWindow.setActivePicture;
+
+	//------------------
+	//	   Drivers
+	//------------------
+	toolBar.init();
+	googleMap.init();
+	list.init();
+	iWindow.init();
 };
