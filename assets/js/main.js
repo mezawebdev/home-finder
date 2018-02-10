@@ -1,4 +1,8 @@
+//------------------
+//	 Google Maps
+//------------------
 // Initialize Map, then callback main function
+// API KEY: AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE
 function initMap() {
 	var googleGlobal = google;
 
@@ -138,7 +142,7 @@ var init = function(document, window, googleGlobal, map) {
 				var touchY = e.originalEvent.touches[0].screenY;
 				this.resizeMap(null, null, touchY);
 			});
-/*
+			/*
 			this.draggableTab.on("touchmove", (e) => {
 				e.stopPropagation();
 				var touchY = e.originalEvent.touches[0].screenY;
@@ -343,11 +347,25 @@ var init = function(document, window, googleGlobal, map) {
 			this.toggleLoadingScreen();
 		},
 		fetchList: function() {
+			//this.listings = JSON.parse("listings.json");
+			$.ajax({
+				dataType: "json",
+				url: "assets/js/listings.json", 
+				success: (listings) => {
+					console.log(listings);
+					for (var i = 0; i < listings.length; i++) {
+						var listing = new Listing(listings[i].id, listings[i].type, listings[i].seller, listings[i].price, listings[i].beds, listings[i].baths, listings[i].squareft, listings[i].lotsize, listings[i].hometype, listings[i].month, listings[i].day, listings[i].tags, listings[i].zip, listings[i].city, listings[i].address, listings[i].picturesrc);
+						this.listings.push(listing);
+						this.listings[i].init();
+					}
+				}
+			});
+			/*
 			for (var i = 0; i < this.tempLists; i++) {
 				var listing = new Listing(0, "sale", "owner", "200,000", 2, 2, 1235, 2410, "house", "oct", 20, "pool garden driveway", 91915, "Chula Vista", "1476 Caminito Sardinia", "assets/images/listings/0");
 				this.listings.push(listing);
 				this.listings[i].init();
-			}
+			}*/
 
 			// List Padding Fix (Mobile) 
 			this.listDOM.css("padding-bottom", "20px");
@@ -676,17 +694,10 @@ var init = function(document, window, googleGlobal, map) {
 	//------------------
 	//	   Drivers
 	//------------------
-	//googleMap.init();
 	toolBar.init();
 	googleMap.init();
-	//views.init();
 	list.init();
 	iWindow.init();
-
-	//------------------
-	//	 Google Maps
-	//------------------
-	// API KEY: AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE
 
 	//------------------
 	//	  Responsive
@@ -709,5 +720,4 @@ var init = function(document, window, googleGlobal, map) {
 	//	  Bindings
 	//------------------
 	window.goToPic = iWindow.setActivePicture;
-
 };

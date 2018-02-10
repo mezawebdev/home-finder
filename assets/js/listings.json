@@ -1,0 +1,38 @@
+[
+	{
+		"id": 0,
+		"type": "sale",
+		"seller": "owner",
+		"price": "200,000",
+		"beds": 2,
+		"baths": 2,
+		"squareft": 1235,
+		"lotsize": 2410,
+		"hometype": "house",
+		"month": "oct", 
+		"day": 20,
+		"tags": "pool garden driveway",
+		"zip": 91915, 
+		"city": "Chula Vista", 
+		"address": "1476 Caminito Sardinia",
+		"picturesrc": "assets/images/listings/0"
+	},
+	{
+		"id": 1,
+		"type": "rent",
+		"seller": "agent",
+		"price": "400,000",
+		"beds": 3,
+		"baths": 2.5,
+		"squareft": 2400,
+		"lotsize": 3125,
+		"hometype": "house",
+		"month": "feb", 
+		"day": 77,
+		"tags": "pool garden driveway",
+		"zip": 91920, 
+		"city": "Bonita", 
+		"address": "2999 Fake st.",
+		"picturesrc": "assets/images/listings/0"
+	}
+]
