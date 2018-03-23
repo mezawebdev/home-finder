@@ -105,6 +105,10 @@ h2 {
   border: none; }
   .navbar .navbar-brand {
     color: #fafafa; }
+    .navbar .navbar-brand img {
+      width: 135px;
+      margin-top: -9px;
+      height: 35px; }
   .navbar .navbar-nav a {
     color: #fafafa !important; }
   .navbar .navbar-nav li.active a {
@@ -154,6 +158,12 @@ h2 {
       color: #fafafa;
       text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.75);
       font-size: 1.5em; }
+    #section-0 .content img {
+      width: 100px;
+      margin: 0 auto;
+      display: block;
+      margin-bottom: 10px;
+      filter: drop-shadow(0px 0px 4px black); }
     #section-0 .content .finder-wrapper {
       background: rgba(40, 40, 40, 0.8);
       width: 100%;

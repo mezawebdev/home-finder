@@ -31,11 +31,8 @@
 			this.rentButton = $("#option-rent");
 			this.newButton = $("#option-new");
 			this.citySpan = $(".city-span");
-
 			this.section0Wrapper = $("#section-0");
-
 			this.background = $(".background");
-
 			this.searchOptionsIcon = $(".search-options-btn i");
 
 			// Arrows
@@ -43,10 +40,8 @@
 			this.buyButtonArrow = $("#option-buy .arrow");
 			this.rentButtonArrow = $("#option-rent .arrow");
 			this.newButtonArrow = $("#option-new .arrow");
-
 			this.searchOptionsButton = $(".search-options-btn");
 			this.searchOptionsWrapper = $(".search-options-wrapper");
-
 			this.searchButton = $(".search-btn");
 			this.selectVanilla = document.getElementById("city-select");
 			this.priceMinElement = document.getElementById("price-min-select");
@@ -58,31 +53,24 @@
 			this.listing0Wrapper = $("#listing-0");
 			this.listings1Wrapper = $("#listing-1");
 			this.listings2Wrapper = $("#listing-2");
-
 			this.listing0Address = $("#listing-0 .listing-address");
 			this.listing1Address = $("#listing-1 .listing-address");
 			this.listing2Address = $("#listing-2 .listing-address");
-
 			this.listing0Price = $("#listing-0 .listing-price");
 			this.listing1Price = $("#listing-1 .listing-price");
 			this.listing2Price = $("#listing-2 .listing-price");
-
 			this.listing0Sqft = $("#listing-0 .listing-square-feet");
 			this.listing1Sqft = $("#listing-1 .listing-square-feet");
 			this.listing2Sqft = $("#listing-2 .listing-square-feet");
-
 			this.listing0Month = $("#listing-0 .listing-month");
 			this.listing1Month = $("#listing-1 .listing-month");
 			this.listing2Month = $("#listing-2 .listing-month");
-
 			this.listing0Day = $("#listing-0 .listing-day");
 			this.listing1Day = $("#listing-1 .listing-day");
 			this.listing2Day = $("#listing-2 .listing-day");
-
 			this.listing0Picture = $("#listing-0 .listing-picture");
 			this.listing1Picture = $("#listing-1 .listing-picture");
 			this.listing2Picture = $("#listing-2 .listing-picture");
-
 			this.cityError = $(".select .error-message");
 		},
 		fireEvents: function() {
@@ -245,7 +233,7 @@
 				},
 				success: (data) => {
 					console.log(data);
-					this.goToApp();
+					//this.goToApp();
 					//GLOBAL.location.href = "./finder";
 				}
 			});
@@ -266,6 +254,34 @@
 		}
 	}
 
+	var navbar = {
+		init: function() {
+			this.cacheDOM();
+			this.fireEvents();
+		},
+		cacheDOM: function() {
+			this.navbarElement = $(".navbar");
+		},
+		fireEvents: function() {
+
+		},
+		minimize: function() {
+			this.navbarElement.addClass("minimized");
+		},
+		unminimize: function() {
+			this.navbarElement.removeClass("minimized");
+		}
+	}
+
+	GLOBAL.onscroll = function() {
+		if (GLOBAL.pageYOffset > 0) {
+			//navbar.minimize();
+		} else {
+			//navbar.unminimize();
+		}
+	}
+
 	app.init();
+	//navbar.init();
 
 }(window, document));

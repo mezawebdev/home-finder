@@ -14,7 +14,7 @@
 	<meta name="prototype" content="0" />
 	<meta name="date" content="" />
 	<meta name="description" content="" />
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/bootstrap.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/ionicons.min.css">
 </head>
@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">San Diego Home Finder</a>
+          <a class="navbar-brand" href="#"><img src="assets/images/sd-home-finder-white.png" /></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -51,6 +51,7 @@
     <div id="section-0">  
     	<div class="overlay"></div>
     	<div class="content container">
+    		<img src="assets/images/new-logo-icon.png" />
     		<h2>Search San Diego Homes For Sale</h2>
     		<br />
     		<div class="finder-wrapper">
@@ -122,9 +123,14 @@
 								<div class="col-sm-6">
 									<select id="price-min-select" class="search-option-select">
 										<option value="" selected disabled hidden>Price Min</option>
-										 <option value="0">Carslbad</option>
-										 <option value="1">Chula Vista</option>
-										 <option value="2">Coronado</option>
+										 <option value="50000">50,000</option>
+										 <option value="100000">100,000</option>
+										 <option value="200000">200,000</option>
+										 <option value="300000">300,000</option>
+										 <option value="400000">400,000</option>
+										 <option value="500000">500,000</option>
+										 <option value="600000">600,000</option>
+										 <option value="500000">500,000</option>
 									</select>
 									<select id="price-max-select" class="search-option-select">
 										<option value="" selected disabled hidden>Price Max</option>
