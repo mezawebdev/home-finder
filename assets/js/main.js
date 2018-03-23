@@ -82,6 +82,8 @@
 			this.listing0Picture = $("#listing-0 .listing-picture");
 			this.listing1Picture = $("#listing-1 .listing-picture");
 			this.listing2Picture = $("#listing-2 .listing-picture");
+
+			this.cityError = $(".select .error-message");
 		},
 		fireEvents: function() {
 			this.allButton.on("click", () => {
@@ -125,6 +127,7 @@
 
 			this.selectVanilla.onchange = () => {
 				this.citySelected = this.selectVanilla.options[this.selectVanilla.selectedIndex].value;
+				this.selectVanilla.className = "";
 				//console.log(this.citySelected);
 			}
 
@@ -146,10 +149,8 @@
 
 			this.searchButton.on("click", (e) => {	
 				e.preventDefault();
-				this.updateSessionVariables();
+				this.authenticate();
 			});
-
-
 		},
 		render: function() {
 			if (isMobile) {
@@ -195,7 +196,7 @@
 		},
 		getNearbyListings: function(listings) {
 			var nearBy = [];
-			
+
 			for (var i = 0; i < listings.length; i++) {
 				if (listings[i].city === this.location) {
 					nearBy.push(listings[i]);
@@ -244,9 +245,24 @@
 				},
 				success: (data) => {
 					console.log(data);
-					GLOBAL.location.href = "./finder";
+					this.goToApp();
+					//GLOBAL.location.href = "./finder";
 				}
-			})
+			});
+		},
+		authenticate: function() {
+			if (! this.citySelected) {
+				this.cityError.addClass("active");
+				this.selectVanilla.className = "focus";
+				setTimeout(() => {
+					this.cityError.removeClass("active");
+				}, 3000);
+			} else {
+				this.updateSessionVariables();
+			}
+		},
+		goToApp: function() {
+			GLOBAL.location.href = "./finder";
 		}
 	}
 

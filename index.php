@@ -83,6 +83,10 @@
 				<form method="GET">
 					<div class="search">
 						<div class="select">
+							<div class="error-message">
+								<i class="ion-alert-circled"></i>&nbsp;Please Select City
+								<div class="arrow"></div>
+							</div>
 							<select id="city-select">
 							  <option value="" selected disabled hidden>Select Your City</option>
 							  <option value="Carslbad">Carslbad</option>
