@@ -19,7 +19,7 @@ $outset-box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 $input-bg-grey: #ECECEC;
 $unfocused-button-text: rgba(0, 0, 0, 0.4);
 $unfocused-button-background: rgba(200, 200, 200, 0.7);
-$green: #71C654;
+$green: #82C013;
 $cherryred: #F04838;
 $orange: #F38D31;
 $ui-black: rgb(240, 240, 240);
@@ -106,6 +106,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .ps__rail-x, .ps__rail-y {
 	display: none;
+}
+
+.noUi-connect {
+	background: $green !important;
+}
+
+.noUi-handle {
+	background: linear-gradient(0deg, #ebebeb, #fafafa) !important;
+}
+
+.noUi-base {
+	box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.1);
 }
 
 //---------------------------------
@@ -449,8 +461,8 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		button.active {
 			// background: rgb(245, 245, 245);
-			background: $orange;
-			border: 1px solid #E1832E;
+			background: $green;
+			border: 1px solid #73AB11;
 			box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
 			z-index: 10;
 			color: rgb(250, 250, 250);

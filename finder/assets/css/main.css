@@ -98,6 +98,15 @@ h1, h2, h3, h4, h5, h6 {
 .ps__rail-x, .ps__rail-y {
   display: none; }
 
+.noUi-connect {
+  background: #82C013 !important; }
+
+.noUi-handle {
+  background: linear-gradient(0deg, #ebebeb, #fafafa) !important; }
+
+.noUi-base {
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.1); }
+
 #intro-screen {
   width: 100vw;
   position: fixed;
@@ -374,8 +383,8 @@ h1, h2, h3, h4, h5, h6 {
       float: right;
       border-left: none; }
     #side-bar .body button.active {
-      background: #F38D31;
-      border: 1px solid #E1832E;
+      background: #82C013;
+      border: 1px solid #73AB11;
       box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
       z-index: 10;
       color: #fafafa; }
@@ -501,7 +510,7 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         margin-top: 7px;
         font-size: 1.3em;
-        color: #71C654;
+        color: #82C013;
         font-weight: 700; }
       #list .listing .listing-date .listing-day.old-month {
         color: #F04838; }
