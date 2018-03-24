@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background: #fafafa;
+  background-image: url(../images/background-4.png);
   z-index: 250; }
 
 #gmap {
@@ -94,6 +94,9 @@ h1, h2, h3, h4, h5, h6 {
 #test:active {
   width: 200px;
   height: 200px; }
+
+.ps__rail-x, .ps__rail-y {
+  display: none; }
 
 #intro-screen {
   width: 100vw;
@@ -285,7 +288,7 @@ h1, h2, h3, h4, h5, h6 {
     display: block; }
   #side-bar .body {
     display: none;
-    overflow-y: scroll;
+    overflow-y: hidden;
     padding: 25px 25px 55px 25px;
     background: #fafafa;
     position: relative;
@@ -538,16 +541,15 @@ h1, h2, h3, h4, h5, h6 {
   #map-wrapper .draggable-tab {
     width: 100%;
     height: 10px;
-    background: #fafafa;
-    box-shadow: 0px -2px 6px rgba(100, 100, 100, 0.3);
-    border-top: 1px solid #c8c8c8;
+    background: #F38D31;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.4);
     z-index: 600;
     cursor: grab; }
     #map-wrapper .draggable-tab .cover-up {
       width: 100%;
       height: 10px;
       position: absolute;
-      background: #fafafa;
+      background: #F38D31;
       z-index: 601;
       pointer-events: none; }
     #map-wrapper .draggable-tab .tab {
@@ -555,20 +557,17 @@ h1, h2, h3, h4, h5, h6 {
       margin: 0 auto;
       position: relative;
       height: 30px;
-      background: #fafafa;
+      background: #F38D31;
       top: -23px;
       border-top-right-radius: 100px;
       border-top-left-radius: 100px;
-      box-shadow: 0px -2px 6px rgba(100, 100, 100, 0.3);
+      box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.4);
       text-align: center;
-      border-top: 1px solid #c8c8c8;
-      border-left: 1px solid #c8c8c8;
-      border-right: 1px solid #c8c8c8;
       z-index: 600;
       cursor: grab; }
       #map-wrapper .draggable-tab .tab i {
         font-size: 1.1em;
-        color: #969696;
+        color: #fafafa;
         top: 6px;
         position: relative; }
     #map-wrapper .draggable-tab .tab:active {

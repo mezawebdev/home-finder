@@ -29,6 +29,7 @@ var init = function(document, window, googleGlobal, map) {
 	//	   Global 
 	//------------------
 	var fadeSpeed = 250;
+	var toolBarScrollbar;
 
 	$("body").on("touchmove", function(e) {
 		//console.log(e.originalEvent.touches[0].screenY);
@@ -452,6 +453,7 @@ var init = function(document, window, googleGlobal, map) {
 			});
 
 			this.fixSettingsHeight();
+			this.initPerfectScrollbar();
 		},
 		expand: function() {
 			if (! this.opened) {
@@ -536,6 +538,9 @@ var init = function(document, window, googleGlobal, map) {
 		sellerUnactify: function() {
 			this.sellerOwner.removeClass("active");
 			this.sellerAgent.removeClass("active");
+		},
+		initPerfectScrollbar: function() {
+			toolBarScrollbar = new PerfectScrollbar(".body");
 		}
 	}
 

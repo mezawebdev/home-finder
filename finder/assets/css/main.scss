@@ -72,9 +72,9 @@ h1, h2, h3, h4, h5, h6 {
 	//opacity: 0.7;
 	//background: linear-gradient(180deg, #f4e8e9, #e3dcc4);
 	//background: linear-gradient(0deg, rgb(200, 200, 200), rgb(220, 220, 220));
-	//background-image: url(../images/background-2.png);
+	background-image: url(../images/background-4.png);
 	// background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-	background: rgb(250, 250, 250);
+	// background: rgb(250, 250, 250);
 	z-index: 250;
 }
 
@@ -102,6 +102,10 @@ h1, h2, h3, h4, h5, h6 {
 #test:active {
 	width: 200px;
 	height: 200px;
+}
+
+.ps__rail-x, .ps__rail-y {
+	display: none;
 }
 
 //---------------------------------
@@ -392,7 +396,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 		//margin-top: 22px;
 		//height: 100%;
-		overflow-y: scroll;
+		overflow-y: hidden;
 		//height: unset;
 		padding: 25px 25px 55px 25px;
 		//height: 280px;
@@ -643,16 +647,18 @@ h1, h2, h3, h4, h5, h6 {
 	.draggable-tab {
 		width: 100%;
 		height: 10px;
-		background: rgb(250, 250, 250);
-		box-shadow: 0px -2px 6px rgba(100, 100, 100, 0.3);
-		border-top: 1px solid rgb(200, 200, 200);
+		// background: rgb(250, 250, 250);
+		background: $orange;
+		box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.4);
+		// border-top: 1px solid rgb(200, 200, 200);
 		z-index: 600;
 		cursor: grab;
 		.cover-up {
 		    width: 100%;
 		    height: 10px;
 		    position: absolute;
-		    background: #fafafa;
+		    // background: #fafafa;
+		    background: $orange;
 		    z-index: 601;
 		    pointer-events: none;
 		}
@@ -661,20 +667,21 @@ h1, h2, h3, h4, h5, h6 {
 			margin: 0 auto;
 			position: relative;
 			height: 30px;
-			background: rgb(250, 250, 250);
+			// background: rgb(250, 250, 250);
+			background: $orange;
 			top: -23px;
 			border-top-right-radius: 100px;
 			border-top-left-radius: 100px;
-			box-shadow: 0px -2px 6px rgba(100, 100, 100, 0.3);
+			box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.4);
 			text-align: center;
-			border-top: 1px solid rgb(200, 200, 200);
-			border-left: 1px solid rgb(200, 200, 200);
-			border-right: 1px solid rgb(200, 200, 200);
+			// border-top: 1px solid rgb(200, 200, 200);
+			// border-left: 1px solid rgb(200, 200, 200);
+			// border-right: 1px solid rgb(200, 200, 200);
 			z-index: 600;
 			cursor: grab;
 			i {
 				font-size: 1.1em;
-				color: rgb(150, 150, 150);
+				color: rgb(250, 250, 250);
 				top: 6px;
 				position: relative;
 			}

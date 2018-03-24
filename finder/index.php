@@ -418,6 +418,7 @@
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/nouislider.min.js"></script>
 	<script src="assets/js/granim.min.js"></script>
+	<script src="assets/js/perfect-scrollbar.min.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzB4QEH-YIMu5ZyRuOYebPMrYAGlYZodE&callback=initMap&libraries=places">
