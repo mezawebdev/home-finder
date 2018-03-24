@@ -285,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
 				z-index: 2;
 				position: relative;
 				border-top: 1px solid $border-grey;
-				input {
+				select {
 					border: 1px solid $border-grey;
 					height: 30px;
 					width: 60%;
@@ -320,7 +320,9 @@ h1, h2, h3, h4, h5, h6 {
 				div {
 					width: 30px;
 					height: 30px;
-					float: left;
+					top: 2px;
+					position: relative;
+					//float: left;
 					display: inline-block;
 					//border: 1px solid black;
 					border-left: 1px solid $border-grey;
@@ -329,8 +331,13 @@ h1, h2, h3, h4, h5, h6 {
 					margin-left: -30px;
 					padding-top: 6px;
 					padding-right: 2px;
-					background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
+					background: linear-gradient(0deg, rgba(235, 235, 235, 1), rgba(250, 250, 250, 1));
 					pointer-events: none;
+					color: rgb(50, 50, 50);
+					border: 1px solid $border-grey;
+					span {
+						color: rgb(50, 50, 50);
+					}
 				}
 			}
 	}

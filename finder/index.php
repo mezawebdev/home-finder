@@ -58,10 +58,37 @@
 				</div>
 			</div>
 			<div class="location-wrapper">
+				<!--
 				<form>
 					<input type="text" placeholder="City, zip code, street"/>
 					<button><span class="glyphicon glyphicon-search"></span></button>
 				</form>
+				-->
+
+				<select id="city-select">
+					<option value="" selected disabled hidden>Select Your City</option>
+					<option value="Carslbad">Carslbad</option>
+					<option value="ChulaVista">Chula Vista</option>
+					<option value="Coronado">Coronado</option>
+					<option value="DelMar">Del Mar</option>
+					<option value="ElCajon">El Cajon</option>
+					<option value="Encinitas">Encinitas</option>
+					<option value="Escondido">Escondido</option>
+					<option value="ImperialBeach">Imperial Beach</option>
+					<option value="LaMesa">La Mesa</option>
+					<option value="LemonGrove">Lemon Grove</option>
+					<option value="NationalCity">National City</option>
+					<option value="Oceanside">Oceanside</option>
+					<option value="Poway">Poway</option>
+					<option value="SanDiego">San Diego</option>
+					<option value="SanMarcos">San Marcos</option>
+					<option value="Santee">Santee</option>
+					<option value="SonadaBeach">Sonada Beach</option>
+					<option value="Vista">Vista</option>
+				</select>
+				<div class="city-select-icon">
+					<span class="glyphicon glyphicon-search"></span>
+				</div>
 			</div>
 		</div>
 		<div class="body">

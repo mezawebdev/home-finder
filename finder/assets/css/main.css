@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
       z-index: 2;
       position: relative;
       border-top: 1px solid #D3D3D3; }
-      #side-bar .header .location-wrapper input {
+      #side-bar .header .location-wrapper select {
         border: 1px solid #D3D3D3;
         height: 30px;
         width: 60%;
@@ -274,7 +274,8 @@ h1, h2, h3, h4, h5, h6 {
       #side-bar .header .location-wrapper div {
         width: 30px;
         height: 30px;
-        float: left;
+        top: 2px;
+        position: relative;
         display: inline-block;
         border-left: 1px solid #D3D3D3;
         border-top-right-radius: 5px;
@@ -282,8 +283,12 @@ h1, h2, h3, h4, h5, h6 {
         margin-left: -30px;
         padding-top: 6px;
         padding-right: 2px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1));
-        pointer-events: none; }
+        background: linear-gradient(0deg, #ebebeb, #fafafa);
+        pointer-events: none;
+        color: #323232;
+        border: 1px solid #D3D3D3; }
+        #side-bar .header .location-wrapper div span {
+          color: #323232; }
   #side-bar .header.active {
     display: block; }
   #side-bar .body {
