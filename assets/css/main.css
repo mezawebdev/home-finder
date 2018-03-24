@@ -125,7 +125,17 @@ h2 {
     background: #D87024;
     font-weight: bold; }
   .navbar .navbar-toggle {
-    border: none; }
+    border: none;
+    background: red;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    border: none;
+    padding: 8px 5px 5px 5px;
+    color: #232323;
+    background: #fafafa;
+    transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+    box-shadow: 0px 2px 7px rgba(100, 100, 100, 0.4); }
     .navbar .navbar-toggle .icon-bar {
       background: #fafafa; }
   .navbar .navbar-toggle:hover {

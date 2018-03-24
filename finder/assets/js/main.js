@@ -46,7 +46,7 @@ var init = function(document, window, googleGlobal, map) {
 	//	   Classes
 	//------------------
 	class Listing {
-		constructor(id, description, type, seller, price, beds, baths, squareft, lotsize, heating, cooling, appliances, flooring, parking, driveways, backyard, otherInt, otherExt, hometype, month, day, year, tags, zip, city, address, picturesrc) {
+		constructor(id, description, type, seller, price, beds, baths, squareft, lotsize, heating, cooling, appliances, flooring, parking, driveways, backyard, otherInt, otherExt, hometype, month, day, year, tags, zip, city, address, picturesrc, pictureCount) {
 			this.id = id;
 			this.description = description;
 			this.type = type;
@@ -74,6 +74,7 @@ var init = function(document, window, googleGlobal, map) {
 			this.city = city;
 			this.address = address;
 			this.picturesrc = picturesrc;
+			this.pictureCount = pictureCount;
 			this.liked = false;
 			this.located = false;
 		}
@@ -137,6 +138,31 @@ var init = function(document, window, googleGlobal, map) {
 	//------------------
 	//	   Modules
 	//------------------
+	var app = {
+		getSessionListing: function() {
+			$.ajax({
+				url: "../php/get_session_listing.php",
+				success: (listingID) => {
+					if (listingID) {
+						$.ajax({
+							url: "../json/listings.json",
+							dataType: "json",
+							success: (listings) => {
+								listings.forEach((listing) => {
+									console.log(listing.picturesrc1);
+									if (listing.id == listingID) {
+										iWindow.render(listing);
+										iWindow.show();
+									}
+								});
+							}
+						});
+					}
+				}
+			});
+		}
+	}
+
 	var googleMap = {
 		height: null,
 		tabRaised: false,
@@ -539,7 +565,8 @@ var init = function(document, window, googleGlobal, map) {
 				success: (listings) => {
 					//console.log(listings);
 					for (var i = 0; i < listings.length; i++) {
-						var listing = new Listing(listings[i].id, listings[i].description, listings[i].type, listings[i].seller, listings[i].price, listings[i].beds, listings[i].baths, listings[i].squareft, listings[i].lotsize, listings[i].heating, listings[i].cooling, listings[i].appliances, listings[i].flooring, listings[i].parking, listings[i].driveways, listings[i].backyard, listings[i].otherInt, listings[i].otherExt, listings[i].hometype, listings[i].month, listings[i].day, listings[i].year, listings[i].tags, listings[i].zip, listings[i].city, listings[i].address, listings[i].picturesrc);
+						// console.log(listings[i].picturesrc1);
+						var listing = new Listing(listings[i].id, listings[i].description, listings[i].type, listings[i].seller, listings[i].price, listings[i].beds, listings[i].baths, listings[i].squareft, listings[i].lotsize, listings[i].heating, listings[i].cooling, listings[i].appliances, listings[i].flooring, listings[i].parking, listings[i].driveways, listings[i].backyard, listings[i].otherInt, listings[i].otherExt, listings[i].hometype, listings[i].month, listings[i].day, listings[i].year, listings[i].tags, listings[i].zip, listings[i].city, listings[i].address, listings[i].picturesrc, listings[i].pictureCount);
 						this.listings.push(listing);
 						this.listings[i].init();
 					}
@@ -725,8 +752,12 @@ var init = function(document, window, googleGlobal, map) {
 			this.zip = data.zip;
 			this.city = data.city;
 			this.address = data.address;
+			// console.log(data.picturesrc);
 			this.picturesrc = data.picturesrc;
-			this.getPictureCount(this.picturesrc);
+			this.pictureCount = data.pictureCount;
+			// console.log(data.pictureCount);
+			//this.getPictureCount(this.picturesrc);
+			this.displayPictures();
 			this.updateInfo();
 		},
 		hide: function() {
@@ -860,13 +891,13 @@ var init = function(document, window, googleGlobal, map) {
 
 			// Create a picture element div for every picture in folder
 			this.pictureWrapperElement.empty();
-			for (var i = 0; i < count; i++) {
+			for (var i = 0; i < this.pictureCount; i++) {
 				this.pictureWrapperElement.append("<div class='picture'></div>");
-				$(".picture-wrapper .picture:last-child").css("background-image", "url('" + src + "/" + i + ".jpg')");
+				$(".picture-wrapper .picture:last-child").css("background-image", "url('" + this.picturesrc + "/" + i + ".jpg')");
 			}
 
 			// Append and store new controller per every picture (count)
-			for (var i = 0; i < count; i++) {
+			for (var i = 0; i < this.pictureCount; i++) {
 				this.sliderControllerWrapper.append("<div class='controller' onclick='goToPic(this);'></div>");
 				this.sliderControllers.push($("#window .slider-controller-wrapper .controller:last-child"));
 				this.sliderControllers[i].attr("value", i);
@@ -1053,6 +1084,10 @@ var init = function(document, window, googleGlobal, map) {
 		googleMap.onResize();
 	}
 
+	window.onload = function() {
+		app.getSessionListing();
+	}
+
 	//------------------
 	//	  Bindings
 	//------------------
@@ -1062,6 +1097,7 @@ var init = function(document, window, googleGlobal, map) {
 	//------------------
 	//	   Drivers
 	//------------------
+	//app.init();
 	toolBar.init();
 	googleMap.init();
 	list.init();

@@ -1,5 +1,7 @@
 <?php
 	session_start();
+
+	$_SESSION["currentListing"] = null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,6 +19,7 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.css" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/ionicons.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
 </head>
 <body>
 	<!-- wrapper start -->
@@ -27,9 +30,7 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
           </button>
           <a class="navbar-brand" href="/./"><img src="assets/images/sd-home-finder-white.png" /></a>
         </div>

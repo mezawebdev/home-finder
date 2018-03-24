@@ -42,7 +42,9 @@
 		"zip": 92173, 
 		"city": "San Diego", 
 		"address": "1476 Not Real Av.",
-		"picturesrc": "finder/assets/images/listings/0"
+		"picturesrc0": "finder/assets/images/listings/0",
+		"picturesrc": "assets/images/listings/0",
+		"pictureCount": 5
 	},
 	{
 		"id": 1,
@@ -86,7 +88,9 @@
 		"zip": 91920, 
 		"city": "Chula Vista", 
 		"address": "2999 Fake st.",
-		"picturesrc": "finder/assets/images/listings/0"
+		"picturesrc0": "finder/assets/images/listings/0",
+		"picturesrc": "assets/images/listings/0",
+		"pictureCount": 5
 	},
 	{
 		"id": 2,
@@ -130,7 +134,9 @@
 		"zip": 91920, 
 		"city": "Chula Vista", 
 		"address": "2999 Fake st.",
-		"picturesrc": "finder/assets/images/listings/0"
+		"picturesrc0": "finder/assets/images/listings/0",
+		"picturesrc": "assets/images/listings/0",
+		"pictureCount": 5
 	},
 		{
 		"id": 3,
@@ -174,6 +180,8 @@
 		"zip": 91920, 
 		"city": "Chula Vista", 
 		"address": "2999 Fake st.",
-		"picturesrc": "finder/assets/images/listings/0"
+		"picturesrc0": "finder/assets/images/listings/0",
+		"picturesrc": "assets/images/listings/0",
+		"pictureCount": 5
 	}
 ]

@@ -142,15 +142,15 @@
 			});
 
 			this.listing0Wrapper.on("click", () => {
-				this.goToApp(this.nearByListings[0].id);
+				this.setCurrentListing(this.nearByListings[0].id);
 			});
 
 			this.listings1Wrapper.on("click", () => {
-				this.goToApp(this.nearByListings[1].id);
+				this.setCurrentListing(this.nearByListings[1].id);
 			});
 
 			this.listings2Wrapper.on("click", () => {
-				this.goToApp(this.nearByListings[2].id);
+				this.setCurrentListing(this.nearByListings[2].id);
 			});
 		},
 		render: function() {
@@ -211,7 +211,7 @@
 			this.listing0Sqft.html(listings[0].squareft + "sqft");
 			this.listing0Month.html(listings[0].month.toUpperCase().substring(0, 3));
 			this.listing0Day.html(listings[0].day);
-			this.listing0Picture.css("background-image", "url('" + listings[0].picturesrc + "/0.jpg')");
+			this.listing0Picture.css("background-image", "url('" + listings[0].picturesrc0 + "/0.jpg')");
 			
 			// Listing 1 Data
 			this.listing1Price.html("$" + listings[1].price);
@@ -219,7 +219,7 @@
 			this.listing1Sqft.html(listings[1].squareft + "sqft");
 			this.listing1Month.html(listings[1].month.toUpperCase().substring(0, 3));
 			this.listing1Day.html(listings[1].day);
-			this.listing1Picture.css("background-image", "url('" + listings[1].picturesrc + "/0.jpg')");
+			this.listing1Picture.css("background-image", "url('" + listings[1].picturesrc0 + "/0.jpg')");
 			
 			// Listing 2 Data
 			this.listing2Price.html("$" + listings[2].price);
@@ -227,7 +227,7 @@
 			this.listing2Sqft.html(listings[2].squareft + "sqft");
 			this.listing2Month.html(listings[2].month.toUpperCase().substring(0, 3));
 			this.listing2Day.html(listings[2].day);
-			this.listing2Picture.css("background-image", "url('" + listings[2].picturesrc + "/0.jpg')");
+			this.listing2Picture.css("background-image", "url('" + listings[2].picturesrc0 + "/0.jpg')");
 		},
 		updateSessionVariables: function() {
 			// Set PHP Session Variables
@@ -260,16 +260,13 @@
 				this.updateSessionVariables();
 			}
 		},
-		goToApp: function(listingID) {
-			if (listingID) {
-				this.setCurrentListing(listingID);
-			} else {
-				GLOBAL.location.href = "./finder";
-			}
+		goToApp: function() {
+			GLOBAL.location.href = "./finder";
 		},
 		setCurrentListing: function(id) {
 			$.ajax({
 				url: "php/set_current_listing.php",
+				type: "POST",
 				data: {
 					listing: id
 				},

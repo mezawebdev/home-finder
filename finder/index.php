@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+	session_start();
+	
 ?>
 <!doctype html>
 <html lang="en">
@@ -148,7 +150,7 @@ session_start();
 			</div>
 		</div>
 		<div class="footer">
-			<img src="assets/images/new-logo.png" />
+			<img src="assets/images/sd-home-finder-white.png" />
 			<button><span class="glyphicon glyphicon-menu-hamburger"></span></button>
 		</div>
 	</div>	
