@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img src="assets/images/sd-home-finder-white.png" /></a>
+          <a class="navbar-brand" href="/./"><img src="assets/images/sd-home-finder-white.png" /></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -49,7 +49,11 @@
 
     <!--	 Navigation		-->
     <div id="section-0">  
-    	<div class="overlay"></div>
+    	<div class="overlay">
+    		<div class="top-overlay">
+
+    		</div>
+    	</div>
     	<div class="content container">
     		<img src="assets/images/new-logo-icon.png" />
     		<h2>Search San Diego Homes For Sale</h2>
@@ -210,171 +214,179 @@
     	</div>
     </div>
 
-    <div id="section-1" class="section">
-    	<div class="container">
-    		<h2>Newest Homes Near <span class="city-span">You</span></h2>
-    		<div class="gap"></div>
-    		<div class="row">
-    			<div class="col-sm-4">
-    				<div class="listing" id="listing-0">
-						<div class="listing-date">
-							<div class="listing-month"></div>
-							<p class="listing-day old-month"></p>
+    <div class="content-wrapper">
+	    <div id="section-1" class="section">
+	    	<div class="container">
+	    		<h2>Newest Homes Near <span class="city-span">You</span></h2>
+	    		<div class="gap"></div>
+	    		<div class="row">
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-0">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
 						</div>
-						<div class="listing-picture">
+	    			</div>
+	    			<div class="gap hideable"></div>
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-1">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
 						</div>
-						<hr />
-						<ul>
-							<li class="listing-price"></li>
-							<li class="listing-address"></li>
-							<li class="listing-square-feet"></li>
-						</ul>
-						<div class="navigation">
-							<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
-							<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+	    			</div>
+	    			<div class="gap hideable"></div>
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-2">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
 						</div>
-					</div>
-    			</div>
-    			<div class="gap hideable"></div>
-    			<div class="col-sm-4">
-    				<div class="listing" id="listing-1">
-						<div class="listing-date">
-							<div class="listing-month"></div>
-							<p class="listing-day old-month"></p>
-						</div>
-						<div class="listing-picture">
-						</div>
-						<hr />
-						<ul>
-							<li class="listing-price"></li>
-							<li class="listing-address"></li>
-							<li class="listing-square-feet"></li>
-						</ul>
-						<div class="navigation">
-							<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
-							<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
-						</div>
-					</div>
-    			</div>
-    			<div class="gap hideable"></div>
-    			<div class="col-sm-4">
-    				<div class="listing" id="listing-2">
-						<div class="listing-date">
-							<div class="listing-month"></div>
-							<p class="listing-day old-month"></p>
-						</div>
-						<div class="listing-picture">
-						</div>
-						<hr />
-						<ul>
-							<li class="listing-price"></li>
-							<li class="listing-address"></li>
-							<li class="listing-square-feet"></li>
-						</ul>
-						<div class="navigation">
-							<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
-							<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
-						</div>
-					</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
 
-    <div id="section-2" class="section">
-    	<div class="container">
-    		<h2>We help homes and people find each other.</h2>
-    		<div class="gap"></div>
-    		<div class="row">
-    			<div class="col-sm-4">
-    				<img src="assets/images/national.png" />
-    			</div>
-    			<br />
-    			<div class="col-sm-8 information">
-    				<div class="content">
-	    				<br />
-						<p>For over 15 years, we've been committed to making online home shopping a fun, practical and hassle-free experience. How? By creating a doorway connecting home buyers, sellers and real estate professionals, all to give you the listings, tools and resources you need to make your home buying experience as easy as possible.
+	    <!-- <div class="container">
+	    	<div class="divider"></div>
+	    </div> -->
 
-						Ready to move? Check out our listings!</p>
-					</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+	    <div id="section-2" class="section">
+	    	<div class="container">
+	    		<h2>We help homes and people find each other.</h2>
+	    		<div class="gap"></div>
+	    		<div class="row">
+	    			<div class="col-sm-4">
+	    				<img src="assets/images/national.png" />
+	    			</div>
+	    			<br />
+	    			<div class="col-sm-8 information">
+	    				<div class="content">
+		    				<br />
+							<p>For over 15 years, we've been committed to making online home shopping a fun, practical and hassle-free experience. How? By creating a doorway connecting home buyers, sellers and real estate professionals, all to give you the listings, tools and resources you need to make your home buying experience as easy as possible.
+
+							Ready to move? Check out our listings!</p>
+						</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
 
     <footer>
     	<div class="top">
-    		<div class="row">
-	    		<div class="col-sm-3">
-	    			<p>SanDiegoHomeFinder.com</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="#">About</a></li>
-	    				<li><a href="#">Management Team</a></li>
-	    				<li><a href="#">Our Network</a></li>
-	    				<li><a href="#">Media Center</a></li>
-	    				<li><a href="#">Careers</a></li>
-	    				<li><a href="#">Contact Us</a></li>
-	    			</ul>
-	    			<br />
-	    			<p>Support</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="#">Support Center</a></li>
-	    				<li><a href="#">Code: 2769bb</a></li>
-	    			</ul>
-	    		</div>
-	    		<br class="hideable" />
-	    		<div class="col-sm-3">
-	    			<p>Mobile</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="#">Our Mobile Apps</a></li>
-	    				<li><a href="#">Android</a></li>
-	    				<li><a href="#">Iphone</a></li>
-	    			</ul>
-	    			<br />
-	    			<p>Partner Site</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="http://alexmeza.me/new">AlexMeza.me</a></li>
-	    			</ul>
-	    		</div>
-	    		<br class="hideable" />
-	    		<div class="col-sm-3">
-	    			<p>Home Buying Resources</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="#">Browse Homes By City</a></li>
-	    				<li><a href="#">Mortgage Rates</a></li>
-	    				<li><a href="#">Open House Listings</a></li>
-	    				<li><a href="#">Buying Guide</a></li>
-	    				<li><a href="#">Mortgage Guide</a></li>
-	    				<li><a href="#">Foreclosure Guide</a></li>
-	    				<li><a href="#">All Research & Guides</a></li>
-	    				<li><a href="#">Blog</a></li>
-	    			</ul>
-	    		</div>
-	    		<br class="hideable" />
-	    		<div class="col-sm-3">
-	    			<p>Agent & Broker Resources</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="#">Agents & Brokers</a></li>
-	    				<li><a href="#">Advertisers Center</a></li>
-	    				<li><a href="#">Open Home Pro&reg; Application</a></li>
-	    				<li><a href="#">My Market Ads</a></li>
-	    				<li><a href="#">Single Property Website</a></li>
-	    				<li><a href="#">Real Estate Widgets</a></li>
-	    			</ul>
-	    			<br />
-	    			<p>Follow Us</p>
-	    			<hr />
-	    			<ul>
-	    				<li><a href="http://alexmeza.me/new">AlexMeza.me</a></li>
-	    			</ul>
-	    		</div>
-	    	</div>
+    		<div class="container">
+	    		<div class="row">
+		    		<div class="col-sm-3">
+		    			<p>SanDiegoHomeFinder.com</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="#">About</a></li>
+		    				<li><a href="#">Management Team</a></li>
+		    				<li><a href="#">Our Network</a></li>
+		    				<li><a href="#">Media Center</a></li>
+		    				<li><a href="#">Careers</a></li>
+		    				<li><a href="#">Contact Us</a></li>
+		    			</ul>
+		    			<br />
+		    			<p>Support</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="#">Support Center</a></li>
+		    				<li><a href="#">Code: 2769bb</a></li>
+		    			</ul>
+		    		</div>
+		    		<br class="hideable" />
+		    		<div class="col-sm-3">
+		    			<p>Mobile</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="#">Our Mobile Apps</a></li>
+		    				<li><a href="#">Android</a></li>
+		    				<li><a href="#">Iphone</a></li>
+		    			</ul>
+		    			<br />
+		    			<p>Partner Site</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="http://alexmeza.me/new">AlexMeza.me</a></li>
+		    			</ul>
+		    		</div>
+		    		<br class="hideable" />
+		    		<div class="col-sm-3">
+		    			<p>Home Buying Resources</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="#">Browse Homes By City</a></li>
+		    				<li><a href="#">Mortgage Rates</a></li>
+		    				<li><a href="#">Open House Listings</a></li>
+		    				<li><a href="#">Buying Guide</a></li>
+		    				<li><a href="#">Mortgage Guide</a></li>
+		    				<li><a href="#">Foreclosure Guide</a></li>
+		    				<li><a href="#">All Research & Guides</a></li>
+		    				<li><a href="#">Blog</a></li>
+		    			</ul>
+		    		</div>
+		    		<br class="hideable" />
+		    		<div class="col-sm-3">
+		    			<p>Agent & Broker Resources</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="#">Agents & Brokers</a></li>
+		    				<li><a href="#">Advertisers Center</a></li>
+		    				<li><a href="#">Open Home Pro&reg; Application</a></li>
+		    				<li><a href="#">My Market Ads</a></li>
+		    				<li><a href="#">Single Property Website</a></li>
+		    				<li><a href="#">Real Estate Widgets</a></li>
+		    			</ul>
+		    			<br />
+		    			<p>Follow Us</p>
+		    			<hr />
+		    			<ul>
+		    				<li><a href="http://alexmeza.me/new">AlexMeza.me</a></li>
+		    			</ul>
+		    		</div>
+		    	</div>
+		    </div>
 	    </div>
     	<div class="bottom">
     		<p>© 2018 SanDiegoHomeFinder.com, LLC</p>

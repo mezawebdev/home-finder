@@ -1057,6 +1057,7 @@ var init = function(document, window, googleGlobal, map) {
 	//	  Bindings
 	//------------------
 	window.goToPic = iWindow.setActivePicture;
+	window.list = list;
 
 	//------------------
 	//	   Drivers

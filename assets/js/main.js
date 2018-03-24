@@ -18,6 +18,7 @@
 		priceMax: null,
 		beds: null,
 		baths: null,
+		nearByListings: [],
 		init: function() {
 			this.cacheDOM();
 			this.fireEvents();
@@ -139,12 +140,24 @@
 				e.preventDefault();
 				this.authenticate();
 			});
+
+			this.listing0Wrapper.on("click", () => {
+				this.goToApp(this.nearByListings[0].id);
+			});
+
+			this.listings1Wrapper.on("click", () => {
+				this.goToApp(this.nearByListings[1].id);
+			});
+
+			this.listings2Wrapper.on("click", () => {
+				this.goToApp(this.nearByListings[2].id);
+			});
 		},
 		render: function() {
 			if (isMobile) {
 				this.background.addClass("mobile");
 			} else {
-				this.background.attr("data-vide-bg", "assets/videos/home-video-uncompressed.mp4");
+				this.background.attr("data-vide-bg", "assets/videos/san-diego-2.mp4");
 				this.background.attr("data-vide-options", "loop: true, muted: true, position: 50% 50%");
 			}
 		},
@@ -183,15 +196,13 @@
 			});
 		},
 		getNearbyListings: function(listings) {
-			var nearBy = [];
-
 			for (var i = 0; i < listings.length; i++) {
 				if (listings[i].city === this.location) {
-					nearBy.push(listings[i]);
+					this.nearByListings.push(listings[i]);
 				}
 			}
 
-			this.renderListingData(nearBy);
+			this.renderListingData(this.nearByListings);
 		},
 		renderListingData: function(listings) {
 			// Listing 0 Data
@@ -249,8 +260,23 @@
 				this.updateSessionVariables();
 			}
 		},
-		goToApp: function() {
-			GLOBAL.location.href = "./finder";
+		goToApp: function(listingID) {
+			if (listingID) {
+				this.setCurrentListing(listingID);
+			} else {
+				GLOBAL.location.href = "./finder";
+			}
+		},
+		setCurrentListing: function(id) {
+			$.ajax({
+				url: "php/set_current_listing.php",
+				data: {
+					listing: id
+				},
+				success: () => {
+					this.goToApp();
+				}
+			});
 		}
 	}
 

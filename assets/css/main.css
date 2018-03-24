@@ -99,6 +99,15 @@ h2 {
   height: 35px;
   display: block; }
 
+.divider {
+  width: 90%;
+  margin: 0 auto;
+  background: #e1e1e1;
+  height: 1px; }
+
+.content-wrapper {
+  background: #fafafa; }
+
 .navbar {
   background: #F38D31;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
@@ -140,8 +149,16 @@ h2 {
     top: 0;
     width: 100%;
     height: 650px;
-    background: rgba(35, 35, 35, 0.4);
-    z-index: 10; }
+    background-image: url("../images/video_texture.png");
+    z-index: 10;
+    background-repeat: repeat; }
+    #section-0 .overlay .top-overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.2); }
   #section-0 .content {
     position: absolute;
     width: 100%;
@@ -241,7 +258,7 @@ h2 {
           #section-0 .content .finder-wrapper .search .select .error-message {
             position: relative;
             width: 80%;
-            background: rgba(255, 76, 59, 0.9);
+            background: #ff4c3b;
             padding-top: 7px;
             height: 33px;
             margin: 0 auto;
@@ -250,15 +267,17 @@ h2 {
             top: -20px;
             color: #fafafa;
             opacity: 0;
-            transition: opacity 0.25s ease-in-out; }
+            transition: opacity 0.25s ease-in-out;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
             #section-0 .content .finder-wrapper .search .select .error-message .arrow {
               position: absolute;
-              border-top: 20px solid rgba(255, 76, 59, 0.9);
+              border-top: 20px solid #ff4c3b;
               border-bottom: 20px solid transparent;
               border-left: 20px solid transparent;
               border-right: 20px solid transparent;
               left: 20px;
-              bottom: -40px; }
+              bottom: -39px;
+              filter: drop-shadow(0px 7px 4px rgba(0, 0, 0, 0.3)); }
           #section-0 .content .finder-wrapper .search .select .error-message.active {
             opacity: 1; }
           #section-0 .content .finder-wrapper .search .select .search-icon {
@@ -423,7 +442,8 @@ h2 {
     color: #7d7d7d; }
 
 footer .top {
-  padding: 25px 25px 25px 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   transition: padding-top 1s ease-in-out, padding-bottom 1s ease-in-out;
   -moz-transition: padding-top 1s ease-in-out, padding-bottom 1s ease-in-out;
   -o-transition: padding-top 1s ease-in-out, padding-bottom 1s ease-in-out;
