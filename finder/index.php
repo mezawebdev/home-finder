@@ -87,7 +87,7 @@
 					<option value="Vista">Vista</option>
 				</select>
 				<div class="city-select-icon">
-					<span class="glyphicon glyphicon-search"></span>
+					<i class="fa fa-map"></i>
 				</div>
 			</div>
 		</div>
