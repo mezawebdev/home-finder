@@ -374,10 +374,11 @@ h1, h2, h3, h4, h5, h6 {
       float: right;
       border-left: none; }
     #side-bar .body button.active {
-      background: whitesmoke;
-      border: 1px solid #F38D31;
+      background: #F38D31;
+      border: 1px solid #E1832E;
       box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
-      z-index: 10; }
+      z-index: 10;
+      color: #fafafa; }
   #side-bar .body.active {
     display: block; }
   #side-bar .footer {
