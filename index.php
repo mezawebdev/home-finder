@@ -42,7 +42,7 @@
             <li><a href="#contact">Near You</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="./">My Account</span></a></li>
+            <li class="active"><a href="./"><i class="fa fa-user"></i>&nbsp;&nbsp;My Account</span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -61,25 +61,19 @@
     		<br />
     		<div class="finder-wrapper">
 				<div class="row">
-					<div class="col-xs-3">
-						<div id="option-all" class="finder-option active">
-							<span>All <i>Homes</i></span>
+					<div class="col-xs-4">
+						<div id="option-buy" class="finder-option active">
+							<span>Buy</span>
 							<div class="arrow active"></div>
 						</div>
 					</div>
-					<div class="col-xs-3">
-						<div id="option-buy" class="finder-option">
-							<span>Buy</span>
-							<div class="arrow"></div>
-						</div>
-					</div>
-					<div class="col-xs-3">
+					<div class="col-xs-4">
 						<div id="option-rent" class="finder-option">
 							<span>Rent</span>
 							<div class="arrow"></div>
 						</div>
 					</div>
-					<div class="col-xs-3">
+					<div class="col-xs-4">
 						<div id="option-new" class="finder-option">
 							<span>New <i>Homes</i></span>
 							<div class="arrow"></div>
@@ -128,35 +122,170 @@
 								<div class="col-sm-6">
 									<select id="price-min-select" class="search-option-select">
 										<option value="" selected disabled hidden>Price Min</option>
-										 <option value="50000">50,000</option>
-										 <option value="100000">100,000</option>
-										 <option value="200000">200,000</option>
-										 <option value="300000">300,000</option>
-										 <option value="400000">400,000</option>
-										 <option value="500000">500,000</option>
-										 <option value="600000">600,000</option>
-										 <option value="500000">500,000</option>
+										 <option value="500">$500</option>
+										 <option value="1000">$1,000</option>
+										 <option value="1500">$1,500</option>
+										 <option value="2000">$2,000</option>
+										 <option value="2500">$2,500</option>
+										 <option value="3000">$3,000</option>
+										 <option value="3500">$3,500</option>
+										 <option value="4000">$4,000</option>
+										 <option value="4500">$4,500</option>
+										 <option value="5000">$5,000</option>
+										 <option value="10000">$10,000</option>
+										 <option value="20000">$20,000</option>
+										 <option value="30000">$30,000</option>
+										 <option value="40000">$40,000</option>
+										 <option value="50000">$50,000</option>
+										 <option value="60000">$60,000</option>
+										 <option value="70000">$70,000</option>
+										 <option value="80000">$80,000</option>
+										 <option value="90000">$90,000</option>
+										 <option value="100000">$100,000</option>
+										 <option value="125000">$125,000</option>
+										 <option value="150000">$150,000</option>
+										 <option value="175000">$175,000</option>
+										 <option value="200000">$200,000</option>
+										 <option value="225000">$225,000</option>
+										 <option value="250000">$250,000</option>
+										 <option value="275000">$275,000</option>
+										 <option value="300000">$300,000</option>
+										 <option value="325000">$325,000</option>
+										 <option value="350000">$350,000</option>
+										 <option value="375000">$375,000</option>
+										 <option value="400000">$400,000</option>
+										 <option value="425000">$425,000</option>
+										 <option value="450000">$450,000</option>
+										 <option value="475000">$475,000</option>
+										 <option value="500000">$500,000</option>
+										 <option value="525000">$525,000</option>
+										 <option value="550000">$550,000</option>
+										 <option value="575000">$575,000</option>
+										 <option value="600000">$600,000</option>
+										 <option value="625000">$625,000</option>
+										 <option value="650000">$650,000</option>
+										 <option value="675000">$675,000</option>
+										 <option value="700000">$700,000</option>
+										 <option value="725000">$725,000</option>
+										 <option value="750000">$750,000</option>
+										 <option value="775000">$775,000</option>
+										 <option value="800000">$800,000</option>
+										 <option value="825000">$825,000</option>
+										 <option value="850000">$850,000</option>
+										 <option value="875000">$875,000</option>
+										 <option value="900000">$900,000</option>
+										 <option value="925000">$925,000</option>
+										 <option value="950000">$950,000</option>
+										 <option value="975000">$975,000</option>
+										 <option value="1000000">$1,000,000</option>
+										 <option value="1250000">$1,250,000</option>
+										 <option value="1500000">$1,500,000</option>
+										 <option value="1750000">$1,750,000</option>
+										 <option value="2000000">$2,000,000</option>
+										 <option value="2250000">$2,250,000</option>
+										 <option value="2500000">$2,500,000</option>
+										 <option value="2750000">$2,750,000</option>
+										 <option value="3000000">$3,000,000</option>
+										 <option value="3500000">$3,500,000</option>
+										 <option value="4000000">$4,000,000</option>
+										 <option value="4500000">$4,500,000</option>
+										 <option value="5000000">$5,000,000</option>
+										 <option value="6000000">$6,000,000</option>
+										 <option value="8000000">$8,000,000</option>
+										 <option value="10000000">$10,000,000</option>
 									</select>
 									<select id="price-max-select" class="search-option-select">
 										<option value="" selected disabled hidden>Price Max</option>
-										 <option value="0">Carslbad</option>
-										 <option value="1">Chula Vista</option>
-										 <option value="2">Coronado</option>
+										 <option value="500">$500</option>
+										 <option value="1000">$1,000</option>
+										 <option value="1500">$1,500</option>
+										 <option value="2000">$2,000</option>
+										 <option value="2500">$2,500</option>
+										 <option value="3000">$3,000</option>
+										 <option value="3500">$3,500</option>
+										 <option value="4000">$4,000</option>
+										 <option value="4500">$4,500</option>
+										 <option value="5000">$5,000</option>
+										 <option value="10000">$10,000</option>
+										 <option value="20000">$20,000</option>
+										 <option value="30000">$30,000</option>
+										 <option value="40000">$40,000</option>
+										 <option value="50000">$50,000</option>
+										 <option value="60000">$60,000</option>
+										 <option value="70000">$70,000</option>
+										 <option value="80000">$80,000</option>
+										 <option value="90000">$90,000</option>
+										 <option value="100000">$100,000</option>
+										 <option value="125000">$125,000</option>
+										 <option value="150000">$150,000</option>
+										 <option value="175000">$175,000</option>
+										 <option value="200000">$200,000</option>
+										 <option value="225000">$225,000</option>
+										 <option value="250000">$250,000</option>
+										 <option value="275000">$275,000</option>
+										 <option value="300000">$300,000</option>
+										 <option value="325000">$325,000</option>
+										 <option value="350000">$350,000</option>
+										 <option value="375000">$375,000</option>
+										 <option value="400000">$400,000</option>
+										 <option value="425000">$425,000</option>
+										 <option value="450000">$450,000</option>
+										 <option value="475000">$475,000</option>
+										 <option value="500000">$500,000</option>
+										 <option value="525000">$525,000</option>
+										 <option value="550000">$550,000</option>
+										 <option value="575000">$575,000</option>
+										 <option value="600000">$600,000</option>
+										 <option value="625000">$625,000</option>
+										 <option value="650000">$650,000</option>
+										 <option value="675000">$675,000</option>
+										 <option value="700000">$700,000</option>
+										 <option value="725000">$725,000</option>
+										 <option value="750000">$750,000</option>
+										 <option value="775000">$775,000</option>
+										 <option value="800000">$800,000</option>
+										 <option value="825000">$825,000</option>
+										 <option value="850000">$850,000</option>
+										 <option value="875000">$875,000</option>
+										 <option value="900000">$900,000</option>
+										 <option value="925000">$925,000</option>
+										 <option value="950000">$950,000</option>
+										 <option value="975000">$975,000</option>
+										 <option value="1000000">$1,000,000</option>
+										 <option value="1250000">$1,250,000</option>
+										 <option value="1500000">$1,500,000</option>
+										 <option value="1750000">$1,750,000</option>
+										 <option value="2000000">$2,000,000</option>
+										 <option value="2250000">$2,250,000</option>
+										 <option value="2500000">$2,500,000</option>
+										 <option value="2750000">$2,750,000</option>
+										 <option value="3000000">$3,000,000</option>
+										 <option value="3500000">$3,500,000</option>
+										 <option value="4000000">$4,000,000</option>
+										 <option value="4500000">$4,500,000</option>
+										 <option value="5000000">$5,000,000</option>
+										 <option value="6000000">$6,000,000</option>
+										 <option value="8000000">$8,000,000</option>
+										 <option value="10000000">$10,000,000</option>
 									</select>
 								</div>
 								<br class="hideable"/>
 								<div class="col-sm-6">
 									<select id="beds-select" class="search-option-select">
 										<option value="" selected disabled hidden>Beds</option>
-										 <option value="0">Carslbad</option>
-										 <option value="1">Chula Vista</option>
-										 <option value="2">Coronado</option>
+										 <option value="1">1+ Beds</option>
+										 <option value="2">2+ Beds</option>
+										 <option value="3">3+ Beds</option>
+										 <option value="4">4+ Beds</option>
+										 <option value="5">5+ Beds</option>
 									</select>
 									<select id="baths-select" class="search-option-select">
 										<option value="" selected disabled hidden>Baths</option>
-										 <option value="0">Carslbad</option>
-										 <option value="1">Chula Vista</option>
-										 <option value="2">Coronado</option>
+										 <option value="1">1+ Baths</option>
+										 <option value="2">2+ Baths</option>
+										 <option value="3">3+ Baths</option>
+										 <option value="4">4+ Baths</option>
+										 <option value="5">5+ Baths</option>
 									</select>
 								</div>
 							</div>
@@ -164,23 +293,23 @@
 							<div class="row">
 								<div class="col-xs-4">
 									<div class="radio-wrapper">
-										<input type="radio" id="contactChoice1"
-									     name="contact" value="email" checked>
-									    <label for="contactChoice1">Basement</label>
+										<input type="checkbox" id="checkbox-basement"
+									     name="basement" value="basement">
+									    <label for="checkbox-basement">Basement</label>
 									</div>
 								</div>
 								<div class="col-xs-4">
 									<div class="radio-wrapper">
-										<input type="radio" id="contactChoice2"
-									     name="contact" value="phone">
-									    <label for="contactChoice2">Fireplace</label>
+										<input type="checkbox" id="checkbox-fireplace"
+									     name="fireplace" value="fireplace">
+									    <label for="checkbox-fireplace">Fireplace</label>
 									</div>
 								</div>
 								<div class="col-xs-4">
 									<div class="radio-wrapper">
-										<input type="radio" id="contactChoice3"
-									     name="contact" value="mail">
-									    <label for="contactChoice3">Pool</label>
+										<input type="checkbox" id="checkbox-pool"
+									     name="pool" value="pool">
+									    <label for="checkbox-pool">Pool</label>
 									</div>
 								</div>
 							</div>
@@ -188,23 +317,23 @@
 							<div class="row">
 								<div class="col-xs-4">
 									<div class="radio-wrapper">
-										<input type="radio" id="contactChoice1"
-									     name="contact" value="email" checked>
-									    <label for="contactChoice1">Garage</label>
+										<input type="checkbox" id="checkbox-garage"
+									     name="garage" value="garage">
+									    <label for="checkbox-garage">Garage</label>
 									</div>
 								</div>
 								<div class="col-xs-4">
 									<div class="radio-wrapper">
-										<input type="radio" id="contactChoice2"
-									     name="contact" value="phone">
-									    <label for="contactChoice2">Central Air</label>
+										<input type="checkbox" id="checkbox-central-air"
+									     name="central-air" value="central-air">
+									    <label for="checkbox-central-air">Central Air</label>
 									</div>
 								</div>
 								<div class="col-xs-4">
 									<div class="radio-wrapper">
-										<input type="radio" id="contactChoice3"
-									     name="contact" value="mail">
-									    <label for="contactChoice3">Dining Room</label>
+										<input type="checkbox" id="checkbox-dining-room"
+									     name="dining-room" value="dining-room">
+									    <label for="checkbox-dining-room">Dining Room</label>
 									</div>
 								</div>
 							</div>
@@ -217,7 +346,7 @@
 
     <div class="content-wrapper">
 	    <div id="section-1" class="section">
-	    	<div class="container">
+	    	<div class="container nearby-listings">
 	    		<h2>Newest Homes Near <span class="city-span">You</span></h2>
 	    		<div class="gap"></div>
 	    		<div class="row">
@@ -283,6 +412,156 @@
 							</div>
 						</div>
 	    			</div>
+	    		</div>
+	    		<br />
+	    		<div class="row">
+	    			<button class="see-more-btn">See more listings</button>
+	    		</div>
+	    	</div>
+
+	    	<div class="container new-built-listings margin-top">
+	    		<h2>Most Recently Built</h2>
+	    		<div class="gap"></div>
+	    		<div class="row">
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-3">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
+						</div>
+	    			</div>
+	    			<div class="gap hideable"></div>
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-4">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
+						</div>
+	    			</div>
+	    			<div class="gap hideable"></div>
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-5">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
+						</div>
+	    			</div>
+	    		</div>
+	    		<br />
+	    		<div class="row">
+	    			<button class="see-more-btn">See more listings</button>
+	    		</div>
+	    	</div>
+
+	    	<div class="container least-expensive-listings margin-top">
+	    		<h2>Least Expensive</h2>
+	    		<div class="gap"></div>
+	    		<div class="row">
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-6">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
+						</div>
+	    			</div>
+	    			<div class="gap hideable"></div>
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-7">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
+						</div>
+	    			</div>
+	    			<div class="gap hideable"></div>
+	    			<div class="col-sm-4">
+	    				<div class="listing" id="listing-8">
+							<div class="listing-date">
+								<div class="listing-month"></div>
+								<p class="listing-day old-month"></p>
+							</div>
+							<div class="listing-picture">
+							</div>
+							<hr />
+							<ul>
+								<li class="listing-price"></li>
+								<li class="listing-address"></li>
+								<li class="listing-square-feet"></li>
+							</ul>
+							<div class="navigation">
+								<button class="listing-button like-button"><i class="fa fa-star" aria-hidden="true"></i></button>
+								<button class="listing-button locate-button"><i class="fa fa-map-marker aria-hidden="true"></i></button>
+							</div>
+						</div>
+	    			</div>
+	    		</div>
+	    		<br />
+	    		<div class="row">
+	    			<button class="see-more-btn">See more listings</button>
 	    		</div>
 	    	</div>
 	    </div>

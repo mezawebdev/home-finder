@@ -71,7 +71,8 @@ h2 {
   z-index: -1; }
 
 .background.mobile {
-  background-image: url("../images/san-diego-2.jpg"); }
+  background-image: url("../images/san-diego-4.jpg");
+  background-size: cover; }
 
 #kenburns_slideshow {
   position: relative;
@@ -122,7 +123,7 @@ h2 {
     color: #fafafa !important; }
   .navbar .navbar-nav li.active a {
     color: #fafafa !important;
-    background: #D87024;
+    background: #EB7A28;
     font-weight: bold; }
   .navbar .navbar-toggle {
     border: none;
@@ -139,7 +140,8 @@ h2 {
     .navbar .navbar-toggle .icon-bar {
       background: #fafafa; }
   .navbar .navbar-toggle:hover {
-    background: transparent; }
+    box-shadow: inset 0px 0px 2px rgba(100, 100, 100, 0.6);
+    background: #fafafa !important; }
   .navbar .navbar-collapse {
     border: none;
     box-shadow: none; }
@@ -159,7 +161,7 @@ h2 {
     top: 0;
     width: 100%;
     height: 650px;
-    background-image: url("../images/video_texture.png");
+    background: rgba(35, 35, 35, 0.2);
     z-index: 10;
     background-repeat: repeat; }
     #section-0 .overlay .top-overlay {
@@ -179,7 +181,7 @@ h2 {
     -o-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     z-index: 15;
-    margin-top: 25px; }
+    margin-top: 20px; }
     #section-0 .content h2 {
       text-align: center;
       color: #fafafa;
@@ -190,7 +192,7 @@ h2 {
       margin: 0 auto;
       display: block;
       margin-bottom: 10px;
-      filter: drop-shadow(0px 0px 4px black); }
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.75)); }
     #section-0 .content .finder-wrapper {
       background: rgba(40, 40, 40, 0.8);
       width: 100%;
@@ -430,6 +432,18 @@ h2 {
   #section-1 .listing:active {
     -webkit-transform: scale(0.98);
     -moz-transform: scale(0.98); }
+  #section-1 button.see-more-btn {
+    margin: 0 auto;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    background: #82C013;
+    display: block;
+    margin-top: 10px;
+    color: #fafafa;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3); }
+  #section-1 .margin-top {
+    margin-top: 75px; }
 
 #section-2 {
   padding-top: 75px;

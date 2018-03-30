@@ -30,18 +30,7 @@ var init = function(document, window, googleGlobal, map) {
 	//------------------
 	var fadeSpeed = 250;
 	var toolBarScrollbar;
-
-	$("body").on("touchmove", function(e) {
-		//console.log(e.originalEvent.touches[0].screenY);
-	});
-
-	$.ajax({
-		url: "../php/get_city.php",
-		type: "POST",
-		success: function(data) {
-			console.log("Session data: " + data);
-		}
-	});
+	var windowScrollbar;
 
 	//------------------
 	//	   Classes
@@ -140,6 +129,10 @@ var init = function(document, window, googleGlobal, map) {
 	//	   Modules
 	//------------------
 	var app = {
+		init: function() {
+			this.getSessionListing();
+			this.getSessionVariables();
+		},
 		getSessionListing: function() {
 			$.ajax({
 				url: "../php/get_session_listing.php",
@@ -161,6 +154,105 @@ var init = function(document, window, googleGlobal, map) {
 					}
 				}
 			});
+		},
+		getSessionVariables: function() {
+			$.ajax({
+				url: "../php/get_session_variables.php",
+				type: "POST",
+				dataType: "json",
+				success: (data) => {
+					this.toggleSessionOptions(data);
+				}
+			});
+		},
+		toggleSessionOptions: function(data) {
+			// Check which city is selected in session and toggles it
+			switch(data[0]) {
+				case "Carlsbad":
+					toolBar.citySelect.selectedIndex = 1;
+					toolBar.city = "Carlsbad";
+					break;
+				case "ChulaVista": 
+					toolBar.citySelect.selectedIndex = 2;
+					toolBar.city = "ChulaVista";
+					break;
+				case "Coronado":
+					toolBar.citySelect.selectedIndex = 3;
+					toolBar.city = "Coronado";
+					break;
+				case "DelMar": 
+					toolBar.citySelect.selectedIndex = 4;
+					toolBar.city = "DelMar";
+					break;
+				case "ElCajon":
+					toolBar.citySelect.selectedIndex = 5;
+					toolBar.city = "ElCajon";
+					break;
+				case "Encinitas":
+					toolBar.citySelect.selectedIndex = 6;
+					toolBar.city = "Encinitas";
+					break;
+				case "Escondido":
+					toolBar.citySelect.selectedIndex = 7;
+					toolBar.city = "Escondido";
+					break;
+				case "ImperialBeach": 
+					toolBar.citySelect.selectedIndex = 8;
+					toolBar.city = "ImperialBeach";
+					break;
+				case "LaMesa":
+					toolBar.citySelect.selectedIndex = 9;
+					toolBar.city = "LaMesa";
+					break
+				case "LemonGrove":
+					toolBar.citySelect.selectedIndex = 10;
+					toolBar.city = "LemonGrove";
+					break;
+				case "NationalCity":
+					toolBar.citySelect.selectedIndex = 11;
+					toolBar.city = "NationalCity";
+					break;
+				case "Oceanside": 
+					toolBar.citySelect.selectedIndex = 12;
+					toolBar.city = "Oceanside";
+					break;
+				case "Poway":
+					toolBar.citySelect.selectedIndex = 13;
+					toolBar.city = "Poway";
+					break;
+				case "SanDiego":
+					toolBar.citySelect.selectedIndex = 14;
+					toolBar.city = "SanDiego";
+					break;
+				case "SanMarcos":
+					toolBar.citySelect.selectedIndex = 15;
+					toolBar.city = "SanMarcos";
+					break;
+				case "Santee":
+					toolBar.citySelect.selectedIndex = 16;
+					toolBar.city = "Santee";
+					break;
+				case "SonadaBeach":
+					toolBar.citySelect.selectedIndex = 17;
+					toolBar.city = "SonadaBeach";
+					break;
+				case "Vista":
+					toolBar.citySelect.selectedIndex = 18;
+					toolBar.city = "Vista";
+					break;
+			}
+
+			// Check which tab is selected in session and toggles it
+			switch (data[1]) {
+				case "buy":
+					toolBar.toggleBuy();
+					break;
+				case "rent":
+					toolBar.toggleRent();
+					break;
+				case "new":
+					break;
+			}
 		}
 	}
 
@@ -240,7 +332,7 @@ var init = function(document, window, googleGlobal, map) {
 	var toolBar = {
 		opened: false,
 		tab: "buy",
-		location: "eastlake",
+		city: null,
 		buyPrice: [1000, 3000],
 		rentPrice: [1000, 3000],
 		squareFeet: [1000, 5000],
@@ -279,6 +371,7 @@ var init = function(document, window, googleGlobal, map) {
 			this.squareFeetSlider = document.getElementById("square-slider");
 			this.roomsSlider = document.getElementById("beds-slider");
 			this.settingsWrapper = $(".settings-wrapper");
+			this.citySelect = document.getElementById("city-select");
 
 			this.bathsSlider = document.getElementById("baths-slider");
 			this.bathsMin = $(".baths div.min");
@@ -297,6 +390,8 @@ var init = function(document, window, googleGlobal, map) {
 			// Seller
 			this.sellerOwner = $("#seller-owner");
 			this.sellerAgent = $("#seller-agent");
+
+
 		}, 
 		render: function() {
 			console.log(this.settingsWrapper.height());
@@ -316,6 +411,12 @@ var init = function(document, window, googleGlobal, map) {
 			this.rentTabButton.on("click", () => {
 				this.toggleRent();	
 			});
+
+			this.citySelect.onchange = () => {
+				// this.citySelect.selectedIndex = 3;
+				// console.log(this.citySelect.selectedIndex);
+				this.city = this.citySelect.options[this.citySelect.selectedIndex].value;
+			}
 
 			//-------------------------------------------------
 			// Sliders
@@ -560,7 +661,6 @@ var init = function(document, window, googleGlobal, map) {
 		render: function() {
 			this.toggleLoadingScreen();
 			this.fetchList();
-			this.toggleLoadingScreen();
 		},
 		fetchList: function() {
 			// Fetch listings JSON
@@ -575,6 +675,8 @@ var init = function(document, window, googleGlobal, map) {
 						this.listings.push(listing);
 						this.listings[i].init();
 					}
+
+					this.toggleLoadingScreen();
 				}
 			});
 
@@ -637,6 +739,7 @@ var init = function(document, window, googleGlobal, map) {
 		init: function() {
 			this.cacheDOM();
 			this.setEvents();
+			// this.initPerfectScrollbar();
 			this.render();
 		},
 		cacheDOM: function() {
@@ -1069,6 +1172,9 @@ var init = function(document, window, googleGlobal, map) {
 				this.arrowLeft.removeClass("disabled");
 				this.arrowRight.removeClass("disabled");
 			}
+		},
+		initPerfectScrollbar: function() {
+			windowScrollbar = new PerfectScrollbar("#window");
 		}
 	}
 
@@ -1090,7 +1196,7 @@ var init = function(document, window, googleGlobal, map) {
 	}
 
 	window.onload = function() {
-		app.getSessionListing();
+		app.init();
 	}
 
 	//------------------
